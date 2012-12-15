@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		6B801F0F63F84F66AF0EC22A /* libPods-MGCommandTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6943BDC9B8684C25B73ABFA8 /* libPods-MGCommandTests.a */; };
+		A83B6480B29C4C139024FA5B /* libPods-MGCommandExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BC930AE65084705ABD74189 /* libPods-MGCommandExample.a */; };
+		AD8431A1167CFADA009123B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84317B167CFABA009123B0 /* UIKit.framework */; };
+		AD8431A2167CFADA009123B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F941167CF18B000C3B76 /* Foundation.framework */; };
+		AD8431A3167CFADA009123B0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84317E167CFABA009123B0 /* CoreGraphics.framework */; };
+		AD8431A9167CFADA009123B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD8431A7167CFADA009123B0 /* InfoPlist.strings */; };
+		AD8431AB167CFADA009123B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8431AA167CFADA009123B0 /* main.m */; };
+		AD8431B1167CFADA009123B0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AD8431B0167CFADA009123B0 /* Default.png */; };
+		AD8431B3167CFADA009123B0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD8431B2167CFADA009123B0 /* Default@2x.png */; };
+		AD8431B5167CFADA009123B0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD8431B4167CFADA009123B0 /* Default-568h@2x.png */; };
+		AD8431BB167CFADB009123B0 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8431B9167CFADB009123B0 /* ViewController.xib */; };
+		AD8431D5167CFCA4009123B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8431D2167CFCA4009123B0 /* AppDelegate.m */; };
+		AD8431D6167CFCA4009123B0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8431D4167CFCA4009123B0 /* ViewController.m */; };
 		ADB4F942167CF18B000C3B76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F941167CF18B000C3B76 /* Foundation.framework */; };
 		ADB4F951167CF18B000C3B76 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F950167CF18B000C3B76 /* SenTestingKit.framework */; };
 		ADB4F954167CF18B000C3B76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F941167CF18B000C3B76 /* Foundation.framework */; };
@@ -52,11 +64,28 @@
 
 /* Begin PBXFileReference section */
 		56CD851006834BD49AFA72F2 /* Pods-MGCommandTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGCommandTests.xcconfig"; path = "Pods/Pods-MGCommandTests.xcconfig"; sourceTree = SOURCE_ROOT; };
+		5BC930AE65084705ABD74189 /* libPods-MGCommandExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MGCommandExample.a"; path = "libPods-MGCommandExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6943BDC9B8684C25B73ABFA8 /* libPods-MGCommandTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MGCommandTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADB4F93E167CF18B000C3B76 /* libMGCommand.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMGCommand.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6ADA3A5C3F2F4ACE893033A5 /* Pods-MGCommandExample.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGCommandExample.xcconfig"; path = "Pods/Pods-MGCommandExample.xcconfig"; sourceTree = SOURCE_ROOT; };
+		AD84317B167CFABA009123B0 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AD84317E167CFABA009123B0 /* CoreGraphics.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AD84319F167CFADA009123B0 /* MGCommandExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MGCommandExample.app; path = MGCommandExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD8431A6167CFADA009123B0 /* MGCommandExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MGCommandExample-Info.plist"; sourceTree = "<group>"; };
+		AD8431A8167CFADA009123B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD8431AA167CFADA009123B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AD8431AC167CFADA009123B0 /* MGCommandExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MGCommandExample-Prefix.pch"; sourceTree = "<group>"; };
+		AD8431B0167CFADA009123B0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		AD8431B2167CFADA009123B0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		AD8431B4167CFADA009123B0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		AD8431BA167CFADB009123B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		AD8431D1167CFCA4009123B0 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MGCommandExample/Classes/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		AD8431D2167CFCA4009123B0 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MGCommandExample/Classes/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		AD8431D3167CFCA4009123B0 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = MGCommandExample/Classes/ViewController.h; sourceTree = SOURCE_ROOT; };
+		AD8431D4167CFCA4009123B0 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = MGCommandExample/Classes/ViewController.m; sourceTree = SOURCE_ROOT; };
+		ADB4F93E167CF18B000C3B76 /* libMGCommand.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMGCommand.a; path = libMGCommand.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB4F941167CF18B000C3B76 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ADB4F945167CF18B000C3B76 /* MGCommand-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MGCommand-Prefix.pch"; sourceTree = "<group>"; };
-		ADB4F94F167CF18B000C3B76 /* MGCommandTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MGCommandTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADB4F94F167CF18B000C3B76 /* MGCommandTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MGCommandTests.octest; path = MGCommandTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB4F950167CF18B000C3B76 /* SenTestingKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		ADB4F95A167CF18B000C3B76 /* MGCommandTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MGCommandTests-Info.plist"; sourceTree = "<group>"; };
 		ADB4F95C167CF18B000C3B76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -73,6 +102,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AD84319C167CFADA009123B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8431A1167CFADA009123B0 /* UIKit.framework in Frameworks */,
+				AD8431A2167CFADA009123B0 /* Foundation.framework in Frameworks */,
+				AD8431A3167CFADA009123B0 /* CoreGraphics.framework in Frameworks */,
+				A83B6480B29C4C139024FA5B /* libPods-MGCommandExample.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADB4F93B167CF18B000C3B76 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -95,15 +135,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD8431A4167CFADA009123B0 /* MGCommandExample */ = {
+			isa = PBXGroup;
+			children = (
+				BF8D9ABDC859CDBAD6325E27 /* Classes */,
+				AD8431A5167CFADA009123B0 /* Supporting Files */,
+				AD8431B9167CFADB009123B0 /* ViewController.xib */,
+			);
+			path = MGCommandExample;
+			sourceTree = SOURCE_ROOT;
+		};
+		AD8431A5167CFADA009123B0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AD8431A6167CFADA009123B0 /* MGCommandExample-Info.plist */,
+				AD8431A7167CFADA009123B0 /* InfoPlist.strings */,
+				AD8431AA167CFADA009123B0 /* main.m */,
+				AD8431AC167CFADA009123B0 /* MGCommandExample-Prefix.pch */,
+				AD8431B0167CFADA009123B0 /* Default.png */,
+				AD8431B2167CFADA009123B0 /* Default@2x.png */,
+				AD8431B4167CFADA009123B0 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		ADB4F933167CF18B000C3B76 = {
 			isa = PBXGroup;
 			children = (
 				ADB4F943167CF18B000C3B76 /* MGCommand */,
+				AD8431A4167CFADA009123B0 /* MGCommandExample */,
 				ADB4F958167CF18B000C3B76 /* MGCommandTests */,
 				ADB4F940167CF18B000C3B76 /* Frameworks */,
 				ADB4F93F167CF18B000C3B76 /* Products */,
 				56CD851006834BD49AFA72F2 /* Pods-MGCommandTests.xcconfig */,
-				BF8D9E0AE3BCB1AB68CCE441 /* MGCommandExample */,
+				6ADA3A5C3F2F4ACE893033A5 /* Pods-MGCommandExample.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +177,7 @@
 			children = (
 				ADB4F93E167CF18B000C3B76 /* libMGCommand.a */,
 				ADB4F94F167CF18B000C3B76 /* MGCommandTests.octest */,
+				AD84319F167CFADA009123B0 /* MGCommandExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,6 +188,9 @@
 				ADB4F941167CF18B000C3B76 /* Foundation.framework */,
 				ADB4F950167CF18B000C3B76 /* SenTestingKit.framework */,
 				6943BDC9B8684C25B73ABFA8 /* libPods-MGCommandTests.a */,
+				AD84317B167CFABA009123B0 /* UIKit.framework */,
+				AD84317E167CFABA009123B0 /* CoreGraphics.framework */,
+				5BC930AE65084705ABD74189 /* libPods-MGCommandExample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,6 +252,17 @@
 			path = Fixtures;
 			sourceTree = "<group>";
 		};
+		BF8D9ABDC859CDBAD6325E27 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AD8431D1167CFCA4009123B0 /* AppDelegate.h */,
+				AD8431D2167CFCA4009123B0 /* AppDelegate.m */,
+				AD8431D3167CFCA4009123B0 /* ViewController.h */,
+				AD8431D4167CFCA4009123B0 /* ViewController.m */,
+			);
+			path = Classes;
+			sourceTree = SOURCE_ROOT;
+		};
 		BF8D9C548943730280C18EBA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,16 +273,27 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		BF8D9E0AE3BCB1AB68CCE441 /* MGCommandExample */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MGCommandExample;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AD84319E167CFADA009123B0 /* MGCommandExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD8431BC167CFADB009123B0 /* Build configuration list for PBXNativeTarget "MGCommandExample" */;
+			buildPhases = (
+				AD84319B167CFADA009123B0 /* Sources */,
+				AD84319C167CFADA009123B0 /* Frameworks */,
+				AD84319D167CFADA009123B0 /* Resources */,
+				F53AD0D88222481484CBC20E /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MGCommandExample;
+			productName = MGCommandExample;
+			productReference = AD84319F167CFADA009123B0 /* MGCommandExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		ADB4F93D167CF18B000C3B76 /* MGCommand */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ADB4F963167CF18B000C3B76 /* Build configuration list for PBXNativeTarget "MGCommand" */;
@@ -263,11 +354,24 @@
 			targets = (
 				ADB4F93D167CF18B000C3B76 /* MGCommand */,
 				ADB4F94E167CF18B000C3B76 /* MGCommandTests */,
+				AD84319E167CFADA009123B0 /* MGCommandExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AD84319D167CFADA009123B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8431A9167CFADA009123B0 /* InfoPlist.strings in Resources */,
+				AD8431B1167CFADA009123B0 /* Default.png in Resources */,
+				AD8431B3167CFADA009123B0 /* Default@2x.png in Resources */,
+				AD8431B5167CFADA009123B0 /* Default-568h@2x.png in Resources */,
+				AD8431BB167CFADB009123B0 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADB4F94C167CF18B000C3B76 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -306,9 +410,33 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		F53AD0D88222481484CBC20E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-MGCommandExample-resources.sh\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AD84319B167CFADA009123B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD8431AB167CFADA009123B0 /* main.m in Sources */,
+				AD8431D5167CFCA4009123B0 /* AppDelegate.m in Sources */,
+				AD8431D6167CFCA4009123B0 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADB4F93A167CF18B000C3B76 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +467,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		AD8431A7167CFADA009123B0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD8431A8167CFADA009123B0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AD8431B9167CFADB009123B0 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD8431BA167CFADB009123B0 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
 		ADB4F95B167CF18B000C3B76 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -350,6 +494,33 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AD8431BD167CFADB009123B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6ADA3A5C3F2F4ACE893033A5 /* Pods-MGCommandExample.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MGCommandExample/MGCommandExample-Prefix.pch";
+				INFOPLIST_FILE = "MGCommandExample/MGCommandExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AD8431BE167CFADB009123B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6ADA3A5C3F2F4ACE893033A5 /* Pods-MGCommandExample.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MGCommandExample/MGCommandExample-Prefix.pch";
+				INFOPLIST_FILE = "MGCommandExample/MGCommandExample-Info.plist";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		ADB4F961167CF18B000C3B76 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -458,6 +629,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AD8431BC167CFADB009123B0 /* Build configuration list for PBXNativeTarget "MGCommandExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD8431BD167CFADB009123B0 /* Debug */,
+				AD8431BE167CFADB009123B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ADB4F938167CF18B000C3B76 /* Build configuration list for PBXProject "MGCommand" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
