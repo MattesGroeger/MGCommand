@@ -20,6 +20,8 @@
 		AD8431BB167CFADB009123B0 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8431B9167CFADB009123B0 /* ViewController.xib */; };
 		AD8431D5167CFCA4009123B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8431D2167CFCA4009123B0 /* AppDelegate.m */; };
 		AD8431D6167CFCA4009123B0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8431D4167CFCA4009123B0 /* ViewController.m */; };
+		AD843201167D0AAC009123B0 /* PrintCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = AD843200167D0AAC009123B0 /* PrintCommand.m */; };
+		AD843218167D0F6B009123B0 /* libMGCommand.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F93E167CF18B000C3B76 /* libMGCommand.a */; };
 		ADB4F942167CF18B000C3B76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F941167CF18B000C3B76 /* Foundation.framework */; };
 		ADB4F951167CF18B000C3B76 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F950167CF18B000C3B76 /* SenTestingKit.framework */; };
 		ADB4F954167CF18B000C3B76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F941167CF18B000C3B76 /* Foundation.framework */; };
@@ -31,12 +33,20 @@
 		BF8D94CF1D7E37AEA05F0179 /* MGSequentialCommandGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9748FAA9C10F937B20CF /* MGSequentialCommandGroupSpec.m */; };
 		BF8D96FD050CEF30975612F0 /* CommandFixture.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9CDBD3D9BC7354CEA1C3 /* CommandFixture.m */; };
 		BF8D98DFCC45C2285F523225 /* MGSequentialCommandGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9AB7519121B908AE4A60 /* MGSequentialCommandGroup.m */; };
+		BF8D992A47B5C3B403407D60 /* DelayCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D97E03678FD133B903B3C /* DelayCommand.m */; };
 		BF8D9B0849B462830E5A61F0 /* MGCommandGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D91D29DC5CA0F5DEDD6E9 /* MGCommandGroupSpec.m */; };
 		BF8D9C89700415A301ECB4DD /* MGCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E1D145681C189D60AE4 /* MGCommand.h */; };
 		BF8D9D3C21062B9A1BB1EA09 /* MGAsyncCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E4A2A9E744CB8BFA8BF /* MGAsyncCommand.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AD84320E167D0EEB009123B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADB4F935167CF18B000C3B76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADB4F93D167CF18B000C3B76;
+			remoteInfo = MGCommand;
+		};
 		ADB4F955167CF18B000C3B76 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADB4F935167CF18B000C3B76 /* Project object */;
@@ -64,12 +74,12 @@
 
 /* Begin PBXFileReference section */
 		56CD851006834BD49AFA72F2 /* Pods-MGCommandTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGCommandTests.xcconfig"; path = "Pods/Pods-MGCommandTests.xcconfig"; sourceTree = SOURCE_ROOT; };
-		5BC930AE65084705ABD74189 /* libPods-MGCommandExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MGCommandExample.a"; path = "libPods-MGCommandExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BC930AE65084705ABD74189 /* libPods-MGCommandExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MGCommandExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6943BDC9B8684C25B73ABFA8 /* libPods-MGCommandTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MGCommandTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ADA3A5C3F2F4ACE893033A5 /* Pods-MGCommandExample.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGCommandExample.xcconfig"; path = "Pods/Pods-MGCommandExample.xcconfig"; sourceTree = SOURCE_ROOT; };
 		AD84317B167CFABA009123B0 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AD84317E167CFABA009123B0 /* CoreGraphics.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		AD84319F167CFADA009123B0 /* MGCommandExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MGCommandExample.app; path = MGCommandExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD84319F167CFADA009123B0 /* MGCommandExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGCommandExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD8431A6167CFADA009123B0 /* MGCommandExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MGCommandExample-Info.plist"; sourceTree = "<group>"; };
 		AD8431A8167CFADA009123B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD8431AA167CFADA009123B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -82,10 +92,12 @@
 		AD8431D2167CFCA4009123B0 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MGCommandExample/Classes/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		AD8431D3167CFCA4009123B0 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = MGCommandExample/Classes/ViewController.h; sourceTree = SOURCE_ROOT; };
 		AD8431D4167CFCA4009123B0 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = MGCommandExample/Classes/ViewController.m; sourceTree = SOURCE_ROOT; };
-		ADB4F93E167CF18B000C3B76 /* libMGCommand.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMGCommand.a; path = libMGCommand.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD8431FF167D0AAC009123B0 /* PrintCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrintCommand.h; path = MGCommandExample/Classes/PrintCommand.h; sourceTree = "<group>"; };
+		AD843200167D0AAC009123B0 /* PrintCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrintCommand.m; path = MGCommandExample/Classes/PrintCommand.m; sourceTree = "<group>"; };
+		ADB4F93E167CF18B000C3B76 /* libMGCommand.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMGCommand.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB4F941167CF18B000C3B76 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ADB4F945167CF18B000C3B76 /* MGCommand-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MGCommand-Prefix.pch"; sourceTree = "<group>"; };
-		ADB4F94F167CF18B000C3B76 /* MGCommandTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MGCommandTests.octest; path = MGCommandTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADB4F94F167CF18B000C3B76 /* MGCommandTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MGCommandTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB4F950167CF18B000C3B76 /* SenTestingKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		ADB4F95A167CF18B000C3B76 /* MGCommandTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MGCommandTests-Info.plist"; sourceTree = "<group>"; };
 		ADB4F95C167CF18B000C3B76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -93,6 +105,8 @@
 		BF8D92A37AA5E2D9A5FD5061 /* MGCommandGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCommandGroup.h; sourceTree = "<group>"; };
 		BF8D95913A1E8D471635E647 /* MGSequentialCommandGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSequentialCommandGroup.h; sourceTree = "<group>"; };
 		BF8D9748FAA9C10F937B20CF /* MGSequentialCommandGroupSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSequentialCommandGroupSpec.m; sourceTree = "<group>"; };
+		BF8D97E03678FD133B903B3C /* DelayCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DelayCommand.m; path = MGCommandExample/Classes/DelayCommand.m; sourceTree = "<group>"; };
+		BF8D97F127D1D72235AD5AE3 /* DelayCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DelayCommand.h; path = MGCommandExample/Classes/DelayCommand.h; sourceTree = "<group>"; };
 		BF8D99D864DB1EC20F8BE9B4 /* CommandFixture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandFixture.h; sourceTree = "<group>"; };
 		BF8D9AB7519121B908AE4A60 /* MGSequentialCommandGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSequentialCommandGroup.m; sourceTree = "<group>"; };
 		BF8D9CDBD3D9BC7354CEA1C3 /* CommandFixture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandFixture.m; sourceTree = "<group>"; };
@@ -109,6 +123,7 @@
 				AD8431A1167CFADA009123B0 /* UIKit.framework in Frameworks */,
 				AD8431A2167CFADA009123B0 /* Foundation.framework in Frameworks */,
 				AD8431A3167CFADA009123B0 /* CoreGraphics.framework in Frameworks */,
+				AD843218167D0F6B009123B0 /* libMGCommand.a in Frameworks */,
 				A83B6480B29C4C139024FA5B /* libPods-MGCommandExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,9 +267,21 @@
 			path = Fixtures;
 			sourceTree = "<group>";
 		};
+		BF8D948C2772D7E90B5B4D2C /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				AD8431FF167D0AAC009123B0 /* PrintCommand.h */,
+				AD843200167D0AAC009123B0 /* PrintCommand.m */,
+				BF8D97E03678FD133B903B3C /* DelayCommand.m */,
+				BF8D97F127D1D72235AD5AE3 /* DelayCommand.h */,
+			);
+			name = Commands;
+			sourceTree = SOURCE_ROOT;
+		};
 		BF8D9ABDC859CDBAD6325E27 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BF8D948C2772D7E90B5B4D2C /* Commands */,
 				AD8431D1167CFCA4009123B0 /* AppDelegate.h */,
 				AD8431D2167CFCA4009123B0 /* AppDelegate.m */,
 				AD8431D3167CFCA4009123B0 /* ViewController.h */,
@@ -288,6 +315,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AD84320F167D0EEB009123B0 /* PBXTargetDependency */,
 			);
 			name = MGCommandExample;
 			productName = MGCommandExample;
@@ -434,6 +462,8 @@
 				AD8431AB167CFADA009123B0 /* main.m in Sources */,
 				AD8431D5167CFCA4009123B0 /* AppDelegate.m in Sources */,
 				AD8431D6167CFCA4009123B0 /* ViewController.m in Sources */,
+				AD843201167D0AAC009123B0 /* PrintCommand.m in Sources */,
+				BF8D992A47B5C3B403407D60 /* DelayCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +489,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AD84320F167D0EEB009123B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADB4F93D167CF18B000C3B76 /* MGCommand */;
+			targetProxy = AD84320E167D0EEB009123B0 /* PBXContainerItemProxy */;
+		};
 		ADB4F956167CF18B000C3B76 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = ADB4F93D167CF18B000C3B76 /* MGCommand */;

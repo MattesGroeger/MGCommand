@@ -6,4 +6,8 @@
 @property (nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic) IBOutlet UILabel *outputLabel;
 
+- (void)addOutput:(NSString *)output;
+
+- (void)clearOutput;
+
 @end
