@@ -1,9 +1,7 @@
 Introduction
 ===
 
-This library provides a lightweight way for executing commands. `Commands` can be executed sequentially or concurrently. This is done by command groups which in itself are `Commands`. 
-
-Because of that `Commands` and `CommandGroups` can be nested. This can be used for scripted code execution like in game tutorials for example (tbd: reference tutorial script).
+This library provides a lightweight solution for executing `Commands`. They can be executed sequentially or concurrently with `CommandGroups`. Because groups are `Commands` as well, they can be nested into each other. This can be used for scripted code execution like in game tutorials for example (tbd: reference tutorial script).
 
 Installation
 ===
