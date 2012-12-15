@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B801F0F63F84F66AF0EC22A /* libPods-MGCommandTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6943BDC9B8684C25B73ABFA8 /* libPods-MGCommandTests.a */; };
 		ADB4F942167CF18B000C3B76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F941167CF18B000C3B76 /* Foundation.framework */; };
-		ADB4F947167CF18B000C3B76 /* MGCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = ADB4F946167CF18B000C3B76 /* MGCommand.h */; };
-		ADB4F949167CF18B000C3B76 /* MGCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB4F948167CF18B000C3B76 /* MGCommand.m */; };
 		ADB4F951167CF18B000C3B76 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F950167CF18B000C3B76 /* SenTestingKit.framework */; };
-		ADB4F953167CF18B000C3B76 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F952167CF18B000C3B76 /* UIKit.framework */; };
 		ADB4F954167CF18B000C3B76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F941167CF18B000C3B76 /* Foundation.framework */; };
 		ADB4F957167CF18B000C3B76 /* libMGCommand.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F93E167CF18B000C3B76 /* libMGCommand.a */; };
 		ADB4F95D167CF18B000C3B76 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB4F95B167CF18B000C3B76 /* InfoPlist.strings */; };
-		ADB4F960167CF18B000C3B76 /* MGCommandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB4F95F167CF18B000C3B76 /* MGCommandTests.m */; };
+		BF8D912A8CDEF49978663E65 /* MGSequentialCommandGroup.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D95913A1E8D471635E647 /* MGSequentialCommandGroup.h */; };
+		BF8D92FBF0DD0B6186FCF8F6 /* MGCommandGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9F9F9E25DA3F446E4B6A /* MGCommandGroup.m */; };
+		BF8D93F1C2CD947506FCF8D1 /* MGCommandGroup.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D92A37AA5E2D9A5FD5061 /* MGCommandGroup.h */; };
+		BF8D94CF1D7E37AEA05F0179 /* MGSequentialCommandGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9748FAA9C10F937B20CF /* MGSequentialCommandGroupSpec.m */; };
+		BF8D96FD050CEF30975612F0 /* CommandFixture.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9CDBD3D9BC7354CEA1C3 /* CommandFixture.m */; };
+		BF8D98DFCC45C2285F523225 /* MGSequentialCommandGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9AB7519121B908AE4A60 /* MGSequentialCommandGroup.m */; };
+		BF8D9B0849B462830E5A61F0 /* MGCommandGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D91D29DC5CA0F5DEDD6E9 /* MGCommandGroupSpec.m */; };
+		BF8D9C89700415A301ECB4DD /* MGCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E1D145681C189D60AE4 /* MGCommand.h */; };
+		BF8D9D3C21062B9A1BB1EA09 /* MGAsyncCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E4A2A9E744CB8BFA8BF /* MGAsyncCommand.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,25 +41,35 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				ADB4F947167CF18B000C3B76 /* MGCommand.h in CopyFiles */,
+				BF8D9D3C21062B9A1BB1EA09 /* MGAsyncCommand.h in CopyFiles */,
+				BF8D9C89700415A301ECB4DD /* MGCommand.h in CopyFiles */,
+				BF8D93F1C2CD947506FCF8D1 /* MGCommandGroup.h in CopyFiles */,
+				BF8D912A8CDEF49978663E65 /* MGSequentialCommandGroup.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		56CD851006834BD49AFA72F2 /* Pods-MGCommandTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGCommandTests.xcconfig"; path = "Pods/Pods-MGCommandTests.xcconfig"; sourceTree = SOURCE_ROOT; };
+		6943BDC9B8684C25B73ABFA8 /* libPods-MGCommandTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MGCommandTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB4F93E167CF18B000C3B76 /* libMGCommand.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMGCommand.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADB4F941167CF18B000C3B76 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ADB4F941167CF18B000C3B76 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ADB4F945167CF18B000C3B76 /* MGCommand-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MGCommand-Prefix.pch"; sourceTree = "<group>"; };
-		ADB4F946167CF18B000C3B76 /* MGCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGCommand.h; sourceTree = "<group>"; };
-		ADB4F948167CF18B000C3B76 /* MGCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGCommand.m; sourceTree = "<group>"; };
 		ADB4F94F167CF18B000C3B76 /* MGCommandTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MGCommandTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADB4F950167CF18B000C3B76 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		ADB4F952167CF18B000C3B76 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		ADB4F950167CF18B000C3B76 /* SenTestingKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		ADB4F95A167CF18B000C3B76 /* MGCommandTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MGCommandTests-Info.plist"; sourceTree = "<group>"; };
 		ADB4F95C167CF18B000C3B76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		ADB4F95E167CF18B000C3B76 /* MGCommandTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGCommandTests.h; sourceTree = "<group>"; };
-		ADB4F95F167CF18B000C3B76 /* MGCommandTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGCommandTests.m; sourceTree = "<group>"; };
+		BF8D91D29DC5CA0F5DEDD6E9 /* MGCommandGroupSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandGroupSpec.m; sourceTree = "<group>"; };
+		BF8D92A37AA5E2D9A5FD5061 /* MGCommandGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCommandGroup.h; sourceTree = "<group>"; };
+		BF8D95913A1E8D471635E647 /* MGSequentialCommandGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSequentialCommandGroup.h; sourceTree = "<group>"; };
+		BF8D9748FAA9C10F937B20CF /* MGSequentialCommandGroupSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSequentialCommandGroupSpec.m; sourceTree = "<group>"; };
+		BF8D99D864DB1EC20F8BE9B4 /* CommandFixture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandFixture.h; sourceTree = "<group>"; };
+		BF8D9AB7519121B908AE4A60 /* MGSequentialCommandGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSequentialCommandGroup.m; sourceTree = "<group>"; };
+		BF8D9CDBD3D9BC7354CEA1C3 /* CommandFixture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandFixture.m; sourceTree = "<group>"; };
+		BF8D9E1D145681C189D60AE4 /* MGCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCommand.h; sourceTree = "<group>"; };
+		BF8D9E4A2A9E744CB8BFA8BF /* MGAsyncCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAsyncCommand.h; sourceTree = "<group>"; };
+		BF8D9F9F9E25DA3F446E4B6A /* MGCommandGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandGroup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +86,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADB4F951167CF18B000C3B76 /* SenTestingKit.framework in Frameworks */,
-				ADB4F953167CF18B000C3B76 /* UIKit.framework in Frameworks */,
 				ADB4F954167CF18B000C3B76 /* Foundation.framework in Frameworks */,
 				ADB4F957167CF18B000C3B76 /* libMGCommand.a in Frameworks */,
+				6B801F0F63F84F66AF0EC22A /* libPods-MGCommandTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +102,8 @@
 				ADB4F958167CF18B000C3B76 /* MGCommandTests */,
 				ADB4F940167CF18B000C3B76 /* Frameworks */,
 				ADB4F93F167CF18B000C3B76 /* Products */,
+				56CD851006834BD49AFA72F2 /* Pods-MGCommandTests.xcconfig */,
+				BF8D9E0AE3BCB1AB68CCE441 /* MGCommandExample */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,7 +121,7 @@
 			children = (
 				ADB4F941167CF18B000C3B76 /* Foundation.framework */,
 				ADB4F950167CF18B000C3B76 /* SenTestingKit.framework */,
-				ADB4F952167CF18B000C3B76 /* UIKit.framework */,
+				6943BDC9B8684C25B73ABFA8 /* libPods-MGCommandTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -111,9 +129,8 @@
 		ADB4F943167CF18B000C3B76 /* MGCommand */ = {
 			isa = PBXGroup;
 			children = (
-				ADB4F946167CF18B000C3B76 /* MGCommand.h */,
-				ADB4F948167CF18B000C3B76 /* MGCommand.m */,
 				ADB4F944167CF18B000C3B76 /* Supporting Files */,
+				BF8D908A3A598047A9CCD655 /* Classes */,
 			);
 			path = MGCommand;
 			sourceTree = "<group>";
@@ -129,9 +146,8 @@
 		ADB4F958167CF18B000C3B76 /* MGCommandTests */ = {
 			isa = PBXGroup;
 			children = (
-				ADB4F95E167CF18B000C3B76 /* MGCommandTests.h */,
-				ADB4F95F167CF18B000C3B76 /* MGCommandTests.m */,
 				ADB4F959167CF18B000C3B76 /* Supporting Files */,
+				BF8D9C548943730280C18EBA /* Classes */,
 			);
 			path = MGCommandTests;
 			sourceTree = "<group>";
@@ -143,6 +159,45 @@
 				ADB4F95B167CF18B000C3B76 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BF8D908A3A598047A9CCD655 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BF8D9E4A2A9E744CB8BFA8BF /* MGAsyncCommand.h */,
+				BF8D9E1D145681C189D60AE4 /* MGCommand.h */,
+				BF8D92A37AA5E2D9A5FD5061 /* MGCommandGroup.h */,
+				BF8D9F9F9E25DA3F446E4B6A /* MGCommandGroup.m */,
+				BF8D95913A1E8D471635E647 /* MGSequentialCommandGroup.h */,
+				BF8D9AB7519121B908AE4A60 /* MGSequentialCommandGroup.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		BF8D93318C8AA6845272B352 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				BF8D99D864DB1EC20F8BE9B4 /* CommandFixture.h */,
+				BF8D9CDBD3D9BC7354CEA1C3 /* CommandFixture.m */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		BF8D9C548943730280C18EBA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BF8D91D29DC5CA0F5DEDD6E9 /* MGCommandGroupSpec.m */,
+				BF8D93318C8AA6845272B352 /* Fixtures */,
+				BF8D9748FAA9C10F937B20CF /* MGSequentialCommandGroupSpec.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		BF8D9E0AE3BCB1AB68CCE441 /* MGCommandExample */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MGCommandExample;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +228,7 @@
 				ADB4F94B167CF18B000C3B76 /* Frameworks */,
 				ADB4F94C167CF18B000C3B76 /* Resources */,
 				ADB4F94D167CF18B000C3B76 /* ShellScript */,
+				A4CC07ED217840ED9663B68C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,6 +279,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		A4CC07ED217840ED9663B68C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-MGCommandTests-resources.sh\"\n";
+		};
 		ADB4F94D167CF18B000C3B76 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -243,7 +313,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADB4F949167CF18B000C3B76 /* MGCommand.m in Sources */,
+				BF8D92FBF0DD0B6186FCF8F6 /* MGCommandGroup.m in Sources */,
+				BF8D98DFCC45C2285F523225 /* MGSequentialCommandGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,7 +322,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADB4F960167CF18B000C3B76 /* MGCommandTests.m in Sources */,
+				BF8D9B0849B462830E5A61F0 /* MGCommandGroupSpec.m in Sources */,
+				BF8D96FD050CEF30975612F0 /* CommandFixture.m in Sources */,
+				BF8D94CF1D7E37AEA05F0179 /* MGSequentialCommandGroupSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,8 +423,10 @@
 		};
 		ADB4F967167CF18B000C3B76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56CD851006834BD49AFA72F2 /* Pods-MGCommandTests.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherted)",
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
@@ -365,8 +440,10 @@
 		};
 		ADB4F968167CF18B000C3B76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56CD851006834BD49AFA72F2 /* Pods-MGCommandTests.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherted)",
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
@@ -397,6 +474,7 @@
 				ADB4F965167CF18B000C3B76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ADB4F966167CF18B000C3B76 /* Build configuration list for PBXNativeTarget "MGCommandTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +483,7 @@
 				ADB4F968167CF18B000C3B76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
