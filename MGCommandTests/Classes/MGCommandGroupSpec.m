@@ -4,7 +4,7 @@
 
 SPEC_BEGIN(MGCommandGroupSpec)
 
-describe(@"CommandGroup", ^
+describe(@"MGCommandGroup", ^
 {
 	__block MGCommandGroup *commandGroup;
 
