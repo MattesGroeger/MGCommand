@@ -1,7 +1,7 @@
 Introduction
 ===
 
-This library provides a lightweight solution for executing `Commands`. They can be executed sequentially or concurrently with `CommandGroups`. Because groups are `Commands` as well, they can be nested into each other. This can be used for scripted code execution like in game tutorials for example (tbd: reference tutorial script).
+This library provides a lightweight solution for executing `Commands`. They can be executed sequentially or concurrently with `CommandGroups`. Because groups are `Commands` as well, they can be nested into each other. This can be used for scripted code execution. See the [MGCommandConfig](https://github.com/MattesGroeger/MGCommandConfig) project for more details.
 
 Installation via CocoaPods
 ===
