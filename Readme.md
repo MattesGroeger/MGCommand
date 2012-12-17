@@ -3,7 +3,7 @@ Introduction
 
 This library provides a lightweight solution for executing `Commands`. They can be executed sequentially or concurrently with `CommandGroups`. Because groups are `Commands` as well, they can be nested into each other. This can be used for scripted code execution like in game tutorials for example (tbd: reference tutorial script).
 
-Installation via CocoaPods (tbd!)
+Installation via CocoaPods
 ===
 
 - Install CocoaPods. See [http://cocoapods.org](http://cocoapods.org)
