@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="MGCommand : This library provides a lightweight way for executing commands. They can be executed sequentially or concurrently. This is done by command groups which in itself are commands as well." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>MGCommand</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/MattesGroeger/MGCommand">View on GitHub</a>
+
+          <h1 id="project_title">MGCommand</h1>
+          <h2 id="project_tagline">This library provides a lightweight way for executing commands. They can be executed sequentially or concurrently. This is done by command groups which in itself are commands as well.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/MattesGroeger/MGCommand/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/MattesGroeger/MGCommand/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>Introduction</h2>
+
+<p>This library provides a lightweight solution for executing <code>Commands</code>. They can be executed sequentially or concurrently with <code>CommandGroups</code>. Because groups are <code>Commands</code> as well, they can be nested into each other. This can be used for scripted code execution. See the <a href="https://github.com/MattesGroeger/MGCommandConfig">MGCommandConfig</a> project for more details.</p>
+
+<h2>Installation via CocoaPods</h2>
+
+<ul>
+<li>Install CocoaPods. See <a href="http://cocoapods.org">http://cocoapods.org</a>
+</li>
+<li>
+<p>Add the MGCommand reference to the Podfile:</p>
+
+<pre><code>platform :ios
+    pod 'MGCommand'
+end
+</code></pre>
+</li>
+<li><p>Run <code>pod install</code> from the command line</p></li>
+<li><p>Open the newly created Xcode Workspace file</p></li>
+<li><p>Implement your commands</p></li>
+</ul><h2>Usage</h2>
+
+<p>There are two command types: synchronous (<code>MGCommand</code>) and asynchronous (<code>MGAsyncCommand</code>). Commands can then be executed all at once (<code>MGCommandGroup</code>) or one after the other (<code>MGSequentialCommandGroup</code>).</p>
+
+<h3>Synchronous command</h3>
+
+<p>A synchronous command needs to implement the <code>MGCommand</code> protocol. The <code>execute</code> method should contain the command logic. Here is a simple print command example (<a href="https://github.com/MattesGroeger/MGCommand/tree/master/MGCommandExample/Classes">taken from the example project</a>):</p>
+
+<div class="highlight"><pre><span class="k">@interface</span> <span class="nc">PrintCommand</span> : <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">MGCommand</span><span class="o">&gt;</span>
+<span class="p">{</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">_message</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nl">initWithMessage:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">message</span><span class="p">;</span>
+
+<span class="k">@end</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">PrintCommand</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithMessage:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">message</span>
+<span class="p">{</span>
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="n">init</span><span class="p">];</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_message</span> <span class="o">=</span> <span class="n">message</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">execute</span>
+<span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="n">_message</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</pre></div>
+
+<h3>Asynchronous command</h3>
+
+<p>Sometimes your command execution may not finish synchronously. In that case you may want to use the <code>MGAsyncCommand</code>. This command will not finish until a callback method has been called. This callback method will be set by the parent <code>CommandGroup</code> before execution (<a href="https://github.com/MattesGroeger/MGCommand/edit/master/Readme.md#executing-several-commands-at-once">see next paragraph</a>). The following command finishes after a given delay (<a href="https://github.com/MattesGroeger/MGCommand/tree/master/MGCommandExample/Classes">taken from the example project</a>):</p>
+
+<div class="highlight"><pre><span class="k">@interface</span> <span class="nc">DelayCommand</span> : <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">MGAsyncCommand</span><span class="o">&gt;</span>
+<span class="p">{</span>
+    <span class="n">NSTimeInterval</span> <span class="n">_delayInSeconds</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">CommandCallback</span> <span class="n">callback</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithDelayInSeconds:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="nv">aDelayInSeconds</span><span class="p">;</span>
+
+<span class="k">@end</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="k">@implementation</span> <span class="nc">DelayCommand</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithDelayInSeconds:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="nv">aDelayInSeconds</span>
+<span class="p">{</span>
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="n">init</span><span class="p">];</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_delayInSeconds</span> <span class="o">=</span> <span class="n">aDelayInSeconds</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">execute</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nl">performSelector:</span><span class="k">@selector</span><span class="p">(</span><span class="n">finishAfterDelay</span><span class="p">)</span>
+               <span class="nl">withObject:</span><span class="nb">nil</span>
+               <span class="nl">afterDelay:</span><span class="n">_delayInSeconds</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">finishAfterDelay</span>
+<span class="p">{</span>
+    <span class="n">_callback</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</pre></div>
+
+<h3>Executing several commands at once</h3>
+
+<p>Commands can be added to command groups (<code>MGCommandGroup</code>) which will then execute all commands concurrently. The command group itself implements the <code>MGAsyncCommand</code> protocol. It will finish when all added commands have finished their execution.</p>
+
+<div class="highlight"><pre><span class="n">MGCommandGroup</span> <span class="o">*</span><span class="n">commandGroup</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MGCommandGroup</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">commandGroup</span> <span class="nl">addCommand:</span><span class="p">[[</span><span class="n">DelayCommand</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithDelayInSeconds:</span><span class="mi">1</span><span class="p">]];</span>
+<span class="p">[</span><span class="n">commandGroup</span> <span class="nl">addCommand:</span><span class="p">[[</span><span class="n">DelayCommand</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithDelayInSeconds:</span><span class="mi">1</span><span class="p">]];</span>
+<span class="p">[</span><span class="n">commandGroup</span> <span class="nl">addCommand:</span><span class="p">[[</span><span class="n">DelayCommand</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithDelayInSeconds:</span><span class="mi">1</span><span class="p">]];</span>
+
+<span class="n">commandGroup</span><span class="p">.</span><span class="n">callback</span> <span class="o">=</span> <span class="o">^</span>
+<span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"execution finished"</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="p">[</span><span class="n">commandGroup</span> <span class="n">execute</span><span class="p">];</span>
+</pre></div>
+
+<p>Before calling the execute method on the command group, you can set the callback block. It will be executed when the command group execution finished. The order you add the commands determines their execution order.</p>
+
+<p>Note that the callbacks for added asynchronous commands will be automatically set by the group. If you add only synchronous commands you don't need the callback as the group will finish instantly.</p>
+
+<h3>Executing commands sequentially</h3>
+
+<p>In case you want to have your commands being executed one after the other you can use the <code>MGSequentialCommandGroup</code>. The order you add the commands determines their execution order.</p>
+
+<h2>Example</h2>
+
+<p>You can find an example application in the <a href="https://github.com/MattesGroeger/MGCommand/tree/master/MGCommandExample/Classes"><code>MGCommandsExample</code> subfolder</a>. To see the exection, run the application in the simulator and press the start button. </p>
+
+<p>The configured command groups look like this (pseudo code):</p>
+
+<pre><code>sequential
+{
+    DelayCommand(1)
+    DelayCommand(1)
+    DelayCommand(1)
+    PrintCommand("concurrent {")
+
+    concurrent
+    {
+        DelayCommand(1)
+        DelayCommand(1)
+        DelayCommand(1)
+    }
+
+    PrintCommand("}")
+    DelayCommand(1)
+    DelayCommand(1)
+    DelayCommand(1)
+    PrintCommand("Finished")
+}
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">MGCommand maintained by <a href="https://github.com/MattesGroeger">MattesGroeger</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
