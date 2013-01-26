@@ -22,7 +22,6 @@
 
 #import "MGCommandGroup.h"
 
-
 @implementation MGCommandGroup
 
 - (id)init
@@ -39,6 +38,14 @@
 
 - (void)execute
 {
+	NSAssert(!_executing, @"Can't execute command group while already executing!");
+
+	_executing = YES;
+	[self processExecute];
+}
+
+- (void)processExecute
+{
 	__block NSUInteger remainingCallbacks = [_commands count];
 
 	CommandCallback subCallback = ^
@@ -47,11 +54,7 @@
 
 		if (remainingCallbacks == 0)
 		{
-			if (_callback)
-			{
-				_callback();
-			}
-
+			[self finishExecution];
 			return;
 		}
 	};
@@ -60,7 +63,7 @@
 	{
 		if ([command conformsToProtocol:@protocol(MGAsyncCommand)])
 		{
-			id <MGAsyncCommand> asyncCommand = (id <MGAsyncCommand>)command;
+			id <MGAsyncCommand> asyncCommand = (id <MGAsyncCommand>) command;
 			asyncCommand.callback = subCallback;
 
 			[command execute];
@@ -71,6 +74,16 @@
 
 			subCallback();
 		}
+	}
+}
+
+- (void)finishExecution
+{
+	_executing = NO;
+
+	if (_callback)
+	{
+		_callback();
 	}
 }
 

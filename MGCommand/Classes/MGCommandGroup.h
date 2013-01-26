@@ -28,13 +28,21 @@
 {
 @private
 	NSMutableArray *_commands;
+	BOOL _executing;
 }
 
 @property (nonatomic, strong) CommandCallback callback;
 @property (nonatomic, readonly) NSArray *commands;
 
+
 - (void)addCommand:(id <MGCommand>)command;
 
 - (NSUInteger)count;
+
+#pragma mark - used for sub classes only
+
+- (void)processExecute;
+
+- (void)finishExecution;
 
 @end

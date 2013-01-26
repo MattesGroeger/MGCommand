@@ -126,6 +126,16 @@ describe(@"MGCommandGroup", ^
 
 			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(2.0)] receive:@selector(testCall)];
 		});
+
+		it(@"should fail to call execute twice", ^
+		{
+			[commandGroup execute];
+
+			[[theBlock(^
+			{
+				[commandGroup execute];
+			}) should] raiseWithReason:@"Can't execute command group while already executing!"];
+		});
 	});
 
 	context(@"with one synchronous and one asyncronous command", ^

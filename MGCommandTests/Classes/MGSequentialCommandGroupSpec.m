@@ -70,6 +70,16 @@ describe(@"MGSequentialCommandGroup", ^
 		{
 			[sequentialCommandGroup execute];
 		});
+
+		it(@"should fail to call execute twice", ^
+		{
+			[sequentialCommandGroup execute];
+
+			[[theBlock(^
+			{
+				[sequentialCommandGroup execute];
+			}) should] raiseWithReason:@"Can't execute command group while already executing!"];
+		});
 	});
 
 	context(@"with nested command group", ^
@@ -105,8 +115,8 @@ describe(@"MGSequentialCommandGroup", ^
 			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(1)] receive:@selector(testCall)];
 			[[theValue(subCommandA.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(0)];
 			[[theValue(subCommandB.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(1)];
-			[[theValue(command1.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(5)];
-			[[theValue(command2.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(6)];
+			[[theValue(command1.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(6)];
+			[[theValue(command2.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(7)];
 		});
 	});
 });

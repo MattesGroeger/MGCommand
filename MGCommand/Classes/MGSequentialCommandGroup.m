@@ -25,20 +25,11 @@
 
 @implementation MGSequentialCommandGroup
 
-- (void)execute
-{
-	[self executeNextCommand];
-}
-
-- (void)executeNextCommand
+- (void)processExecute
 {
 	if (_commandIndex >= self.commands.count)
 	{
-		if (self.callback)
-		{
-			self.callback();
-		}
-
+		[self finishExecution];
 		return;
 	}
 
@@ -50,14 +41,14 @@
 		id <MGAsyncCommand> nextAsyncCommand = (id <MGAsyncCommand>) nextCommand;
 		nextAsyncCommand.callback = ^
 		{
-			[self executeNextCommand];
+			[self processExecute];
 		};
 		[nextAsyncCommand execute];
 	}
 	else
 	{
 		[nextCommand execute];
-		[self executeNextCommand];
+		[self processExecute];
 	}
 }
 
