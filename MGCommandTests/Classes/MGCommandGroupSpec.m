@@ -77,6 +77,14 @@ describe(@"MGCommandGroup", ^
 			[commandGroup addCommand:command2];
 		});
 
+		it(@"should work without callback beeing set", ^
+		{
+			[[command1 should] receive:@selector(execute)];
+			[[command2 should] receive:@selector(execute)];
+
+			[commandGroup execute];
+		});
+
 		it(@"should execute commands", ^
 		{
 			__block BOOL callbackExecuted = NO;

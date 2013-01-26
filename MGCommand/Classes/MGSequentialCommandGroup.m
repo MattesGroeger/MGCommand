@@ -34,7 +34,11 @@
 {
 	if (_commandIndex >= self.commands.count)
 	{
-		self.callback();
+		if (self.callback)
+		{
+			self.callback();
+		}
+
 		return;
 	}
 

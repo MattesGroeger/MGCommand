@@ -47,7 +47,12 @@
 
 		if (remainingCallbacks == 0)
 		{
-			_callback();
+			if (_callback)
+			{
+				_callback();
+			}
+
+			return;
 		}
 	};
 

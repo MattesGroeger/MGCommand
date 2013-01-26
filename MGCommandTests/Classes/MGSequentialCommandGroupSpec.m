@@ -65,6 +65,11 @@ describe(@"MGSequentialCommandGroup", ^
 			[[theValue(command2.callCount) shouldEventuallyBeforeTimingOutAfter(2)] equal:theValue(1)];
 			[[theValue(command3.callCount) shouldEventuallyBeforeTimingOutAfter(3)] equal:theValue(2)];
 		});
+
+		it(@"should work without callback beeing set", ^
+		{
+			[sequentialCommandGroup execute];
+		});
 	});
 
 	context(@"with nested command group", ^
@@ -100,8 +105,8 @@ describe(@"MGSequentialCommandGroup", ^
 			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(1)] receive:@selector(testCall)];
 			[[theValue(subCommandA.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(0)];
 			[[theValue(subCommandB.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(1)];
-			[[theValue(command1.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(2)];
-			[[theValue(command2.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(3)];
+			[[theValue(command1.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(5)];
+			[[theValue(command2.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(6)];
 		});
 	});
 });
