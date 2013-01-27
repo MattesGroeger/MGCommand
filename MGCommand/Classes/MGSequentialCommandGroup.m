@@ -21,35 +21,50 @@
  */
 
 #import "MGSequentialCommandGroup.h"
+#import "MGCommandExecutor.h"
 
 
 @implementation MGSequentialCommandGroup
 
-- (void)processExecute
+- (id)init
 {
-	if (_commandIndex >= self.commands.count)
+	self = [super init];
+
+	if (self)
 	{
-		[self finishExecution];
+		_commandExecuter = [[MGCommandExecutor alloc]
+				initWithCompleteCallback:^(id <MGCommand> command)
+		{
+			[_commands removeObject:command];
+			[self executeNext];
+		}];
+	}
+
+	return self;
+}
+
+- (void)execute
+{
+	NSAssert(!_commandExecuter.active,
+		@"Can't execute command group while already executing!");
+
+	[self executeNext];
+}
+
+- (void)executeNext
+{
+	if (_commands.count <= 0)
+	{
+		if (self.callback)
+		{
+			self.callback();
+		}
+
 		return;
 	}
 
-	id <MGCommand> nextCommand = self.commands[_commandIndex];
-	_commandIndex++;
-
-	if ([nextCommand conformsToProtocol:@protocol(MGAsyncCommand)])
-	{
-		id <MGAsyncCommand> nextAsyncCommand = (id <MGAsyncCommand>) nextCommand;
-		nextAsyncCommand.callback = ^
-		{
-			[self processExecute];
-		};
-		[nextAsyncCommand execute];
-	}
-	else
-	{
-		[nextCommand execute];
-		[self processExecute];
-	}
+	id <MGCommand> nextCommand = [_commands objectAtIndex:0];
+	[_commandExecuter executeCommand:nextCommand];
 }
 
 @end

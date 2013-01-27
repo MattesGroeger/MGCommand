@@ -20,10 +20,62 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-#import "MGCommandGroup.h"
+#import "MGCommandExecutor.h"
 
+@implementation MGCommandExecutor
 
-@interface MGSequentialCommandGroup : MGCommandGroup
+- (id)initWithCompleteCallback:(CommandExecutionCallback)completeCallback
+{
+	self = [super init];
+
+	if (self)
+	{
+		_commandCallback = completeCallback;
+		_activeCommands = [NSMutableArray array];
+	}
+
+	return self;
+}
+
+- (id)init
+{
+	return [self initWithCompleteCallback:nil];
+}
+
+- (BOOL)active
+{
+	return _activeCommands.count > 0;
+}
+
+- (void)executeCommand:(id <MGCommand>)command
+{
+	CommandCallback subCallback = ^
+	{
+		[_activeCommands removeObject:command];
+
+		if (_commandCallback)
+		{
+			_commandCallback(command);
+		}
+	};
+
+	NSAssert(![_activeCommands containsObject:command], @"Can't execute the same command instance twice!");
+
+	[_activeCommands addObject:command];
+
+	if ([command conformsToProtocol:@protocol(MGAsyncCommand)])
+	{
+		id <MGAsyncCommand> asyncCommand = (id <MGAsyncCommand>) command;
+		asyncCommand.callback = subCallback;
+
+		[command execute];
+	}
+	else
+	{
+		[command execute];
+
+		subCallback();
+	}
+}
 
 @end

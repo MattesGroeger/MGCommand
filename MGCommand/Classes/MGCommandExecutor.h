@@ -21,9 +21,20 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "MGCommandGroup.h"
+#import "MGAsyncCommand.h"
 
+@protocol MGCommand;
 
-@interface MGSequentialCommandGroup : MGCommandGroup
+typedef void (^CommandExecutionCallback)(id <MGCommand>);
+
+@interface MGCommandExecutor : NSObject
+
+@property (nonatomic, readonly) BOOL active;
+@property (nonatomic, strong) CommandExecutionCallback commandCallback;
+@property (nonatomic) NSMutableArray *activeCommands;
+
+- (id)initWithCompleteCallback:(CommandExecutionCallback)completeCallback;
+
+- (void)executeCommand:(id <MGCommand>) command;
 
 @end

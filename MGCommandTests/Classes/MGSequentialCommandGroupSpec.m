@@ -36,6 +36,23 @@ describe(@"MGSequentialCommandGroup", ^
 		sequentialCommandGroup = [[MGSequentialCommandGroup alloc] init];
 	});
 
+	context(@"with no commands added", ^
+	{
+		it(@"should finish instantly", ^
+		{
+			__block NSUInteger callbackCount = 0;
+
+			sequentialCommandGroup.callback = ^
+			{
+				callbackCount++;
+			};
+
+			[sequentialCommandGroup execute];
+
+			[[theValue(callbackCount) should] equal:theValue(1)];
+		});
+	});
+
 	context(@"with two commands added", ^
 	{
 		__block AsyncTestCommand *command1 = [[AsyncTestCommand alloc] init];

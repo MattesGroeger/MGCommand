@@ -27,8 +27,10 @@
 		ADB4F954167CF18B000C3B76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F941167CF18B000C3B76 /* Foundation.framework */; };
 		ADB4F957167CF18B000C3B76 /* libMGCommand.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F93E167CF18B000C3B76 /* libMGCommand.a */; };
 		ADB4F95D167CF18B000C3B76 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB4F95B167CF18B000C3B76 /* InfoPlist.strings */; };
+		BF8D9117D72646CCFB395CA4 /* MGCommandExecutorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D96E769D769E23291E58C /* MGCommandExecutorSpec.m */; };
 		BF8D912A8CDEF49978663E65 /* MGSequentialCommandGroup.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D95913A1E8D471635E647 /* MGSequentialCommandGroup.h */; };
 		BF8D92FBF0DD0B6186FCF8F6 /* MGCommandGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9F9F9E25DA3F446E4B6A /* MGCommandGroup.m */; };
+		BF8D930246040B23B77064E4 /* MGCommandExecutor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D94C6403B8E19823673D9 /* MGCommandExecutor.h */; };
 		BF8D93F1C2CD947506FCF8D1 /* MGCommandGroup.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D92A37AA5E2D9A5FD5061 /* MGCommandGroup.h */; };
 		BF8D94CF1D7E37AEA05F0179 /* MGSequentialCommandGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9748FAA9C10F937B20CF /* MGSequentialCommandGroupSpec.m */; };
 		BF8D96FD050CEF30975612F0 /* CommandFixture.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9CDBD3D9BC7354CEA1C3 /* CommandFixture.m */; };
@@ -36,6 +38,7 @@
 		BF8D992A47B5C3B403407D60 /* DelayCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D97E03678FD133B903B3C /* DelayCommand.m */; };
 		BF8D9B0849B462830E5A61F0 /* MGCommandGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D91D29DC5CA0F5DEDD6E9 /* MGCommandGroupSpec.m */; };
 		BF8D9C89700415A301ECB4DD /* MGCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E1D145681C189D60AE4 /* MGCommand.h */; };
+		BF8D9CAB32EEF50FD2AEBE70 /* MGCommandExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D942223896C84D8C3BAEF /* MGCommandExecutor.m */; };
 		BF8D9D3C21062B9A1BB1EA09 /* MGAsyncCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E4A2A9E744CB8BFA8BF /* MGAsyncCommand.h */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +70,7 @@
 				BF8D9C89700415A301ECB4DD /* MGCommand.h in CopyFiles */,
 				BF8D93F1C2CD947506FCF8D1 /* MGCommandGroup.h in CopyFiles */,
 				BF8D912A8CDEF49978663E65 /* MGSequentialCommandGroup.h in CopyFiles */,
+				BF8D930246040B23B77064E4 /* MGCommandExecutor.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +107,10 @@
 		ADB4F95C167CF18B000C3B76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BF8D91D29DC5CA0F5DEDD6E9 /* MGCommandGroupSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandGroupSpec.m; sourceTree = "<group>"; };
 		BF8D92A37AA5E2D9A5FD5061 /* MGCommandGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCommandGroup.h; sourceTree = "<group>"; };
+		BF8D942223896C84D8C3BAEF /* MGCommandExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandExecutor.m; sourceTree = "<group>"; };
+		BF8D94C6403B8E19823673D9 /* MGCommandExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCommandExecutor.h; sourceTree = "<group>"; };
 		BF8D95913A1E8D471635E647 /* MGSequentialCommandGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSequentialCommandGroup.h; sourceTree = "<group>"; };
+		BF8D96E769D769E23291E58C /* MGCommandExecutorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandExecutorSpec.m; sourceTree = "<group>"; };
 		BF8D9748FAA9C10F937B20CF /* MGSequentialCommandGroupSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSequentialCommandGroupSpec.m; sourceTree = "<group>"; };
 		BF8D97E03678FD133B903B3C /* DelayCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DelayCommand.m; path = MGCommandExample/Classes/DelayCommand.m; sourceTree = "<group>"; };
 		BF8D97F127D1D72235AD5AE3 /* DelayCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DelayCommand.h; path = MGCommandExample/Classes/DelayCommand.h; sourceTree = "<group>"; };
@@ -254,6 +261,8 @@
 				BF8D9F9F9E25DA3F446E4B6A /* MGCommandGroup.m */,
 				BF8D95913A1E8D471635E647 /* MGSequentialCommandGroup.h */,
 				BF8D9AB7519121B908AE4A60 /* MGSequentialCommandGroup.m */,
+				BF8D942223896C84D8C3BAEF /* MGCommandExecutor.m */,
+				BF8D94C6403B8E19823673D9 /* MGCommandExecutor.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -296,6 +305,7 @@
 				BF8D91D29DC5CA0F5DEDD6E9 /* MGCommandGroupSpec.m */,
 				BF8D93318C8AA6845272B352 /* Fixtures */,
 				BF8D9748FAA9C10F937B20CF /* MGSequentialCommandGroupSpec.m */,
+				BF8D96E769D769E23291E58C /* MGCommandExecutorSpec.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -473,6 +483,7 @@
 			files = (
 				BF8D92FBF0DD0B6186FCF8F6 /* MGCommandGroup.m in Sources */,
 				BF8D98DFCC45C2285F523225 /* MGSequentialCommandGroup.m in Sources */,
+				BF8D9CAB32EEF50FD2AEBE70 /* MGCommandExecutor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +494,7 @@
 				BF8D9B0849B462830E5A61F0 /* MGCommandGroupSpec.m in Sources */,
 				BF8D96FD050CEF30975612F0 /* CommandFixture.m in Sources */,
 				BF8D94CF1D7E37AEA05F0179 /* MGSequentialCommandGroupSpec.m in Sources */,
+				BF8D9117D72646CCFB395CA4 /* MGCommandExecutorSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

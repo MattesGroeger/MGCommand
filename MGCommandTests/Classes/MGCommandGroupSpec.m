@@ -42,6 +42,20 @@ describe(@"MGCommandGroup", ^
 			[[theValue(commandGroup.count) should] equal:theValue(0)];
 		});
 
+		it(@"should finish instantly", ^
+		{
+			__block NSUInteger callbackCount = 0;
+
+			commandGroup.callback = ^
+			{
+				callbackCount++;
+			};
+
+			[commandGroup execute];
+
+			[[theValue(callbackCount) should] equal:theValue(1)];
+		});
+
 		it(@"should add commands", ^
 		{
 			id command1 = [KWMock mockForProtocol:@protocol(MGCommand)];

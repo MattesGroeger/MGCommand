@@ -21,6 +21,7 @@
  */
 
 #import "MGCommandGroup.h"
+#import "MGCommandExecutor.h"
 
 @implementation MGCommandGroup
 
@@ -31,60 +32,15 @@
 	if (self)
 	{
 		_commands = [NSMutableArray array];
+		_commandExecuter = [[MGCommandExecutor alloc]
+				initWithCompleteCallback:^(id <MGCommand> command)
+		{
+			[_commands removeObject:command];
+			[self callBackWhenDone];
+		}];
 	}
 
 	return self;
-}
-
-- (void)execute
-{
-	NSAssert(!_executing, @"Can't execute command group while already executing!");
-
-	_executing = YES;
-	[self processExecute];
-}
-
-- (void)processExecute
-{
-	__block NSUInteger remainingCallbacks = [_commands count];
-
-	CommandCallback subCallback = ^
-	{
-		remainingCallbacks--;
-
-		if (remainingCallbacks == 0)
-		{
-			[self finishExecution];
-			return;
-		}
-	};
-
-	for (id <MGCommand> command in _commands)
-	{
-		if ([command conformsToProtocol:@protocol(MGAsyncCommand)])
-		{
-			id <MGAsyncCommand> asyncCommand = (id <MGAsyncCommand>) command;
-			asyncCommand.callback = subCallback;
-
-			[command execute];
-		}
-		else
-		{
-			[command execute];
-
-			subCallback();
-		}
-	}
-}
-
-- (void)finishExecution
-{
-	_executing = NO;
-
-	if (_callback)
-	{
-		_callback();
-	}
 }
 
 - (void)addCommand:(id <MGCommand>)command
@@ -95,9 +51,33 @@
 	[_commands addObject:command];
 }
 
+- (void)execute
+{
+	NSAssert(!_commandExecuter.active,
+		@"Can't execute command group while already executing!");
+
+	[self callBackWhenDone];
+
+	for (id <MGCommand> command in [_commands copy])
+	{
+		[_commandExecuter executeCommand:command];
+	}
+}
+
 - (NSUInteger)count
 {
 	return _commands.count;
+}
+
+- (void)callBackWhenDone
+{
+	if (_commands.count == 0)
+	{
+		if (_callback)
+		{
+			_callback();
+		}
+	}
 }
 
 @end
