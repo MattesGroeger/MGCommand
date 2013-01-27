@@ -53,6 +53,42 @@ describe(@"MGSequentialCommandGroup", ^
 		});
 	});
 
+	context(@"with autostart group", ^
+	{
+		__block MGSequentialCommandGroup *autoStartGroup;
+
+		beforeEach(^
+		{
+			autoStartGroup = [[MGSequentialCommandGroup alloc] initWithAutoStart:YES];
+		});
+
+		it(@"should be properly configured", ^
+		{
+			[[autoStartGroup should] beKindOfClass:[MGSequentialCommandGroup class]];
+			[[[MGSequentialCommandGroup autoStartGroup] should] beKindOfClass:[MGSequentialCommandGroup class]];
+		});
+
+		it(@"should execute commands", ^
+		{
+			__block id command1 = [KWMock mockForProtocol:@protocol(MGCommand)];
+			__block id command2 = [KWMock mockForProtocol:@protocol(MGCommand)];
+			__block BOOL callbackExecuted = NO;
+
+			[[command1 should] receive:@selector(execute)];
+			[[command2 should] receive:@selector(execute)];
+
+			autoStartGroup.callback = ^
+			{
+				callbackExecuted = YES;
+			};
+
+			[autoStartGroup addCommand:command1];
+			[autoStartGroup addCommand:command2];
+
+			[[theValue(callbackExecuted) should] equal:theValue(YES)];
+		});
+	});
+
 	context(@"with two commands added", ^
 	{
 		__block AsyncTestCommand *command1 = [[AsyncTestCommand alloc] init];

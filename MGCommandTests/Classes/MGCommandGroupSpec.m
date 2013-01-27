@@ -35,6 +35,11 @@ describe(@"MGCommandGroup", ^
 		commandGroup = [[MGCommandGroup alloc] init];
 	});
 
+	it(@"should not be auto start group", ^
+	{
+		[[theValue(commandGroup.autoStart) should] equal:theValue(NO)];
+	});
+
 	context(@"without commands", ^
 	{
 		it(@"should have count of 0", ^
@@ -77,6 +82,42 @@ describe(@"MGCommandGroup", ^
 			{
 				[commandGroup addCommand:command1];
 			}) should] raiseWithReason:@"Can't add the same command instance twice!"];
+		});
+	});
+
+	context(@"with autostart group", ^
+	{
+		__block MGCommandGroup *autoStartGroup;
+
+		beforeEach(^
+		{
+			autoStartGroup = [[MGCommandGroup alloc] initWithAutoStart:YES];
+		});
+
+		it(@"should be properly configured", ^
+		{
+			[[autoStartGroup should] beKindOfClass:[MGCommandGroup class]];
+			[[[MGCommandGroup autoStartGroup] should] beKindOfClass:[MGCommandGroup class]];
+		});
+
+		it(@"should execute commands", ^
+		{
+			__block id command1 = [KWMock mockForProtocol:@protocol(MGCommand)];
+			__block id command2 = [KWMock mockForProtocol:@protocol(MGCommand)];
+			__block BOOL callbackExecuted = NO;
+
+			[[command1 should] receive:@selector(execute)];
+			[[command2 should] receive:@selector(execute)];
+
+			autoStartGroup.callback = ^
+			{
+				callbackExecuted = YES;
+			};
+
+			[autoStartGroup addCommand:command1];
+			[autoStartGroup addCommand:command2];
+
+			[[theValue(callbackExecuted) should] equal:theValue(YES)];
 		});
 	});
 

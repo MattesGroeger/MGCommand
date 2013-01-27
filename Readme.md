@@ -137,13 +137,13 @@ In case you want to have your commands being executed one after the other you ca
 You can add commands to a `CommandGroup` or `SequentialCommandGroup` and have the `execute` method automatically called as soon as a command is added. In case all commands have been finished and you add another one, the command will be executed as well. This way you can enqueue commands that should run sequentially. Note, that the callback is called whenever there are no more commands to be executed. Depending when you add new commands, this can cause multiple calls.
 
 ```obj-c
-MGCommandGroup *group = [MGSequentialCommandGroup autostartGroup];
+MGCommandGroup *group = [MGSequentialCommandGroup autoStartGroup];
 
-// adding this commands starts the execution
+// adding this commands starts the execution automatically
 [group addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
 
 // change the autostart behavior at runtime
-group.autostart = NO;
+group.autoStart = NO;
 ```
 
 ## Example

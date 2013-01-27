@@ -25,12 +25,23 @@
 
 @implementation MGCommandGroup
 
++ (id)autoStartGroup
+{
+	return [[MGCommandGroup alloc] initWithAutoStart:YES];
+}
+
 - (id)init
+{
+	return [self initWithAutoStart:NO];
+}
+
+- (id)initWithAutoStart:(BOOL)autoStart
 {
 	self = [super init];
 
 	if (self)
 	{
+		_autoStart = autoStart;
 		_commands = [NSMutableArray array];
 		_commandExecuter = [[MGCommandExecutor alloc]
 				initWithCompleteCallback:^(id <MGCommand> command)
@@ -49,6 +60,11 @@
 		@"Can't add the same command instance twice!");
 
 	[_commands addObject:command];
+
+	if (_autoStart && !_commandExecuter.active)
+	{
+		[self execute];
+	}
 }
 
 - (void)execute

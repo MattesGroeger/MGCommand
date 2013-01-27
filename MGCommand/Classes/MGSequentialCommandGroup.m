@@ -26,12 +26,18 @@
 
 @implementation MGSequentialCommandGroup
 
-- (id)init
++ (id)autoStartGroup
 {
-	self = [super init];
+	return [[MGSequentialCommandGroup alloc] initWithAutoStart:YES];
+}
+
+- (id)initWithAutoStart:(BOOL)autoStart
+{
+	self = [super initWithAutoStart:autoStart];
 
 	if (self)
 	{
+		_autoStart = autoStart;
 		_commandExecuter = [[MGCommandExecutor alloc]
 				initWithCompleteCallback:^(id <MGCommand> command)
 		{
