@@ -132,7 +132,7 @@ Note that the callbacks for added asynchronous commands will be automatically se
 
 In case you want to have your commands being executed one after the other you can use the `MGSequentialCommandGroup`. The order you add the commands determines their execution order.
 
-### Auto start command execution
+### Auto start command execution (since 0.0.2)
 
 You can add commands to a `CommandGroup` or `SequentialCommandGroup` and have the `execute` method automatically called as soon as a command is added. In case all commands have been finished and you add another one, the command will be executed as well. This way you can enqueue commands that should run sequentially. Note, that the callback is called whenever there are no more commands to be executed. Depending when you add new commands, this can cause multiple calls.
 
@@ -145,6 +145,30 @@ MGCommandGroup *group = [MGSequentialCommandGroup autoStartGroup];
 // change the autostart behavior at runtime
 group.autoStart = NO;
 ```
+
+### BlockCommands (since 0.0.2)
+
+By using the provided `MGBlockCommand` you can put execution logic right into a block rather then implementing a whole class:
+
+```obj-c
+MGSequentialCommandGroup *sequence = [[MGSequentialCommandGroup alloc] init];
+
+[sequence addCommand:[BlockCommand create:^(CommandCallback complete)
+{
+	NSLog(@"Awesome block command!");
+	complete();
+}]];
+
+[sequence addCommand:[BlockCommand create:^(CommandCallback complete)
+{
+	NSLog(@"And the next one!");
+	complete();
+}]];
+
+[sequence execute];
+```
+
+Please note, that you have to call `complete()` when the block operation is done (can be asynchronous). Otherwise the execution of the `MGBlockCommand` will never finish.
 
 ## Example
 
@@ -170,5 +194,5 @@ The configured command groups look like this (pseudo code):
 		DelayCommand(1)
 		DelayCommand(1)
 		DelayCommand(1)
-		PrintCommand("Finished")
+		MGBlockCommand("Finished")
 	}

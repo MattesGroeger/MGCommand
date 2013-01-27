@@ -25,6 +25,7 @@
 #import "MGSequentialCommandGroup.h"
 #import "PrintCommand.h"
 #import "DelayCommand.h"
+#import "BlockCommand.h"
 
 @implementation GroupViewController
 
@@ -81,23 +82,32 @@
 - (id <MGAsyncCommand>)createCommandGroup
 {
 	MGCommandGroup *commandGroup = [[MGCommandGroup alloc] init];
+
 	[commandGroup addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
 	[commandGroup addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
 	[commandGroup addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
 
-	MGSequentialCommandGroup *mainCommandGroup = [[MGSequentialCommandGroup alloc] init];
-	[mainCommandGroup addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
-	[mainCommandGroup addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
-	[mainCommandGroup addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
-	[mainCommandGroup addCommand:[[PrintCommand alloc] initWithMessage:@"concurrent {"]];
-	[mainCommandGroup addCommand:commandGroup];
-	[mainCommandGroup addCommand:[[PrintCommand alloc] initWithMessage:@"}"]];
-	[mainCommandGroup addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
-	[mainCommandGroup addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
-	[mainCommandGroup addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
-	[mainCommandGroup addCommand:[[PrintCommand alloc] initWithMessage:@"Finished"]];
+	MGSequentialCommandGroup *sequence = [[MGSequentialCommandGroup alloc] init];
 
-	return mainCommandGroup;
+	[sequence addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
+	[sequence addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
+	[sequence addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
+	[sequence addCommand:[[PrintCommand alloc] initWithMessage:@"concurrent {"]];
+
+	[sequence addCommand:commandGroup];
+
+	[sequence addCommand:[[PrintCommand alloc] initWithMessage:@"}"]];
+	[sequence addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
+	[sequence addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
+	[sequence addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
+
+	[sequence addCommand:[BlockCommand create:^(CommandCallback complete)
+	{
+		[self addOutput:@"Finished"];
+		complete();
+	}]];
+
+	return sequence;
 }
 
 - (void)finishExecution
