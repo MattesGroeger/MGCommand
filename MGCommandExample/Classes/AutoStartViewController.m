@@ -39,7 +39,7 @@
 
 	_activityIndicator.hidden = NO;
 	[_activityIndicator startAnimating];
-	[self updateEnqueuedItemsLabel];
+	_enqueuedItemsLabel.text = [NSString stringWithFormat:@"%d commands queued", _autoStartQueue.commands.count];
 }
 
 - (void)queueFinished
@@ -55,12 +55,7 @@
 	_commandCount++;
 
 	_outputLabel.text = [NSString stringWithFormat:@"%d", _commandCount];
-	[self updateEnqueuedItemsLabel];
-}
-
-- (void)updateEnqueuedItemsLabel
-{
-	_enqueuedItemsLabel.text = [NSString stringWithFormat:@"%d commands queued", _autoStartQueue.commands.count];
+	_enqueuedItemsLabel.text = [NSString stringWithFormat:@"%d commands queued", _autoStartQueue.commands.count - 1];
 }
 
 @end
