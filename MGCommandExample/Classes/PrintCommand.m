@@ -21,8 +21,6 @@
  */
 
 #import "PrintCommand.h"
-#import "ViewController.h"
-#import "Objection.h"
 
 
 @implementation PrintCommand
@@ -41,9 +39,7 @@
 
 - (void)execute
 {
-	ViewController *controller = [[JSObjection defaultInjector] getObject:[ViewController class]];
-
-	[controller addOutput:_message];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"print" object:self userInfo:@{@"text":_message}];
 }
 
 @end

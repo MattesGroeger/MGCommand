@@ -20,12 +20,34 @@
  * THE SOFTWARE.
  */
 
-#import <UIKit/UIKit.h>
+#import "CountCommand.h"
 
-@class GroupViewController;
+@implementation CountCommand
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+- (id)initWithDelayInSeconds:(NSTimeInterval)aDelayInSeconds
+{
+	self = [super init];
 
-@property (strong, nonatomic) UIWindow *window;
+	if (self)
+	{
+		_delayInSeconds = aDelayInSeconds;
+	}
+
+	return self;
+}
+
+- (void)execute
+{
+	[self performSelector:@selector(finishAfterDelay)
+			   withObject:nil
+			   afterDelay:_delayInSeconds];
+}
+
+- (void)finishAfterDelay
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"finished" object:self userInfo:nil];
+
+	_callback();
+}
 
 @end

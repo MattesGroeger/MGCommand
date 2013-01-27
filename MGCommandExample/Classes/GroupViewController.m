@@ -20,29 +20,39 @@
  * THE SOFTWARE.
  */
 
-#import "ViewController.h"
-#import "Objection.h"
+#import "GroupViewController.h"
 #import "MGAsyncCommand.h"
 #import "MGSequentialCommandGroup.h"
 #import "PrintCommand.h"
 #import "DelayCommand.h"
 
-@implementation ViewController
-
-objection_register_singleton(ViewController)
-
-- (void)awakeFromObjection
-{
-	[self initWithNibName:@"ViewController" bundle:nil];
-}
+@implementation GroupViewController
 
 - (void)viewDidLoad
 {
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(onPrint:)
+												 name:@"print"
+											   object:nil];
+
 	_activityIndicator.hidden = YES;
 	_outputLabel.text = @"";
 	[_startButton addTarget:self action:@selector(onStartButton) forControlEvents:UIControlEventTouchUpInside];
 
+	[[self tabBarController].tabBar.items[0] setTitle:@"Command Groups"];
+	[[self tabBarController].tabBar.items[1] setTitle:@"Auto Start Group"];
+
 	[super viewDidLoad];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[_outputLabel sizeToFit];
+}
+
+- (void)viewDidUnload
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)onStartButton
@@ -96,6 +106,11 @@ objection_register_singleton(ViewController)
 	_activityIndicator.hidden = YES;
 
 	_startButton.enabled = YES;
+}
+
+- (void)onPrint:(NSNotification *)notification
+{
+	[self addOutput:notification.userInfo[@"text"]];
 }
 
 - (void)addOutput:(NSString *)output

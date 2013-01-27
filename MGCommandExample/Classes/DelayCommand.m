@@ -21,8 +21,6 @@
  */
 
 #import "DelayCommand.h"
-#import "ViewController.h"
-#import "Objection.h"
 
 
 @implementation DelayCommand
@@ -41,10 +39,9 @@
 
 - (void)execute
 {
-	ViewController *controller = [[JSObjection defaultInjector] getObject:[ViewController class]];
+	NSString *output = [NSString stringWithFormat:@"DelayCommand (%d second)", (int) _delayInSeconds];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"print" object:self userInfo:@{@"text":output}];
 
-	[controller addOutput:[NSString stringWithFormat:@"DelayCommand (%d second)", (int) _delayInSeconds]];
-	
 	[self performSelector:@selector(finishAfterDelay)
 			   withObject:nil
 			   afterDelay:_delayInSeconds];

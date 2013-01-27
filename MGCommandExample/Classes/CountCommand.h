@@ -20,12 +20,18 @@
  * THE SOFTWARE.
  */
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "MGAsyncCommand.h"
 
 @class GroupViewController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface CountCommand : NSObject <MGAsyncCommand>
+{
+	NSTimeInterval _delayInSeconds;
+}
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) CommandCallback callback;
+
+- (id)initWithDelayInSeconds:(NSTimeInterval)aDelayInSeconds;
 
 @end
