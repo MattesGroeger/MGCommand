@@ -20,30 +20,17 @@
  * THE SOFTWARE.
  */
 
-#import "MGSequentialCommandGroup.h"
-#import "MGCommandExecutor.h"
+#import "CountCommand.h"
 
+@implementation CountCommand
 
-@implementation MGSequentialCommandGroup
-
-+ (id)autoStartGroup
+- (id)initWithDelayInSeconds:(NSTimeInterval)aDelayInSeconds
 {
-	return [[MGSequentialCommandGroup alloc] initWithAutoStart:YES];
-}
-
-- (id)initWithAutoStart:(BOOL)autoStart
-{
-	self = [super initWithAutoStart:autoStart];
+	self = [super init];
 
 	if (self)
 	{
-		_autoStart = autoStart;
-		_commandExecuter = [[MGCommandExecutor alloc]
-				initWithCompleteCallback:^(id <MGCommand> command)
-		{
-			[_commands removeObject:command];
-			[self executeNext];
-		}];
+		_delayInSeconds = aDelayInSeconds;
 	}
 
 	return self;
@@ -51,26 +38,16 @@
 
 - (void)execute
 {
-	NSAssert(!_commandExecuter.active,
-		@"Can't execute command group while already executing!");
-
-	[self executeNext];
+	[self performSelector:@selector(finishAfterDelay)
+			   withObject:nil
+			   afterDelay:_delayInSeconds];
 }
 
-- (void)executeNext
+- (void)finishAfterDelay
 {
-	if (_commands.count <= 0)
-	{
-		if (self.callback)
-		{
-			self.callback();
-		}
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"finished" object:self userInfo:nil];
 
-		return;
-	}
-
-	id <MGCommand> nextCommand = [_commands objectAtIndex:0];
-	[_commandExecuter executeCommand:nextCommand];
+	_callback();
 }
 
 @end

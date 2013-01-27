@@ -132,6 +132,20 @@ Note that the callbacks for added asynchronous commands will be automatically se
 
 In case you want to have your commands being executed one after the other you can use the `MGSequentialCommandGroup`. The order you add the commands determines their execution order.
 
+### Auto start command execution
+
+You can add commands to a `CommandGroup` or `SequentialCommandGroup` and have the `execute` method automatically called as soon as a command is added. In case all commands have been finished and you add another one, the command will be executed as well. This way you can enqueue commands that should run sequentially. Note, that the callback is called whenever there are no more commands to be executed. Depending when you add new commands, this can cause multiple calls.
+
+```obj-c
+MGCommandGroup *group = [MGSequentialCommandGroup autoStartGroup];
+
+// adding this commands starts the execution automatically
+[group addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
+
+// change the autostart behavior at runtime
+group.autoStart = NO;
+```
+
 ## Example
 
 You can find an example application in the [`MGCommandsExample` subfolder](https://github.com/MattesGroeger/MGCommand/tree/master/MGCommandExample/Classes). To see the exection, run the application in the simulator and press the start button. 

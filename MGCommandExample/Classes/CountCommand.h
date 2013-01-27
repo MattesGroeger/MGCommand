@@ -20,57 +20,18 @@
  * THE SOFTWARE.
  */
 
-#import "MGSequentialCommandGroup.h"
-#import "MGCommandExecutor.h"
+#import <Foundation/Foundation.h>
+#import "MGAsyncCommand.h"
 
+@class GroupViewController;
 
-@implementation MGSequentialCommandGroup
-
-+ (id)autoStartGroup
+@interface CountCommand : NSObject <MGAsyncCommand>
 {
-	return [[MGSequentialCommandGroup alloc] initWithAutoStart:YES];
+	NSTimeInterval _delayInSeconds;
 }
 
-- (id)initWithAutoStart:(BOOL)autoStart
-{
-	self = [super initWithAutoStart:autoStart];
+@property (nonatomic, strong) CommandCallback callback;
 
-	if (self)
-	{
-		_autoStart = autoStart;
-		_commandExecuter = [[MGCommandExecutor alloc]
-				initWithCompleteCallback:^(id <MGCommand> command)
-		{
-			[_commands removeObject:command];
-			[self executeNext];
-		}];
-	}
-
-	return self;
-}
-
-- (void)execute
-{
-	NSAssert(!_commandExecuter.active,
-		@"Can't execute command group while already executing!");
-
-	[self executeNext];
-}
-
-- (void)executeNext
-{
-	if (_commands.count <= 0)
-	{
-		if (self.callback)
-		{
-			self.callback();
-		}
-
-		return;
-	}
-
-	id <MGCommand> nextCommand = [_commands objectAtIndex:0];
-	[_commandExecuter executeCommand:nextCommand];
-}
+- (id)initWithDelayInSeconds:(NSTimeInterval)aDelayInSeconds;
 
 @end

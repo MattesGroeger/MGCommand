@@ -36,6 +36,59 @@ describe(@"MGSequentialCommandGroup", ^
 		sequentialCommandGroup = [[MGSequentialCommandGroup alloc] init];
 	});
 
+	context(@"with no commands added", ^
+	{
+		it(@"should finish instantly", ^
+		{
+			__block NSUInteger callbackCount = 0;
+
+			sequentialCommandGroup.callback = ^
+			{
+				callbackCount++;
+			};
+
+			[sequentialCommandGroup execute];
+
+			[[theValue(callbackCount) should] equal:theValue(1)];
+		});
+	});
+
+	context(@"with autostart group", ^
+	{
+		__block MGSequentialCommandGroup *autoStartGroup;
+
+		beforeEach(^
+		{
+			autoStartGroup = [[MGSequentialCommandGroup alloc] initWithAutoStart:YES];
+		});
+
+		it(@"should be properly configured", ^
+		{
+			[[autoStartGroup should] beKindOfClass:[MGSequentialCommandGroup class]];
+			[[[MGSequentialCommandGroup autoStartGroup] should] beKindOfClass:[MGSequentialCommandGroup class]];
+		});
+
+		it(@"should execute commands", ^
+		{
+			__block id command1 = [KWMock mockForProtocol:@protocol(MGCommand)];
+			__block id command2 = [KWMock mockForProtocol:@protocol(MGCommand)];
+			__block BOOL callbackExecuted = NO;
+
+			[[command1 should] receive:@selector(execute)];
+			[[command2 should] receive:@selector(execute)];
+
+			autoStartGroup.callback = ^
+			{
+				callbackExecuted = YES;
+			};
+
+			[autoStartGroup addCommand:command1];
+			[autoStartGroup addCommand:command2];
+
+			[[theValue(callbackExecuted) should] equal:theValue(YES)];
+		});
+	});
+
 	context(@"with two commands added", ^
 	{
 		__block AsyncTestCommand *command1 = [[AsyncTestCommand alloc] init];
@@ -64,6 +117,21 @@ describe(@"MGSequentialCommandGroup", ^
 			[[theValue(command1.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(0)];
 			[[theValue(command2.callCount) shouldEventuallyBeforeTimingOutAfter(2)] equal:theValue(1)];
 			[[theValue(command3.callCount) shouldEventuallyBeforeTimingOutAfter(3)] equal:theValue(2)];
+		});
+
+		it(@"should work without callback beeing set", ^
+		{
+			[sequentialCommandGroup execute];
+		});
+
+		it(@"should fail to call execute twice", ^
+		{
+			[sequentialCommandGroup execute];
+
+			[[theBlock(^
+			{
+				[sequentialCommandGroup execute];
+			}) should] raiseWithReason:@"Can't execute command group while already executing!"];
 		});
 	});
 
@@ -100,8 +168,8 @@ describe(@"MGSequentialCommandGroup", ^
 			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(1)] receive:@selector(testCall)];
 			[[theValue(subCommandA.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(0)];
 			[[theValue(subCommandB.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(1)];
-			[[theValue(command1.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(2)];
-			[[theValue(command2.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(3)];
+			[[theValue(command1.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(6)];
+			[[theValue(command2.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(7)];
 		});
 	});
 });

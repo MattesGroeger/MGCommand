@@ -21,52 +21,37 @@
  */
 
 #import "MGCommandGroup.h"
-
+#import "MGCommandExecutor.h"
 
 @implementation MGCommandGroup
 
++ (id)autoStartGroup
+{
+	return [[MGCommandGroup alloc] initWithAutoStart:YES];
+}
+
 - (id)init
+{
+	return [self initWithAutoStart:NO];
+}
+
+- (id)initWithAutoStart:(BOOL)autoStart
 {
 	self = [super init];
 
 	if (self)
 	{
+		_autoStart = autoStart;
 		_commands = [NSMutableArray array];
+		_commandExecuter = [[MGCommandExecutor alloc]
+				initWithCompleteCallback:^(id <MGCommand> command)
+		{
+			[_commands removeObject:command];
+			[self callBackWhenDone];
+		}];
 	}
 
 	return self;
-}
-
-- (void)execute
-{
-	__block NSUInteger remainingCallbacks = [_commands count];
-
-	CommandCallback subCallback = ^
-	{
-		remainingCallbacks--;
-
-		if (remainingCallbacks == 0)
-		{
-			_callback();
-		}
-	};
-
-	for (id <MGCommand> command in _commands)
-	{
-		if ([command conformsToProtocol:@protocol(MGAsyncCommand)])
-		{
-			id <MGAsyncCommand> asyncCommand = (id <MGAsyncCommand>)command;
-			asyncCommand.callback = subCallback;
-
-			[command execute];
-		}
-		else
-		{
-			[command execute];
-
-			subCallback();
-		}
-	}
 }
 
 - (void)addCommand:(id <MGCommand>)command
@@ -75,11 +60,40 @@
 		@"Can't add the same command instance twice!");
 
 	[_commands addObject:command];
+
+	if (_autoStart && !_commandExecuter.active)
+	{
+		[self execute];
+	}
+}
+
+- (void)execute
+{
+	NSAssert(!_commandExecuter.active,
+		@"Can't execute command group while already executing!");
+
+	[self callBackWhenDone];
+
+	for (id <MGCommand> command in [_commands copy])
+	{
+		[_commandExecuter executeCommand:command];
+	}
 }
 
 - (NSUInteger)count
 {
 	return _commands.count;
+}
+
+- (void)callBackWhenDone
+{
+	if (_commands.count == 0)
+	{
+		if (_callback)
+		{
+			_callback();
+		}
+	}
 }
 
 @end

@@ -35,11 +35,30 @@ describe(@"MGCommandGroup", ^
 		commandGroup = [[MGCommandGroup alloc] init];
 	});
 
+	it(@"should not be auto start group", ^
+	{
+		[[theValue(commandGroup.autoStart) should] equal:theValue(NO)];
+	});
+
 	context(@"without commands", ^
 	{
 		it(@"should have count of 0", ^
 		{
 			[[theValue(commandGroup.count) should] equal:theValue(0)];
+		});
+
+		it(@"should finish instantly", ^
+		{
+			__block NSUInteger callbackCount = 0;
+
+			commandGroup.callback = ^
+			{
+				callbackCount++;
+			};
+
+			[commandGroup execute];
+
+			[[theValue(callbackCount) should] equal:theValue(1)];
 		});
 
 		it(@"should add commands", ^
@@ -66,6 +85,42 @@ describe(@"MGCommandGroup", ^
 		});
 	});
 
+	context(@"with autostart group", ^
+	{
+		__block MGCommandGroup *autoStartGroup;
+
+		beforeEach(^
+		{
+			autoStartGroup = [[MGCommandGroup alloc] initWithAutoStart:YES];
+		});
+
+		it(@"should be properly configured", ^
+		{
+			[[autoStartGroup should] beKindOfClass:[MGCommandGroup class]];
+			[[[MGCommandGroup autoStartGroup] should] beKindOfClass:[MGCommandGroup class]];
+		});
+
+		it(@"should execute commands", ^
+		{
+			__block id command1 = [KWMock mockForProtocol:@protocol(MGCommand)];
+			__block id command2 = [KWMock mockForProtocol:@protocol(MGCommand)];
+			__block BOOL callbackExecuted = NO;
+
+			[[command1 should] receive:@selector(execute)];
+			[[command2 should] receive:@selector(execute)];
+
+			autoStartGroup.callback = ^
+			{
+				callbackExecuted = YES;
+			};
+
+			[autoStartGroup addCommand:command1];
+			[autoStartGroup addCommand:command2];
+
+			[[theValue(callbackExecuted) should] equal:theValue(YES)];
+		});
+	});
+
 	context(@"with two syncronous commands", ^
 	{
 		__block id command1 = [KWMock mockForProtocol:@protocol(MGCommand)];
@@ -75,6 +130,14 @@ describe(@"MGCommandGroup", ^
 		{
 			[commandGroup addCommand:command1];
 			[commandGroup addCommand:command2];
+		});
+
+		it(@"should work without callback beeing set", ^
+		{
+			[[command1 should] receive:@selector(execute)];
+			[[command2 should] receive:@selector(execute)];
+
+			[commandGroup execute];
 		});
 
 		it(@"should execute commands", ^
@@ -117,6 +180,16 @@ describe(@"MGCommandGroup", ^
 			[commandGroup execute];
 
 			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(2.0)] receive:@selector(testCall)];
+		});
+
+		it(@"should fail to call execute twice", ^
+		{
+			[commandGroup execute];
+
+			[[theBlock(^
+			{
+				[commandGroup execute];
+			}) should] raiseWithReason:@"Can't execute command group while already executing!"];
 		});
 	});
 

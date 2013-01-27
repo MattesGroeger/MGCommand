@@ -23,7 +23,7 @@
 #import <Foundation/Foundation.h>
 #import "MGAsyncCommand.h"
 
-@class ViewController;
+@class GroupViewController;
 
 @interface DelayCommand : NSObject <MGAsyncCommand>
 {

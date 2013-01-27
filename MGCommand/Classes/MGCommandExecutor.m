@@ -20,57 +20,62 @@
  * THE SOFTWARE.
  */
 
-#import "MGSequentialCommandGroup.h"
 #import "MGCommandExecutor.h"
 
+@implementation MGCommandExecutor
 
-@implementation MGSequentialCommandGroup
-
-+ (id)autoStartGroup
+- (id)initWithCompleteCallback:(CommandExecutionCallback)completeCallback
 {
-	return [[MGSequentialCommandGroup alloc] initWithAutoStart:YES];
-}
-
-- (id)initWithAutoStart:(BOOL)autoStart
-{
-	self = [super initWithAutoStart:autoStart];
+	self = [super init];
 
 	if (self)
 	{
-		_autoStart = autoStart;
-		_commandExecuter = [[MGCommandExecutor alloc]
-				initWithCompleteCallback:^(id <MGCommand> command)
-		{
-			[_commands removeObject:command];
-			[self executeNext];
-		}];
+		_commandCallback = completeCallback;
+		_activeCommands = [NSMutableArray array];
 	}
 
 	return self;
 }
 
-- (void)execute
+- (id)init
 {
-	NSAssert(!_commandExecuter.active,
-		@"Can't execute command group while already executing!");
-
-	[self executeNext];
+	return [self initWithCompleteCallback:nil];
 }
 
-- (void)executeNext
+- (BOOL)active
 {
-	if (_commands.count <= 0)
+	return _activeCommands.count > 0;
+}
+
+- (void)executeCommand:(id <MGCommand>)command
+{
+	CommandCallback subCallback = ^
 	{
-		if (self.callback)
+		[_activeCommands removeObject:command];
+
+		if (_commandCallback)
 		{
-			self.callback();
+			_commandCallback(command);
 		}
+	};
 
-		return;
+	NSAssert(![_activeCommands containsObject:command], @"Can't execute the same command instance twice!");
+
+	[_activeCommands addObject:command];
+
+	if ([command conformsToProtocol:@protocol(MGAsyncCommand)])
+	{
+		id <MGAsyncCommand> asyncCommand = (id <MGAsyncCommand>) command;
+		asyncCommand.callback = subCallback;
+
+		[command execute];
 	}
+	else
+	{
+		[command execute];
 
-	id <MGCommand> nextCommand = [_commands objectAtIndex:0];
-	[_commandExecuter executeCommand:nextCommand];
+		subCallback();
+	}
 }
 
 @end

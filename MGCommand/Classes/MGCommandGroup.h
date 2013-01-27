@@ -23,15 +23,23 @@
 #import <Foundation/Foundation.h>
 #import "MGAsyncCommand.h"
 
+@class MGCommandExecutor;
 
 @interface MGCommandGroup : NSObject <MGAsyncCommand>
 {
-@private
+@protected
+	BOOL _autoStart;
 	NSMutableArray *_commands;
+	MGCommandExecutor *_commandExecuter;
 }
 
+@property (nonatomic) BOOL autoStart;
 @property (nonatomic, strong) CommandCallback callback;
 @property (nonatomic, readonly) NSArray *commands;
+
++ (id)autoStartGroup;
+
+- (id)initWithAutoStart:(BOOL)autoStart;
 
 - (void)addCommand:(id <MGCommand>)command;
 

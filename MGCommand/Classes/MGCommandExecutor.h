@@ -20,57 +20,21 @@
  * THE SOFTWARE.
  */
 
-#import "MGSequentialCommandGroup.h"
-#import "MGCommandExecutor.h"
+#import <Foundation/Foundation.h>
+#import "MGAsyncCommand.h"
 
+@protocol MGCommand;
 
-@implementation MGSequentialCommandGroup
+typedef void (^CommandExecutionCallback)(id <MGCommand>);
 
-+ (id)autoStartGroup
-{
-	return [[MGSequentialCommandGroup alloc] initWithAutoStart:YES];
-}
+@interface MGCommandExecutor : NSObject
 
-- (id)initWithAutoStart:(BOOL)autoStart
-{
-	self = [super initWithAutoStart:autoStart];
+@property (nonatomic, readonly) BOOL active;
+@property (nonatomic, strong) CommandExecutionCallback commandCallback;
+@property (nonatomic) NSMutableArray *activeCommands;
 
-	if (self)
-	{
-		_autoStart = autoStart;
-		_commandExecuter = [[MGCommandExecutor alloc]
-				initWithCompleteCallback:^(id <MGCommand> command)
-		{
-			[_commands removeObject:command];
-			[self executeNext];
-		}];
-	}
+- (id)initWithCompleteCallback:(CommandExecutionCallback)completeCallback;
 
-	return self;
-}
-
-- (void)execute
-{
-	NSAssert(!_commandExecuter.active,
-		@"Can't execute command group while already executing!");
-
-	[self executeNext];
-}
-
-- (void)executeNext
-{
-	if (_commands.count <= 0)
-	{
-		if (self.callback)
-		{
-			self.callback();
-		}
-
-		return;
-	}
-
-	id <MGCommand> nextCommand = [_commands objectAtIndex:0];
-	[_commandExecuter executeCommand:nextCommand];
-}
+- (void)executeCommand:(id <MGCommand>) command;
 
 @end

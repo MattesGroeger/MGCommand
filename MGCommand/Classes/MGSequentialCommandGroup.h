@@ -25,9 +25,5 @@
 
 
 @interface MGSequentialCommandGroup : MGCommandGroup
-{
-@private
-	NSUInteger _commandIndex;
-}
 
 @end
