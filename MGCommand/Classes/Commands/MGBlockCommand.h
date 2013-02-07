@@ -25,7 +25,7 @@
 
 typedef void (^CommandBlock)(CommandCallback);
 
-@interface BlockCommand : NSObject <MGAsyncCommand>
+@interface MGBlockCommand : NSObject <MGAsyncCommand>
 {
 @private
 	CommandBlock _commandBlock;

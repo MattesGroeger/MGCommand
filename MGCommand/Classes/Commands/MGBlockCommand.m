@@ -20,13 +20,13 @@
  * THE SOFTWARE.
  */
 
-#import "BlockCommand.h"
+#import "MGBlockCommand.h"
 
-@implementation BlockCommand
+@implementation MGBlockCommand
 
 + (id)create:(CommandBlock)commandComplete
 {
-	return [[BlockCommand alloc] initWithBlock:commandComplete];
+	return [[MGBlockCommand alloc] initWithBlock:commandComplete];
 }
 
 - (id)initWithBlock:(CommandBlock)block

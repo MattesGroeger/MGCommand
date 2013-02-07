@@ -146,20 +146,20 @@ MGCommandGroup *group = [MGSequentialCommandGroup autoStartGroup];
 group.autoStart = NO;
 ```
 
-### BlockCommands (since 0.0.2)
+### MGBlockCommands (since 0.0.2)
 
 By using the provided `MGBlockCommand` you can put execution logic right into a block rather then implementing a whole class:
 
 ```obj-c
 MGSequentialCommandGroup *sequence = [[MGSequentialCommandGroup alloc] init];
 
-[sequence addCommand:[BlockCommand create:^(CommandCallback complete)
+[sequence addCommand:[MGBlockCommand create:^(CommandCallback complete)
 {
 	NSLog(@"Awesome block command!");
 	complete();
 }]];
 
-[sequence addCommand:[BlockCommand create:^(CommandCallback complete)
+[sequence addCommand:[MGBlockCommand create:^(CommandCallback complete)
 {
 	NSLog(@"And the next one!");
 	complete();

@@ -42,8 +42,8 @@
 		BF8D9C89700415A301ECB4DD /* MGCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E1D145681C189D60AE4 /* MGCommand.h */; };
 		BF8D9CAB32EEF50FD2AEBE70 /* MGCommandExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D942223896C84D8C3BAEF /* MGCommandExecutor.m */; };
 		BF8D9D3C21062B9A1BB1EA09 /* MGAsyncCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E4A2A9E744CB8BFA8BF /* MGAsyncCommand.h */; };
-		BF8D9EAC59AD9531907928C5 /* BlockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9F3E2CE740D5DB0DE288 /* BlockCommand.m */; };
-		BF8D9F8A8C53AC3EDD0E3407 /* BlockCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D937675BBD06310549D52 /* BlockCommand.h */; };
+		BF8D9EAC59AD9531907928C5 /* MGBlockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9F3E2CE740D5DB0DE288 /* MGBlockCommand.m */; };
+		BF8D9F8A8C53AC3EDD0E3407 /* MGBlockCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D937675BBD06310549D52 /* MGBlockCommand.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +75,7 @@
 				BF8D93F1C2CD947506FCF8D1 /* MGCommandGroup.h in CopyFiles */,
 				BF8D912A8CDEF49978663E65 /* MGSequentialCommandGroup.h in CopyFiles */,
 				BF8D930246040B23B77064E4 /* MGCommandExecutor.h in CopyFiles */,
-				BF8D9F8A8C53AC3EDD0E3407 /* BlockCommand.h in CopyFiles */,
+				BF8D9F8A8C53AC3EDD0E3407 /* MGBlockCommand.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +114,7 @@
 		ADB4F95C167CF18B000C3B76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BF8D91D29DC5CA0F5DEDD6E9 /* MGCommandGroupSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandGroupSpec.m; sourceTree = "<group>"; };
 		BF8D92A37AA5E2D9A5FD5061 /* MGCommandGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCommandGroup.h; sourceTree = "<group>"; };
-		BF8D937675BBD06310549D52 /* BlockCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockCommand.h; sourceTree = "<group>"; };
+		BF8D937675BBD06310549D52 /* MGBlockCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGBlockCommand.h; sourceTree = "<group>"; };
 		BF8D942223896C84D8C3BAEF /* MGCommandExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandExecutor.m; sourceTree = "<group>"; };
 		BF8D94C6403B8E19823673D9 /* MGCommandExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCommandExecutor.h; sourceTree = "<group>"; };
 		BF8D9586A5C16C39ACE6169A /* AutoStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AutoStartViewController.m; path = MGCommandExample/Classes/AutoStartViewController.m; sourceTree = SOURCE_ROOT; };
@@ -129,7 +129,7 @@
 		BF8D9CDBD3D9BC7354CEA1C3 /* CommandFixture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandFixture.m; sourceTree = "<group>"; };
 		BF8D9E1D145681C189D60AE4 /* MGCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCommand.h; sourceTree = "<group>"; };
 		BF8D9E4A2A9E744CB8BFA8BF /* MGAsyncCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAsyncCommand.h; sourceTree = "<group>"; };
-		BF8D9F3E2CE740D5DB0DE288 /* BlockCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockCommand.m; sourceTree = "<group>"; };
+		BF8D9F3E2CE740D5DB0DE288 /* MGBlockCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBlockCommand.m; sourceTree = "<group>"; };
 		BF8D9F9F9E25DA3F446E4B6A /* MGCommandGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandGroup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -304,8 +304,8 @@
 		BF8D95EE2E031B7260A84F7D /* Commands */ = {
 			isa = PBXGroup;
 			children = (
-				BF8D9F3E2CE740D5DB0DE288 /* BlockCommand.m */,
-				BF8D937675BBD06310549D52 /* BlockCommand.h */,
+				BF8D9F3E2CE740D5DB0DE288 /* MGBlockCommand.m */,
+				BF8D937675BBD06310549D52 /* MGBlockCommand.h */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -511,7 +511,7 @@
 				BF8D92FBF0DD0B6186FCF8F6 /* MGCommandGroup.m in Sources */,
 				BF8D98DFCC45C2285F523225 /* MGSequentialCommandGroup.m in Sources */,
 				BF8D9CAB32EEF50FD2AEBE70 /* MGCommandExecutor.m in Sources */,
-				BF8D9EAC59AD9531907928C5 /* BlockCommand.m in Sources */,
+				BF8D9EAC59AD9531907928C5 /* MGBlockCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
