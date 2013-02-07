@@ -102,8 +102,8 @@ describe(@"MGCommandGroup", ^
 
 		it(@"should execute commands", ^
 		{
-			__block id command1 = [KWMock mockForProtocol:@protocol(MGCommand)];
-			__block id command2 = [KWMock mockForProtocol:@protocol(MGCommand)];
+			__block id command1 = [KWMock nullMockForProtocol:@protocol(MGCommand)];
+			__block id command2 = [KWMock nullMockForProtocol:@protocol(MGCommand)];
 			__block BOOL callbackExecuted = NO;
 
 			[[command1 should] receive:@selector(execute)];
@@ -123,8 +123,8 @@ describe(@"MGCommandGroup", ^
 
 	context(@"with two syncronous commands", ^
 	{
-		__block id command1 = [KWMock mockForProtocol:@protocol(MGCommand)];
-		__block id command2 = [KWMock mockForProtocol:@protocol(MGCommand)];
+		__block id command1 = [KWMock nullMockForProtocol:@protocol(MGCommand)];
+		__block id command2 = [KWMock nullMockForProtocol:@protocol(MGCommand)];
 
 		beforeEach(^
 		{
@@ -196,7 +196,7 @@ describe(@"MGCommandGroup", ^
 	context(@"with one synchronous and one asyncronous command", ^
 	{
 		__block id command1 = [[AsyncTestCommand alloc] init];
-		__block id command2 = [KWMock mockForProtocol:@protocol(MGCommand)];
+		__block id command2 = [KWMock nullMockForProtocol:@protocol(MGCommand)];
 
 		beforeEach(^
 		{
@@ -218,6 +218,23 @@ describe(@"MGCommandGroup", ^
 			[commandGroup execute];
 
 			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(1.0)] receive:@selector(testCall)];
+		});
+	});
+
+	context(@"with userInfo", ^
+	{
+		__block TestCommand *command1 = [[TestCommand alloc] initWithKey:@"foo1" value:@"bar1"];
+		__block TestCommand *command2 = [[TestCommand alloc] initWithKey:@"foo2" value:@"bar2"];
+
+		it(@"should set userInfo data", ^
+		{
+			[commandGroup addCommand:command1];
+			[commandGroup addCommand:command2];
+
+			[commandGroup execute];
+
+			[[commandGroup.userInfo[@"foo1"] should] equal:@"bar1"];
+			[[commandGroup.userInfo[@"foo2"] should] equal:@"bar2"];
 		});
 	});
 });

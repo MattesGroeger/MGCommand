@@ -35,6 +35,6 @@ typedef void (^CommandExecutionCallback)(id <MGCommand>);
 
 - (id)initWithCompleteCallback:(CommandExecutionCallback)completeCallback;
 
-- (void)executeCommand:(id <MGCommand>) command;
+- (void)executeCommand:(id <MGCommand>)command withUserInfo:(NSMutableDictionary *)userInfo;
 
 @end

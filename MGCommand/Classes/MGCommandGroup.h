@@ -33,6 +33,7 @@
 	MGCommandExecutor *_commandExecuter;
 }
 
+@property (nonatomic) NSMutableDictionary *userInfo;
 @property (nonatomic) BOOL autoStart;
 @property (nonatomic, strong) CommandCallback callback;
 @property (nonatomic, readonly) NSArray *commands;

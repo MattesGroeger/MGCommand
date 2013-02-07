@@ -41,8 +41,26 @@
 
 @implementation TestCommand
 
+- (id)initWithKey:(NSString *)key value:(NSString *)value
+{
+	self = [super init];
+
+	if (self)
+	{
+		_key = key;
+		_value = value;
+	}
+
+	return self;
+}
+
 - (void)execute
 {
+	if (_key && _value)
+	{
+		_userInfo[_key] = _value;
+	}
+
 	_callCount = COMMAND_CALL_COUNT++;
 }
 

@@ -29,8 +29,8 @@ describe(@"MGCommandExecutor", ^
 			[[command1 should] receive:@selector(execute)];
 			[[command2 should] receive:@selector(execute)];
 
-			[executor executeCommand:command1];
-			[executor executeCommand:command2];
+			[executor executeCommand:command1 withUserInfo:nil];
+			[executor executeCommand:command2 withUserInfo:nil];
 
 			[[executor.activeCommands should] haveCountOf:2];
 			[[theValue(executor.active) should] equal:theValue(YES)];
@@ -40,11 +40,11 @@ describe(@"MGCommandExecutor", ^
 		{
 			[[command1 should] receive:@selector(execute)];
 
-			[executor executeCommand:command1];
+			[executor executeCommand:command1 withUserInfo:nil];
 
 			[[theBlock(^
 			{
-				[executor executeCommand:command1];
+				[executor executeCommand:command1 withUserInfo:nil];
 			}) should] raiseWithReason:@"Can't execute the same command instance twice!"];
 		});
 	});
@@ -59,8 +59,8 @@ describe(@"MGCommandExecutor", ^
 			[[command1 should] receive:@selector(execute)];
 			[[command2 should] receive:@selector(execute)];
 
-			[executor executeCommand:command1];
-			[executor executeCommand:command2];
+			[executor executeCommand:command1 withUserInfo:nil];
+			[executor executeCommand:command2 withUserInfo:nil];
 
 			[[executor.activeCommands should] haveCountOf:0];
 			[[theValue(executor.active) should] equal:theValue(NO)];
@@ -80,8 +80,8 @@ describe(@"MGCommandExecutor", ^
 				[[command1 should] receive:@selector(execute)];
 				[[command2 should] receive:@selector(execute)];
 
-				[executor executeCommand:command1];
-				[executor executeCommand:command2];
+				[executor executeCommand:command1 withUserInfo:nil];
+				[executor executeCommand:command2 withUserInfo:nil];
 
 				[[theValue(callbackCount) should] equal:theValue(2)];
 			});
@@ -102,14 +102,32 @@ describe(@"MGCommandExecutor", ^
 				[mockReceiver performSelector:@selector(testCall)];
 			};
 
-			[executor executeCommand:command1];
-			[executor executeCommand:command2];
+			[executor executeCommand:command1 withUserInfo:nil];
+			[executor executeCommand:command2 withUserInfo:nil];
 
 			[[executor.activeCommands should] haveCountOf:2];
 			[[theValue(executor.active) should] equal:theValue(YES)];
 			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(1.0)] receive:@selector(testCall) withCount:2];
 			[[executor.activeCommands shouldEventuallyBeforeTimingOutAfter(1.0)] haveCountOf:0];
 			[[theValue(executor.active) shouldEventuallyBeforeTimingOutAfter(1.0)] equal:theValue(NO)];
+		});
+	});
+
+	context(@"with userInfo", ^
+	{
+		__block id command1 = [KWMock mockForProtocol:@protocol(MGCommand)];
+		__block id command2 = [KWMock mockForProtocol:@protocol(MGCommand)];
+		__block NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+
+		it(@"should execute commands", ^
+		{
+			[[command1 should] receive:@selector(execute)];
+			[[command1 should] receive:@selector(setUserInfo:) withArguments:userInfo];
+			[[command2 should] receive:@selector(execute)];
+			[[command2 should] receive:@selector(setUserInfo:) withArguments:userInfo];
+
+			[executor executeCommand:command1 withUserInfo:userInfo];
+			[executor executeCommand:command2 withUserInfo:userInfo];
 		});
 	});
 });

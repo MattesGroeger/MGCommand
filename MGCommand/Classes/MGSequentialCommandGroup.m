@@ -70,7 +70,7 @@
 	}
 
 	id <MGCommand> nextCommand = [_commands objectAtIndex:0];
-	[_commandExecuter executeCommand:nextCommand];
+	[_commandExecuter executeCommand:nextCommand withUserInfo:self.userInfo];
 }
 
 @end

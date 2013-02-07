@@ -36,8 +36,15 @@ NSUInteger COMMAND_CALL_COUNT;
 @end
 
 @interface TestCommand : NSObject <MGCommand>
+{
+	NSString *_key;
+	NSString *_value;
+}
 
+@property (nonatomic) NSMutableDictionary *userInfo;
 @property (nonatomic) NSUInteger callCount;
+
+- (id)initWithKey:(NSString *)key value:(NSString *)value;
 
 @end
 

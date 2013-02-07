@@ -47,7 +47,7 @@
 	return _activeCommands.count > 0;
 }
 
-- (void)executeCommand:(id <MGCommand>)command
+- (void)executeCommand:(id <MGCommand>)command withUserInfo:(NSMutableDictionary *)userInfo
 {
 	CommandCallback subCallback = ^
 	{
@@ -62,6 +62,11 @@
 	NSAssert(![_activeCommands containsObject:command], @"Can't execute the same command instance twice!");
 
 	[_activeCommands addObject:command];
+
+	if (userInfo && [command respondsToSelector:@selector(setUserInfo:)])
+	{
+		[command setUserInfo:userInfo];
+	}
 
 	if ([command conformsToProtocol:@protocol(MGAsyncCommand)])
 	{

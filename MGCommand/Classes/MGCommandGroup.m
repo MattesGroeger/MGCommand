@@ -41,6 +41,7 @@
 
 	if (self)
 	{
+		_userInfo = [NSMutableDictionary dictionary];
 		_autoStart = autoStart;
 		_commands = [NSMutableArray array];
 		_commandExecuter = [[MGCommandExecutor alloc]
@@ -76,7 +77,7 @@
 
 	for (id <MGCommand> command in [_commands copy])
 	{
-		[_commandExecuter executeCommand:command];
+		[_commandExecuter executeCommand:command withUserInfo:_userInfo];
 	}
 }
 

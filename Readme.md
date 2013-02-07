@@ -132,6 +132,35 @@ Note that the callbacks for added asynchronous commands will be automatically se
 
 In case you want to have your commands being executed one after the other you can use the `MGSequentialCommandGroup`. The order you add the commands determines their execution order.
 
+### Passing data from command to command (since 0.0.2)
+
+If you need to pass data between commands, you can make use of the `userInfo` dictionary. The following requirements apply:
+
+* Your command needs to implement the `@property (nonatomic) NSMutableDictionary *userInfo`
+* You have to use the `MGCommandGroup` or `MGSequentialCommandGroup` in order to get the `userInfo` injected
+* Inside the commands `execute` method, you can read and write data of the `userInfo`
+
+If you nest commands or command groups, each of them will always get the same `userInfo` instance injected. Never override the `userInfo` object, just set data inside.
+
+```obj-c
+@interface TestCommand : NSObject <MGCommand>
+
+@property (nonatomic) NSMutableDictionary *userInfo;
+
+@end
+```
+
+```obj-c
+@implementation TestCommand
+
+- (void)execute
+{
+	self.userInfo[@"foo"] = @"bar";
+}
+
+@end
+```
+
 ### Auto start command execution (since 0.0.2)
 
 You can add commands to a `CommandGroup` or `SequentialCommandGroup` and have the `execute` method automatically called as soon as a command is added. In case all commands have been finished and you add another one, the command will be executed as well. This way you can enqueue commands that should run sequentially. Note, that the callback is called whenever there are no more commands to be executed. Depending when you add new commands, this can cause multiple calls.

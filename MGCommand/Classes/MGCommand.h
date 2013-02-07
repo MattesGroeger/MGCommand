@@ -22,6 +22,10 @@
 
 @protocol MGCommand <NSObject>
 
+@optional
+@property (nonatomic) NSMutableDictionary *userInfo;
+
+@required
 - (void)execute;
 
 @end
