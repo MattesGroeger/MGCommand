@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6B801F0F63F84F66AF0EC22A /* libPods-MGCommandTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6943BDC9B8684C25B73ABFA8 /* libPods-MGCommandTests.a */; };
 		A83B6480B29C4C139024FA5B /* libPods-MGCommandExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BC930AE65084705ABD74189 /* libPods-MGCommandExample.a */; };
+		AD3A1BE516C45BB4000C4265 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = AD3A1BE416C45BB4000C4265 /* heart.png */; };
 		AD8431A1167CFADA009123B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84317B167CFABA009123B0 /* UIKit.framework */; };
 		AD8431A2167CFADA009123B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F941167CF18B000C3B76 /* Foundation.framework */; };
 		AD8431A3167CFADA009123B0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84317E167CFABA009123B0 /* CoreGraphics.framework */; };
@@ -39,6 +40,7 @@
 		BF8D98DFCC45C2285F523225 /* MGSequentialCommandGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9AB7519121B908AE4A60 /* MGSequentialCommandGroup.m */; };
 		BF8D992A47B5C3B403407D60 /* DelayCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D97E03678FD133B903B3C /* DelayCommand.m */; };
 		BF8D9B0849B462830E5A61F0 /* MGCommandGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D91D29DC5CA0F5DEDD6E9 /* MGCommandGroupSpec.m */; };
+		BF8D9B16CA2950FCB872F640 /* BlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D96FC130AE12DB32A3943 /* BlockViewController.m */; };
 		BF8D9C89700415A301ECB4DD /* MGCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E1D145681C189D60AE4 /* MGCommand.h */; };
 		BF8D9CAB32EEF50FD2AEBE70 /* MGCommandExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D942223896C84D8C3BAEF /* MGCommandExecutor.m */; };
 		BF8D9D3C21062B9A1BB1EA09 /* MGAsyncCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E4A2A9E744CB8BFA8BF /* MGAsyncCommand.h */; };
@@ -86,6 +88,7 @@
 		5BC930AE65084705ABD74189 /* libPods-MGCommandExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MGCommandExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6943BDC9B8684C25B73ABFA8 /* libPods-MGCommandTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MGCommandTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ADA3A5C3F2F4ACE893033A5 /* Pods-MGCommandExample.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGCommandExample.xcconfig"; path = "Pods/Pods-MGCommandExample.xcconfig"; sourceTree = SOURCE_ROOT; };
+		AD3A1BE416C45BB4000C4265 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		AD84317B167CFABA009123B0 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AD84317E167CFABA009123B0 /* CoreGraphics.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AD84319F167CFADA009123B0 /* MGCommandExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGCommandExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,12 +123,14 @@
 		BF8D9586A5C16C39ACE6169A /* AutoStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AutoStartViewController.m; path = MGCommandExample/Classes/AutoStartViewController.m; sourceTree = SOURCE_ROOT; };
 		BF8D95913A1E8D471635E647 /* MGSequentialCommandGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSequentialCommandGroup.h; sourceTree = "<group>"; };
 		BF8D96E769D769E23291E58C /* MGCommandExecutorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandExecutorSpec.m; sourceTree = "<group>"; };
+		BF8D96FC130AE12DB32A3943 /* BlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlockViewController.m; path = MGCommandExample/Classes/BlockViewController.m; sourceTree = SOURCE_ROOT; };
 		BF8D973441D564E607049E53 /* AutoStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutoStartViewController.h; path = MGCommandExample/Classes/AutoStartViewController.h; sourceTree = SOURCE_ROOT; };
 		BF8D9748FAA9C10F937B20CF /* MGSequentialCommandGroupSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSequentialCommandGroupSpec.m; sourceTree = "<group>"; };
 		BF8D97E03678FD133B903B3C /* DelayCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DelayCommand.m; path = MGCommandExample/Classes/DelayCommand.m; sourceTree = "<group>"; };
 		BF8D97F127D1D72235AD5AE3 /* DelayCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DelayCommand.h; path = MGCommandExample/Classes/DelayCommand.h; sourceTree = "<group>"; };
 		BF8D99D864DB1EC20F8BE9B4 /* CommandFixture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandFixture.h; sourceTree = "<group>"; };
 		BF8D9AB7519121B908AE4A60 /* MGSequentialCommandGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSequentialCommandGroup.m; sourceTree = "<group>"; };
+		BF8D9B84B6FA5A94CD52E0C3 /* BlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockViewController.h; path = MGCommandExample/Classes/BlockViewController.h; sourceTree = SOURCE_ROOT; };
 		BF8D9CDBD3D9BC7354CEA1C3 /* CommandFixture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandFixture.m; sourceTree = "<group>"; };
 		BF8D9E1D145681C189D60AE4 /* MGCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCommand.h; sourceTree = "<group>"; };
 		BF8D9E4A2A9E744CB8BFA8BF /* MGAsyncCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAsyncCommand.h; sourceTree = "<group>"; };
@@ -181,6 +186,7 @@
 		AD8431A5167CFADA009123B0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AD3A1BE416C45BB4000C4265 /* heart.png */,
 				AD8431A6167CFADA009123B0 /* MGCommandExample-Info.plist */,
 				AD8431A7167CFADA009123B0 /* InfoPlist.strings */,
 				AD8431AA167CFADA009123B0 /* main.m */,
@@ -320,6 +326,8 @@
 				AD8431D4167CFCA4009123B0 /* GroupViewController.m */,
 				BF8D9586A5C16C39ACE6169A /* AutoStartViewController.m */,
 				BF8D973441D564E607049E53 /* AutoStartViewController.h */,
+				BF8D96FC130AE12DB32A3943 /* BlockViewController.m */,
+				BF8D9B84B6FA5A94CD52E0C3 /* BlockViewController.h */,
 			);
 			path = Classes;
 			sourceTree = SOURCE_ROOT;
@@ -432,6 +440,7 @@
 				AD8431B3167CFADA009123B0 /* Default@2x.png in Resources */,
 				AD8431B5167CFADA009123B0 /* Default-568h@2x.png in Resources */,
 				AD9ECB7116B544E400A4EAC4 /* CommandExample.storyboard in Resources */,
+				AD3A1BE516C45BB4000C4265 /* heart.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +510,7 @@
 				BF8D992A47B5C3B403407D60 /* DelayCommand.m in Sources */,
 				BF8D97DA6949E258E9345028 /* AutoStartViewController.m in Sources */,
 				AD9ECBBA16B59DCD00A4EAC4 /* CountCommand.m in Sources */,
+				BF8D9B16CA2950FCB872F640 /* BlockViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

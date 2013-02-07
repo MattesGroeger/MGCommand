@@ -25,7 +25,7 @@
 #import "MGSequentialCommandGroup.h"
 #import "PrintCommand.h"
 #import "DelayCommand.h"
-#import "BlockCommand.h"
+#import "MGBlockCommand.h"
 
 @implementation GroupViewController
 
@@ -42,6 +42,7 @@
 
 	[[self tabBarController].tabBar.items[0] setTitle:@"Command Groups"];
 	[[self tabBarController].tabBar.items[1] setTitle:@"Auto Start Group"];
+	[[self tabBarController].tabBar.items[2] setTitle:@"Block Command"];
 
 	[super viewDidLoad];
 }
@@ -101,7 +102,7 @@
 	[sequence addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
 	[sequence addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
 
-	[sequence addCommand:[BlockCommand create:^(CommandCallback complete)
+	[sequence addCommand:[MGBlockCommand create:^(CommandCallback complete)
 	{
 		[self addOutput:@"Finished"];
 		complete();
