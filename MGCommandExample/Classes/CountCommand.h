@@ -22,10 +22,11 @@
 
 #import <Foundation/Foundation.h>
 #import "MGAsyncCommand.h"
+#import "MGCancellableCommand.h"
 
 @class GroupViewController;
 
-@interface CountCommand : NSObject <MGAsyncCommand>
+@interface CountCommand : NSObject <MGCancellableCommand>
 {
 	NSTimeInterval _delayInSeconds;
 }

@@ -50,4 +50,9 @@
 	_callback();
 }
 
+- (void)cancel
+{
+	[NSObject cancelPreviousPerformRequestsWithTarget:self];
+}
+
 @end

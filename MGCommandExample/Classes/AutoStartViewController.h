@@ -13,5 +13,6 @@
 @property (nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic) IBOutlet UILabel *enqueuedItemsLabel;
 @property (nonatomic) IBOutlet UILabel *outputLabel;
+@property (nonatomic) IBOutlet UIButton *cancelButton;
 
 @end

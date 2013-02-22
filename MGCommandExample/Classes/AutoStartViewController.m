@@ -16,6 +16,7 @@
 	_enqueuedItemsLabel.text = @"Waiting for touches...";
 	
 	_outputLabel.text = @"0";
+	_cancelButton.hidden = YES;
 
 	// create sequential auto start group once
 	_autoStartQueue = [MGSequentialCommandGroup autoStartGroup];
@@ -37,6 +38,7 @@
 	// we add a new command on every touch:
 	[_autoStartQueue addCommand:[[CountCommand alloc] initWithDelayInSeconds:1]];
 
+	_cancelButton.hidden = NO;
 	_activityIndicator.hidden = NO;
 	[_activityIndicator startAnimating];
 	_enqueuedItemsLabel.text = [NSString stringWithFormat:@"%d commands queued", _autoStartQueue.commands.count];
@@ -44,6 +46,7 @@
 
 - (void)queueFinished
 {
+	_cancelButton.hidden = YES;
 	_activityIndicator.hidden = YES;
 	[_activityIndicator stopAnimating];
 	_enqueuedItemsLabel.text = @"Done! Touch again...";
@@ -56,6 +59,11 @@
 
 	_outputLabel.text = [NSString stringWithFormat:@"%d", _commandCount];
 	_enqueuedItemsLabel.text = [NSString stringWithFormat:@"%d commands queued", _autoStartQueue.commands.count - 1];
+}
+
+- (IBAction)onCancel
+{
+	[_autoStartQueue cancel];
 }
 
 @end
