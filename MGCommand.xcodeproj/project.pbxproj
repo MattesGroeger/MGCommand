@@ -46,6 +46,7 @@
 		BF8D9D3C21062B9A1BB1EA09 /* MGAsyncCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E4A2A9E744CB8BFA8BF /* MGAsyncCommand.h */; };
 		BF8D9EAC59AD9531907928C5 /* MGBlockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9F3E2CE740D5DB0DE288 /* MGBlockCommand.m */; };
 		BF8D9F8A8C53AC3EDD0E3407 /* MGBlockCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D937675BBD06310549D52 /* MGBlockCommand.h */; };
+		DB9E97206943D08F33E55CFF /* MGCancellableCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB9E9331267CDB62BC41106C /* MGCancellableCommand.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 				BF8D912A8CDEF49978663E65 /* MGSequentialCommandGroup.h in CopyFiles */,
 				BF8D930246040B23B77064E4 /* MGCommandExecutor.h in CopyFiles */,
 				BF8D9F8A8C53AC3EDD0E3407 /* MGBlockCommand.h in CopyFiles */,
+				DB9E97206943D08F33E55CFF /* MGCancellableCommand.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +138,7 @@
 		BF8D9E4A2A9E744CB8BFA8BF /* MGAsyncCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAsyncCommand.h; sourceTree = "<group>"; };
 		BF8D9F3E2CE740D5DB0DE288 /* MGBlockCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGBlockCommand.m; sourceTree = "<group>"; };
 		BF8D9F9F9E25DA3F446E4B6A /* MGCommandGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandGroup.m; sourceTree = "<group>"; };
+		DB9E9331267CDB62BC41106C /* MGCancellableCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCancellableCommand.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +284,7 @@
 				BF8D942223896C84D8C3BAEF /* MGCommandExecutor.m */,
 				BF8D94C6403B8E19823673D9 /* MGCommandExecutor.h */,
 				BF8D95EE2E031B7260A84F7D /* Commands */,
+				DB9E9331267CDB62BC41106C /* MGCancellableCommand.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

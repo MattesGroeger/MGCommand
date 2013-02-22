@@ -39,6 +39,28 @@
 
 @end
 
+@implementation CancellableTestCommand
+
+- (void)execute
+{
+	[self performSelector:@selector(finishExecute)
+			   withObject:nil
+			   afterDelay:0.1];
+}
+
+- (void)cancel
+{
+	[NSObject cancelPreviousPerformRequestsWithTarget:self];
+}
+
+- (void)finishExecute
+{
+	_callCount = COMMAND_CALL_COUNT++;
+	_callback();
+}
+
+@end
+
 @implementation TestCommand
 
 - (id)initWithKey:(NSString *)key value:(NSString *)value

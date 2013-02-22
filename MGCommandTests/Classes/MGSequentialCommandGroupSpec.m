@@ -89,7 +89,7 @@ describe(@"MGSequentialCommandGroup", ^
 		});
 	});
 
-	context(@"with two commands added", ^
+	context(@"with three commands added", ^
 	{
 		__block AsyncTestCommand *command1 = [[AsyncTestCommand alloc] init];
 		__block AsyncDirectFinishTestCommand *command2 = [[AsyncDirectFinishTestCommand alloc] init];
@@ -100,6 +100,13 @@ describe(@"MGSequentialCommandGroup", ^
 			[sequentialCommandGroup addCommand:command1];
 			[sequentialCommandGroup addCommand:command2];
 			[sequentialCommandGroup addCommand:command3];
+		});
+
+		it(@"should remove all commands when cancel before execution", ^
+		{
+			[sequentialCommandGroup cancel];
+
+			[[sequentialCommandGroup.commands should] haveCountOf:0];
 		});
 
 		it(@"should execute commands one after the other", ^
@@ -132,6 +139,24 @@ describe(@"MGSequentialCommandGroup", ^
 			{
 				[sequentialCommandGroup execute];
 			}) should] raiseWithReason:@"Can't execute command group while already executing!"];
+		});
+
+		it(@"should cancel execution", ^
+		{
+			id mockReceiver = [KWMock mock];
+			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(1)] receive:@selector(testCall)];
+
+			sequentialCommandGroup.callback = ^
+			{
+				[mockReceiver performSelector:@selector(testCall)];
+			};
+
+			[sequentialCommandGroup execute];
+			[sequentialCommandGroup cancel];
+
+			[[theValue(command1.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(0)];
+			[[theValue(command2.callCount) shouldEventuallyBeforeTimingOutAfter(2)] equal:theValue(1)];
+			[[theValue(command3.callCount) shouldEventuallyBeforeTimingOutAfter(3)] equal:theValue(2)];
 		});
 	});
 
@@ -168,8 +193,8 @@ describe(@"MGSequentialCommandGroup", ^
 			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(1)] receive:@selector(testCall)];
 			[[theValue(subCommandA.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(0)];
 			[[theValue(subCommandB.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(1)];
-			[[theValue(command1.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(6)];
-			[[theValue(command2.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(7)];
+			[[theValue(command1.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(2)];
+			[[theValue(command2.callCount) shouldEventuallyBeforeTimingOutAfter(1)] equal:theValue(3)];
 		});
 	});
 

@@ -21,6 +21,7 @@
  */
 
 #import "MGCommandExecutor.h"
+#import "MGCancellableCommand.h"
 
 @implementation MGCommandExecutor
 
@@ -51,11 +52,14 @@
 {
 	CommandCallback subCallback = ^
 	{
-		[_activeCommands removeObject:command];
-
-		if (_commandCallback)
+		if ([_activeCommands containsObject:command])
 		{
-			_commandCallback(command);
+			[_activeCommands removeObject:command];
+
+			if (_commandCallback)
+			{
+				_commandCallback(command);
+			}
 		}
 	};
 
@@ -80,6 +84,19 @@
 		[command execute];
 
 		subCallback();
+	}
+}
+
+- (void)cancelExecution
+{
+	for (id <MGAsyncCommand> command in [_activeCommands copy])
+	{
+		if ([command conformsToProtocol:@protocol(MGCancellableCommand)])
+		{
+			[(id <MGCancellableCommand>)command cancel];
+		}
+
+		command.callback(); // complete the command in any case
 	}
 }
 

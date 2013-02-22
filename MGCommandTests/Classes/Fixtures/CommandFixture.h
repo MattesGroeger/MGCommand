@@ -28,7 +28,16 @@
 NSUInteger COMMAND_CALL_COUNT;
 #endif
 
+@protocol MGCancellableCommand;
+
 @interface AsyncTestCommand : NSObject <MGAsyncCommand>
+
+@property (nonatomic, strong) CommandCallback callback;
+@property (nonatomic) NSUInteger callCount;
+
+@end
+
+@interface CancellableTestCommand : NSObject <MGCancellableCommand>
 
 @property (nonatomic, strong) CommandCallback callback;
 @property (nonatomic) NSUInteger callCount;

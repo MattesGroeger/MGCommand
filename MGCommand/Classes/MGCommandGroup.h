@@ -22,10 +22,11 @@
 
 #import <Foundation/Foundation.h>
 #import "MGAsyncCommand.h"
+#import "MGCancellableCommand.h"
 
 @class MGCommandExecutor;
 
-@interface MGCommandGroup : NSObject <MGAsyncCommand>
+@interface MGCommandGroup : NSObject <MGCancellableCommand>
 {
 @protected
 	BOOL _autoStart;

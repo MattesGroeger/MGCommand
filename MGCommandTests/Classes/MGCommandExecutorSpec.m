@@ -24,6 +24,14 @@ describe(@"MGCommandExecutor", ^
 			[[theValue(executor.active) should] equal:theValue(NO)];
 		});
 
+		it(@"should cancel without errors", ^
+		{
+			[executor cancelExecution];
+
+			[[executor.activeCommands should] haveCountOf:0];
+			[[theValue(executor.active) should] equal:theValue(NO)];
+		});
+
 		it(@"should execute command", ^
 		{
 			[[command1 should] receive:@selector(execute)];
@@ -85,6 +93,25 @@ describe(@"MGCommandExecutor", ^
 
 				[[theValue(callbackCount) should] equal:theValue(2)];
 			});
+
+			it(@"should cancel commands", ^
+			{
+				__block NSUInteger callbackCount = 0;
+				executor.commandCallback = ^(id <MGCommand> command)
+				{
+					[[(NSObject *)command shouldNot] beNil];
+					callbackCount++;
+				};
+
+				[[command1 should] receive:@selector(execute)];
+				[[command2 should] receive:@selector(execute)];
+
+				[executor executeCommand:command1 withUserInfo:nil];
+				[executor executeCommand:command2 withUserInfo:nil];
+				[executor cancelExecution];
+
+				[[theValue(callbackCount) should] equal:theValue(2)];
+			});
 		});
 	});
 
@@ -110,6 +137,48 @@ describe(@"MGCommandExecutor", ^
 			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(1.0)] receive:@selector(testCall) withCount:2];
 			[[executor.activeCommands shouldEventuallyBeforeTimingOutAfter(1.0)] haveCountOf:0];
 			[[theValue(executor.active) shouldEventuallyBeforeTimingOutAfter(1.0)] equal:theValue(NO)];
+		});
+
+		it(@"should cancel commands", ^
+		{
+			id mockReceiver = [KWMock mock];
+			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(1.0)] receive:@selector(testCall) withCount:2];
+
+			executor.commandCallback = ^(id <MGCommand> command)
+			{
+				[mockReceiver performSelector:@selector(testCall)];
+			};
+
+			[executor executeCommand:command1 withUserInfo:nil];
+			[executor executeCommand:command2 withUserInfo:nil];
+			[executor cancelExecution];
+
+			[[executor.activeCommands should] haveCountOf:0];
+			[[theValue(executor.active) should] equal:theValue(NO)];
+		});
+	});
+
+	context(@"with two cancellable commands", ^
+	{
+		__block id command1 = [[CancellableTestCommand alloc] init];
+		__block id command2 = [[CancellableTestCommand alloc] init];
+
+		it(@"should cancel commands", ^
+		{
+			id mockReceiver = [KWMock mock];
+			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(1.0)] receive:@selector(testCall) withCount:2];
+
+			executor.commandCallback = ^(id <MGCommand> command)
+			{
+				[mockReceiver performSelector:@selector(testCall)];
+			};
+
+			[executor executeCommand:command1 withUserInfo:nil];
+			[executor executeCommand:command2 withUserInfo:nil];
+			[executor cancelExecution];
+
+			[[executor.activeCommands should] haveCountOf:0];
+			[[theValue(executor.active) should] equal:theValue(NO)];
 		});
 	});
 

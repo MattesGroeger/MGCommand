@@ -97,4 +97,23 @@
 	}
 }
 
+- (void)cancel
+{
+	[self removeNotExecutedCommands];
+
+	[_commandExecuter cancelExecution];
+}
+
+- (void)removeNotExecutedCommands
+{
+	NSMutableArray *commandsToRemove = [NSMutableArray arrayWithArray:_commands];
+
+	for (id command in _commandExecuter.activeCommands)
+	{
+		[commandsToRemove removeObject:command];
+	}
+
+	[_commands removeObjectsInArray:commandsToRemove];
+}
+
 @end

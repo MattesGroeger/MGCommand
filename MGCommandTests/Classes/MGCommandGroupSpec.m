@@ -132,6 +132,13 @@ describe(@"MGCommandGroup", ^
 			[commandGroup addCommand:command2];
 		});
 
+		it(@"should remove all commands when cancel before execution", ^
+		{
+			[commandGroup cancel];
+
+			[[commandGroup.commands should] haveCountOf:0];
+		});
+
 		it(@"should work without callback beeing set", ^
 		{
 			[[command1 should] receive:@selector(execute)];
@@ -195,7 +202,7 @@ describe(@"MGCommandGroup", ^
 
 	context(@"with one synchronous and one asyncronous command", ^
 	{
-		__block id command1 = [[AsyncTestCommand alloc] init];
+		__block id command1 = [[CancellableTestCommand alloc] init];
 		__block id command2 = [KWMock nullMockForProtocol:@protocol(MGCommand)];
 
 		beforeEach(^
@@ -218,6 +225,23 @@ describe(@"MGCommandGroup", ^
 			[commandGroup execute];
 
 			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(1.0)] receive:@selector(testCall)];
+		});
+
+		it(@"should cancel execution", ^
+		{
+			__block NSUInteger callback = 0;
+
+			commandGroup.callback = ^
+			{
+				callback++;
+			};
+
+			[[command2 should] receive:@selector(execute)];
+
+			[commandGroup execute];
+			[commandGroup cancel];
+
+			[[theValue(callback) should] equal:theValue(1)];
 		});
 	});
 
