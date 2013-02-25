@@ -199,6 +199,49 @@ MGSequentialCommandGroup *sequence = [[MGSequentialCommandGroup alloc] init];
 
 Please note, that you have to call `complete()` when the block operation is done (can be asynchronous). Otherwise the execution of the `MGBlockCommand` will never finish.
 
+### Cancellable Commands (since 0.0.3)
+
+Commands can now be cancellable. If your `Command` should be cancellable it needs to implement the `MGCancellableCommand` (it derives from `MGAsyncCommand`) protocol:
+
+```obj-c
+@interface CancellableCommand : NSObject <MGCancellableCommand>
+
+@property (nonatomic, strong) CommandCallback callback;
+
+@end
+```
+
+```obj-c
+@implementation CancellableCommand
+
+- (void)execute
+{
+	// start async process here
+}
+
+- (void)cancel
+{
+	// cancel async process here
+}
+
+@end
+```
+
+Note, that you don't have to call the complete `callback` block in case of cancelation.
+
+The `MGCommandGroup` and `MGSequentialCommandGroup` are cancellable commands as well. If you cancel a group, all active commands will be cancelled. The remaining commands get removed.
+
+For backwards compatibility any command that doesn't implement the `MGCancellableCommand` protocol will just continue to execute and only the enqueued commands will be removed.
+
+```obj-c
+MGCommandGroup *commandGroup = [MGCommandGroup autoStartGroup];
+
+[commandGroup addCommand:command1];
+[commandGroup addCommand:command2];
+
+[commandGroup cancel];
+```
+
 ## Example
 
 You can find an example application in the [`MGCommandsExample` subfolder](https://github.com/MattesGroeger/MGCommand/tree/master/MGCommandExample/Classes). To see the exection, run the application in the simulator and press the start button. 
