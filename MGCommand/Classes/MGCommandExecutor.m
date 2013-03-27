@@ -31,7 +31,7 @@
 
 	if (self)
 	{
-		_commandCallback = completeCallback;
+        _commandCallback = [completeCallback copy];
 		_activeCommands = [NSMutableArray array];
 	}
 
@@ -50,7 +50,7 @@
 
 - (void)executeCommand:(id <MGCommand>)command withUserInfo:(NSMutableDictionary *)userInfo
 {
-	CommandCallback subCallback = ^
+	MGCommandCompleteHandler subCallback = ^
 	{
 		if ([_activeCommands containsObject:command])
 		{

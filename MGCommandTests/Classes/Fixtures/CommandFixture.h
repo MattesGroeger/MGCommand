@@ -22,6 +22,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MGAsyncCommand.h"
+#import "MGCancellableCommand.h"
 
 #ifndef COMMAND_COUNT_VAR
 #define COMMAND_COUNT_VAR
@@ -32,14 +33,14 @@ NSUInteger COMMAND_CALL_COUNT;
 
 @interface AsyncTestCommand : NSObject <MGAsyncCommand>
 
-@property (nonatomic, strong) CommandCallback callback;
+@property (nonatomic, copy) MGCommandCompleteHandler callback;
 @property (nonatomic) NSUInteger callCount;
 
 @end
 
 @interface CancellableTestCommand : NSObject <MGCancellableCommand>
 
-@property (nonatomic, strong) CommandCallback callback;
+@property (nonatomic, copy) MGCommandCompleteHandler callback;
 @property (nonatomic) NSUInteger callCount;
 
 @end
@@ -59,7 +60,7 @@ NSUInteger COMMAND_CALL_COUNT;
 
 @interface AsyncDirectFinishTestCommand : NSObject <MGAsyncCommand>
 
-@property (nonatomic, strong) CommandCallback callback;
+@property (nonatomic, copy) MGCommandCompleteHandler callback;
 @property (nonatomic) NSUInteger callCount;
 
 @end

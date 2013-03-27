@@ -19,10 +19,11 @@
 	_cancelButton.hidden = YES;
 
 	// create sequential auto start group once
+    __weak AutoStartViewController *this = self;
 	_autoStartQueue = [MGSequentialCommandGroup autoStartGroup];
 	_autoStartQueue.callback = ^
 	{
-		[self queueFinished];
+		[this queueFinished];
 	};
 
 	[super viewDidLoad];
