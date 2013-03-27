@@ -33,14 +33,14 @@ NSUInteger COMMAND_CALL_COUNT;
 
 @interface AsyncTestCommand : NSObject <MGAsyncCommand>
 
-@property (nonatomic, copy) CommandCallback callback;
+@property (nonatomic, copy) MGCommandCompleteHandler callback;
 @property (nonatomic) NSUInteger callCount;
 
 @end
 
 @interface CancellableTestCommand : NSObject <MGCancellableCommand>
 
-@property (nonatomic, copy) CommandCallback callback;
+@property (nonatomic, copy) MGCommandCompleteHandler callback;
 @property (nonatomic) NSUInteger callCount;
 
 @end
@@ -60,7 +60,7 @@ NSUInteger COMMAND_CALL_COUNT;
 
 @interface AsyncDirectFinishTestCommand : NSObject <MGAsyncCommand>
 
-@property (nonatomic, copy) CommandCallback callback;
+@property (nonatomic, copy) MGCommandCompleteHandler callback;
 @property (nonatomic) NSUInteger callCount;
 
 @end

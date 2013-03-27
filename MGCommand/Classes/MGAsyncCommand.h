@@ -22,10 +22,10 @@
 
 #import "MGCommand.h"
 
-typedef void (^CommandCallback)(void);
+typedef void (^MGCommandCompleteHandler)(void);
 
 @protocol MGAsyncCommand <MGCommand>
 
-@property (nonatomic, copy) CommandCallback callback;
+@property (nonatomic, copy) MGCommandCompleteHandler callback;
 
 @end

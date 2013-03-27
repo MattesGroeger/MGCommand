@@ -23,7 +23,7 @@
 #import <Foundation/Foundation.h>
 #import "MGAsyncCommand.h"
 
-typedef void (^CommandBlock)(CommandCallback);
+typedef void (^CommandBlock)(MGCommandCompleteHandler);
 
 @interface MGBlockCommand : NSObject <MGAsyncCommand>
 {
@@ -31,7 +31,7 @@ typedef void (^CommandBlock)(CommandCallback);
 	CommandBlock _commandBlock;
 }
 
-@property (nonatomic, copy) CommandCallback callback;
+@property (nonatomic, copy) MGCommandCompleteHandler callback;
 
 + (id)create:(CommandBlock)commandComplete;
 

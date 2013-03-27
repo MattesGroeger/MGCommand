@@ -46,7 +46,7 @@
 
 - (void)addAnimationStep:(MGSequentialCommandGroup *)animationGroup duration:(CGFloat)duration scale:(CGFloat)scale
 {
-	[animationGroup addCommand:[MGBlockCommand create:^(CommandCallback callback)
+	[animationGroup addCommand:[MGBlockCommand create:^(MGCommandCompleteHandler callback)
 	{
 		[UIView animateWithDuration:duration
 							  delay:0

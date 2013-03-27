@@ -102,7 +102,7 @@
 	[sequence addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
 	[sequence addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
 
-	[sequence addCommand:[MGBlockCommand create:^(CommandCallback complete)
+	[sequence addCommand:[MGBlockCommand create:^(MGCommandCompleteHandler complete)
 	{
 		[self addOutput:@"Finished"];
 		complete();
