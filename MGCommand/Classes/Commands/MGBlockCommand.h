@@ -31,7 +31,7 @@ typedef void (^CommandBlock)(CommandCallback);
 	CommandBlock _commandBlock;
 }
 
-@property (nonatomic, strong) CommandCallback callback;
+@property (nonatomic, copy) CommandCallback callback;
 
 + (id)create:(CommandBlock)commandComplete;
 

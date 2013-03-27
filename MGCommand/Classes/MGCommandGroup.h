@@ -36,7 +36,7 @@
 
 @property (nonatomic) NSMutableDictionary *userInfo;
 @property (nonatomic) BOOL autoStart;
-@property (nonatomic, strong) CommandCallback callback;
+@property (nonatomic, copy) CommandCallback callback;
 @property (nonatomic, readonly) NSArray *commands;
 
 + (id)autoStartGroup;

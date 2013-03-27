@@ -35,7 +35,7 @@
 
 	if (self)
 	{
-		_commandBlock = block;
+		_commandBlock = [block copy];
 	}
 
 	return self;
