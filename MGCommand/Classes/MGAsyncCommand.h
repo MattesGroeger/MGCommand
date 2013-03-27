@@ -26,6 +26,6 @@ typedef void (^CommandCallback)(void);
 
 @protocol MGAsyncCommand <MGCommand>
 
-@property (nonatomic, strong) CommandCallback callback;
+@property (nonatomic, copy) CommandCallback callback;
 
 @end

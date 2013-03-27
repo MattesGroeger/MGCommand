@@ -31,7 +31,7 @@
 
 	if (self)
 	{
-		_commandCallback = completeCallback;
+        _commandCallback = [completeCallback copy];
 		_activeCommands = [NSMutableArray array];
 	}
 
