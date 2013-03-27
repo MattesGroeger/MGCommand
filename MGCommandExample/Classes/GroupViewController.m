@@ -25,7 +25,7 @@
 #import "MGSequentialCommandGroup.h"
 #import "PrintCommand.h"
 #import "DelayCommand.h"
-#import "MGBlockCommand.h"
+#import "MGAsyncBlockCommand.h"
 
 @implementation GroupViewController
 
@@ -102,11 +102,10 @@
 	[sequence addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
 	[sequence addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
 
-	[sequence addCommand:[MGBlockCommand create:^(MGCommandCompleteHandler complete)
-	{
-		[self addOutput:@"Finished"];
-		complete();
-	}]];
+	[sequence addCommand:[MGAsyncBlockCommand create:^(MGCommandCompleteHandler complete) {
+        [self addOutput:@"Finished"];
+        complete();
+    }]];
 
 	return sequence;
 }

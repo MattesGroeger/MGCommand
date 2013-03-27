@@ -25,7 +25,7 @@
 
 typedef void (^CommandBlock)(MGCommandCompleteHandler);
 
-@interface MGBlockCommand : NSObject <MGAsyncCommand>
+@interface MGAsyncBlockCommand : NSObject <MGAsyncCommand>
 {
 @private
 	CommandBlock _commandBlock;

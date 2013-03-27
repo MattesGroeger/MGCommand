@@ -20,13 +20,13 @@
  * THE SOFTWARE.
  */
 
-#import "MGBlockCommand.h"
+#import "MGAsyncBlockCommand.h"
 
-@implementation MGBlockCommand
+@implementation MGAsyncBlockCommand
 
 + (id)create:(CommandBlock)commandComplete
 {
-	return [[MGBlockCommand alloc] initWithBlock:commandComplete];
+	return [[MGAsyncBlockCommand alloc] initWithBlock:commandComplete];
 }
 
 - (id)initWithBlock:(CommandBlock)block
