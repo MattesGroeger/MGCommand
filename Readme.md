@@ -68,7 +68,7 @@ Sometimes your command execution may not finish synchronously. In that case you 
 	NSTimeInterval _delayInSeconds;
 }
 
-@property (nonatomic, strong) CommandCallback callback;
+@property (nonatomic, strong) MGCommandCompleteHandler callback;
 
 - (id)initWithDelayInSeconds:(NSTimeInterval)aDelayInSeconds;
 
@@ -175,20 +175,20 @@ MGCommandGroup *group = [MGSequentialCommandGroup autoStartGroup];
 group.autoStart = NO;
 ```
 
-### MGBlockCommands (since 0.0.2)
+### MGAsyncBlockCommands (since 0.0.2)
 
-By using the provided `MGBlockCommand` you can put execution logic right into a block rather then implementing a whole class:
+By using the provided `MGAsyncBlockCommand` you can put execution logic right into a block rather then implementing a whole class:
 
 ```obj-c
 MGSequentialCommandGroup *sequence = [[MGSequentialCommandGroup alloc] init];
 
-[sequence addCommand:[MGBlockCommand create:^(CommandCallback complete)
+[sequence addCommand:[MGAsyncBlockCommand create:^(MGCommandCompleteHandler complete)
 {
 	NSLog(@"Awesome block command!");
 	complete();
 }]];
 
-[sequence addCommand:[MGBlockCommand create:^(CommandCallback complete)
+[sequence addCommand:[MGAsyncBlockCommand create:^(MGCommandCompleteHandler complete)
 {
 	NSLog(@"And the next one!");
 	complete();
@@ -197,7 +197,7 @@ MGSequentialCommandGroup *sequence = [[MGSequentialCommandGroup alloc] init];
 [sequence execute];
 ```
 
-Please note, that you have to call `complete()` when the block operation is done (can be asynchronous). Otherwise the execution of the `MGBlockCommand` will never finish.
+Please note, that you have to call `complete()` when the block operation is done (can be asynchronous). Otherwise the execution of the `MGAsyncBlockCommand` will never finish.
 
 ### Cancellable Commands (since 0.0.3)
 
@@ -206,7 +206,7 @@ Commands can now be cancellable. If your `Command` should be cancellable it need
 ```obj-c
 @interface CancellableCommand : NSObject <MGCancellableCommand>
 
-@property (nonatomic, strong) CommandCallback callback;
+@property (nonatomic, strong) MGCommandCompleteHandler callback;
 
 @end
 ```
@@ -266,5 +266,5 @@ The configured command groups look like this (pseudo code):
 		DelayCommand(1)
 		DelayCommand(1)
 		DelayCommand(1)
-		MGBlockCommand("Finished")
+		MGAsyncBlockCommand("Finished")
 	}
