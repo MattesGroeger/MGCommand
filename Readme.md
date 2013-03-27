@@ -68,7 +68,7 @@ Sometimes your command execution may not finish synchronously. In that case you 
 	NSTimeInterval _delayInSeconds;
 }
 
-@property (nonatomic, strong) CommandCallback callback;
+@property (nonatomic, copy) CommandCallback callback;
 
 - (id)initWithDelayInSeconds:(NSTimeInterval)aDelayInSeconds;
 
@@ -206,7 +206,7 @@ Commands can now be cancellable. If your `Command` should be cancellable it need
 ```obj-c
 @interface CancellableCommand : NSObject <MGCancellableCommand>
 
-@property (nonatomic, strong) CommandCallback callback;
+@property (nonatomic, copy) CommandCallback callback;
 
 @end
 ```
