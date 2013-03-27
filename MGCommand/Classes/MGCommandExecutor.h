@@ -30,7 +30,7 @@ typedef void (^CommandExecutionCallback)(id <MGCommand>);
 @interface MGCommandExecutor : NSObject
 
 @property (nonatomic, readonly) BOOL active;
-@property (nonatomic, strong) CommandExecutionCallback commandCallback;
+@property (nonatomic, copy) CommandExecutionCallback commandCallback;
 @property (nonatomic) NSMutableArray *activeCommands;
 
 - (id)initWithCompleteCallback:(CommandExecutionCallback)completeCallback;

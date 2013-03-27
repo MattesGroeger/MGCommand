@@ -30,7 +30,7 @@
 	NSTimeInterval _delayInSeconds;
 }
 
-@property (nonatomic, strong) CommandCallback callback;
+@property (nonatomic, copy) MGCommandCompleteHandler callback;
 
 - (id)initWithDelayInSeconds:(NSTimeInterval)aDelayInSeconds;
 

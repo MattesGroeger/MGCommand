@@ -22,7 +22,7 @@
 
 #import "BlockViewController.h"
 #import "MGSequentialCommandGroup.h"
-#import "MGBlockCommand.h"
+#import "MGAsyncBlockCommand.h"
 
 @implementation BlockViewController
 
@@ -46,20 +46,17 @@
 
 - (void)addAnimationStep:(MGSequentialCommandGroup *)animationGroup duration:(CGFloat)duration scale:(CGFloat)scale
 {
-	[animationGroup addCommand:[MGBlockCommand create:^(CommandCallback callback)
-	{
-		[UIView animateWithDuration:duration
-							  delay:0
-							options:UIViewAnimationOptionCurveEaseInOut
-						 animations:^
-						 {
-							 _heart.transform = CGAffineTransformMakeScale(scale, scale);
-						 }
-						 completion:^(BOOL finished)
-						 {
-							 callback();
-						 }];
-	}]];
+	[animationGroup addCommand:[MGAsyncBlockCommand create:^(MGCommandCompleteHandler callback) {
+        [UIView animateWithDuration:duration
+                              delay:0
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             _heart.transform = CGAffineTransformMakeScale(scale, scale);
+                         }
+                         completion:^(BOOL finished) {
+                             callback();
+                         }];
+    }]];
 }
 
 @end
