@@ -60,7 +60,7 @@ A synchronous command needs to implement the `MGCommand` protocol. The `execute`
 
 ### Asynchronous command
 
-Sometimes your command execution may not finish synchronously. In that case you may want to use the `MGAsyncCommand`. This command will not finish until a callback method has been called. This callback method will be set by the parent `CommandGroup` before execution ([see next paragraph](https://github.com/MattesGroeger/MGCommand/edit/master/Readme.md#executing-several-commands-at-once)). The following command finishes after a given delay ([taken from the example project](https://github.com/MattesGroeger/MGCommand/tree/master/MGCommandExample/Classes)):
+Sometimes your command execution may not finish synchronously. In that case you may want to use the `MGAsyncCommand`. This command will not finish until a `completeHandler` method has been called. This `completeHandler` method will be set by the parent `CommandGroup` before execution ([see next paragraph](https://github.com/MattesGroeger/MGCommand/edit/master/Readme.md#executing-several-commands-at-once)). The following command finishes after a given delay ([taken from the example project](https://github.com/MattesGroeger/MGCommand/tree/master/MGCommandExample/Classes)):
 
 ```objective-c
 @interface DelayCommand : NSObject <MGAsyncCommand>
@@ -68,7 +68,7 @@ Sometimes your command execution may not finish synchronously. In that case you 
 	NSTimeInterval _delayInSeconds;
 }
 
-@property (nonatomic, copy) MGCommandCompleteHandler callback;
+@property (nonatomic, copy) MGCommandCompleteHandler completeHandler;
 
 - (id)initWithDelayInSeconds:(NSTimeInterval)aDelayInSeconds;
 
@@ -99,7 +99,7 @@ Sometimes your command execution may not finish synchronously. In that case you 
 
 - (void)finishAfterDelay
 {
-	_callback();
+	_completeHandler();
 }
 
 @end
@@ -116,7 +116,7 @@ MGCommandGroup *commandGroup = [[MGCommandGroup alloc] init];
 [commandGroup addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
 [commandGroup addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
 
-commandGroup.callback = ^
+commandGroup.completeHandler = ^
 {
 	NSLog(@"execution finished");
 };
@@ -124,9 +124,9 @@ commandGroup.callback = ^
 [commandGroup execute];
 ```
 
-Before calling the execute method on the command group, you can set the callback block. It will be executed when the command group execution finished. The order you add the commands determines their execution order.
+Before calling the execute method on the command group, you can set the completeHandler block. It will be executed when the command group execution finished. The order you add the commands determines their execution order.
 
-Note that the callbacks for added asynchronous commands will be automatically set by the group. If you add only synchronous commands you don't need the callback as the group will finish instantly.
+Note that the completeHandlers for added asynchronous commands will be automatically set by the group. If you add only synchronous commands you don't need the completeHandler as the group will finish instantly.
 
 ### Executing commands sequentially
 
@@ -163,7 +163,7 @@ If you nest commands or command groups, each of them will always get the same `u
 
 ### Auto start command execution (since 0.0.2)
 
-You can add commands to a `CommandGroup` or `SequentialCommandGroup` and have the `execute` method automatically called as soon as a command is added. In case all commands have been finished and you add another one, the command will be executed as well. This way you can enqueue commands that should run sequentially. Note, that the callback is called whenever there are no more commands to be executed. Depending when you add new commands, this can cause multiple calls.
+You can add commands to a `CommandGroup` or `SequentialCommandGroup` and have the `execute` method automatically called as soon as a command is added. In case all commands have been finished and you add another one, the command will be executed as well. This way you can enqueue commands that should run sequentially. Note, that the completeHandler is called whenever there are no more commands to be executed. Depending when you add new commands, this can cause multiple calls.
 
 ```obj-c
 MGCommandGroup *group = [MGSequentialCommandGroup autoStartGroup];
@@ -216,7 +216,7 @@ Commands can now be cancellable. If your `Command` should be cancellable it need
 ```obj-c
 @interface CancellableCommand : NSObject <MGCancellableCommand>
 
-@property (nonatomic, copy) MGCommandCompleteHandler callback;
+@property (nonatomic, copy) MGCommandCompleteHandler completeHandler;
 
 @end
 ```
@@ -237,7 +237,7 @@ Commands can now be cancellable. If your `Command` should be cancellable it need
 @end
 ```
 
-Note, that you don't have to call the complete `callback` block in case of cancelation.
+Note, that you don't have to call the `completeHandler` block in case of cancelation.
 
 The `MGCommandGroup` and `MGSequentialCommandGroup` are cancellable commands as well. If you cancel a group, all active commands will be cancelled. The remaining commands get removed.
 
@@ -266,7 +266,7 @@ The configured command groups look like this (pseudo code):
 		PrintCommand("concurrent {")
 		
 		concurrent
-		{
+		{completeHandker
 			DelayCommand(1)
 			DelayCommand(1)
 			DelayCommand(1)
@@ -283,7 +283,7 @@ The configured command groups look like this (pseudo code):
 
 **0.1.0** (???)
 
-* [NEW] Using `copy` property attribute instead of `strong` for callback
+* [NEW] Using `copy` property attribute instead of `strong` for completeHandler
 * [NEW] Renamed `CommandCallback` into `MGCommandCompleteHandler`
 * [NEW] Renamed `callback` into `completeHandler`
 * [NEW] Renamed `MGBlockCommand` to `MGAsyncBlockCommand`
