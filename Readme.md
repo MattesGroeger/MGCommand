@@ -285,6 +285,7 @@ The configured command groups look like this (pseudo code):
 
 * [NEW] Using `copy` property attribute instead of `strong` for callback
 * [NEW] Renamed `CommandCallback` into `MGCommandCompleteHandler`
+* [NEW] Renamed `callback` into `completeHandler`
 * [NEW] Renamed `MGBlockCommand` to `MGAsyncBlockCommand`
 * [NEW] New `MGBlockCommand` for synchronous execution
 

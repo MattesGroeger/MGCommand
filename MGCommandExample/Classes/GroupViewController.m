@@ -72,7 +72,7 @@
 {
 	id <MGAsyncCommand> commandGroup = [self createCommandGroup];
 
-	commandGroup.callback = ^
+	commandGroup.completeHandler = ^
 	{
 		[self finishExecution];
 	};

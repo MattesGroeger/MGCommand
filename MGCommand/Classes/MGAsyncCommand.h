@@ -26,6 +26,6 @@ typedef void (^MGCommandCompleteHandler)(void);
 
 @protocol MGAsyncCommand <MGCommand>
 
-@property (nonatomic, copy) MGCommandCompleteHandler callback;
+@property (nonatomic, copy) MGCommandCompleteHandler completeHandler;
 
 @end

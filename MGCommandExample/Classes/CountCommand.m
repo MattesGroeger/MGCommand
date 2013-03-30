@@ -47,7 +47,7 @@
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"finished" object:self userInfo:nil];
 
-	_callback();
+	_completeHandler();
 }
 
 - (void)cancel

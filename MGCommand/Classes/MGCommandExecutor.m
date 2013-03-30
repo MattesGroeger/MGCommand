@@ -50,7 +50,7 @@
 
 - (void)executeCommand:(id <MGCommand>)command withUserInfo:(NSMutableDictionary *)userInfo
 {
-	MGCommandCompleteHandler subCallback = ^
+	MGCommandCompleteHandler subCompleteHandler = ^
 	{
 		if ([_activeCommands containsObject:command])
 		{
@@ -75,7 +75,7 @@
 	if ([command conformsToProtocol:@protocol(MGAsyncCommand)])
 	{
 		id <MGAsyncCommand> asyncCommand = (id <MGAsyncCommand>) command;
-		asyncCommand.callback = subCallback;
+		asyncCommand.completeHandler = subCompleteHandler;
 
 		[command execute];
 	}
@@ -83,7 +83,7 @@
 	{
 		[command execute];
 
-		subCallback();
+		subCompleteHandler();
 	}
 }
 
@@ -96,7 +96,7 @@
 			[(id <MGCancellableCommand>)command cancel];
 		}
 
-		command.callback(); // complete the command in any case
+		command.completeHandler(); // complete the command in any case
 	}
 }
 

@@ -34,7 +34,7 @@
 - (void)finishExecute
 {
 	_callCount = COMMAND_CALL_COUNT++;
-	_callback();
+	_completeHandler();
 }
 
 @end
@@ -56,7 +56,7 @@
 - (void)finishExecute
 {
 	_callCount = COMMAND_CALL_COUNT++;
-	_callback();
+	_completeHandler();
 }
 
 @end
@@ -93,7 +93,7 @@
 - (void)execute
 {
 	_callCount = COMMAND_CALL_COUNT++;
-	_callback();
+	_completeHandler();
 }
 
 @end

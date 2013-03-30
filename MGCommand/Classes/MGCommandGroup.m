@@ -90,9 +90,9 @@
 {
 	if (_commands.count == 0)
 	{
-		if (_callback)
+		if (_completeHandler)
 		{
-			_callback();
+			_completeHandler();
 		}
 	}
 }

@@ -38,7 +38,7 @@
 	[self addAnimationStep:animation duration:0.1 scale:1.8];
 	[self addAnimationStep:animation duration:1.0 scale:1.0];
 
-	animation.callback = ^
+	animation.completeHandler = ^
 	{
 		[self animate:animation]; // start over
 	};

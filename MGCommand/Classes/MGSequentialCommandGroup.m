@@ -61,9 +61,9 @@
 {
 	if (_commands.count <= 0)
 	{
-		if (self.callback)
+		if (self.completeHandler)
 		{
-			self.callback();
+			self.completeHandler();
 		}
 
 		return;

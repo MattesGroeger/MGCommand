@@ -26,9 +26,9 @@
 @protocol MGCancellableCommand <MGAsyncCommand>
 
 /**
-* Cancel the command execution. The command doesn't have to call the callback
-* as it will not complete anyway in this case. If it's added to a command group
-* this one will take care of completion instead.
+* Cancel the command execution. The command doesn't have to call the
+* completeHandler as it will not complete anyway in this case. If it's added to
+* a command group this one will take care of completion instead.
 *
 * It is up to the command implementation to decide what to do if the cancel is
 * called. The caller should make sure to call cancel only in the state of

@@ -43,7 +43,7 @@
 
 - (void)execute
 {
-	_executionHandler(_callback);
+	_executionHandler(_completeHandler);
 }
 
 @end

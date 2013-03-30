@@ -42,7 +42,7 @@ describe(@"MGSequentialCommandGroup", ^
 		{
 			__block NSUInteger callbackCount = 0;
 
-			sequentialCommandGroup.callback = ^
+			sequentialCommandGroup.completeHandler = ^
 			{
 				callbackCount++;
 			};
@@ -77,7 +77,7 @@ describe(@"MGSequentialCommandGroup", ^
 			[[command1 should] receive:@selector(execute)];
 			[[command2 should] receive:@selector(execute)];
 
-			autoStartGroup.callback = ^
+			autoStartGroup.completeHandler = ^
 			{
 				callbackExecuted = YES;
 			};
@@ -113,7 +113,7 @@ describe(@"MGSequentialCommandGroup", ^
 		{
 			id mockReceiver = [KWMock mock];
 
-			sequentialCommandGroup.callback = ^
+			sequentialCommandGroup.completeHandler = ^
 			{
 				[mockReceiver performSelector:@selector(testCall)];
 			};
@@ -126,7 +126,7 @@ describe(@"MGSequentialCommandGroup", ^
 			[[theValue(command3.callCount) shouldEventuallyBeforeTimingOutAfter(3)] equal:theValue(2)];
 		});
 
-		it(@"should work without callback beeing set", ^
+		it(@"should work without completeHandler beeing set", ^
 		{
 			[sequentialCommandGroup execute];
 		});
@@ -146,7 +146,7 @@ describe(@"MGSequentialCommandGroup", ^
 			id mockReceiver = [KWMock mock];
 			[[mockReceiver shouldEventuallyBeforeTimingOutAfter(1)] receive:@selector(testCall)];
 
-			sequentialCommandGroup.callback = ^
+			sequentialCommandGroup.completeHandler = ^
 			{
 				[mockReceiver performSelector:@selector(testCall)];
 			};
@@ -183,7 +183,7 @@ describe(@"MGSequentialCommandGroup", ^
 		{
 			id mockReceiver = [KWMock mock];
 
-			sequentialCommandGroup.callback = ^
+			sequentialCommandGroup.completeHandler = ^
 			{
 				[mockReceiver performSelector:@selector(testCall)];
 			};

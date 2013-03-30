@@ -31,7 +31,7 @@ typedef void (^MGAsyncCommandExecutionHandler)(MGCommandCompleteHandler);
 	MGAsyncCommandExecutionHandler _executionHandler;
 }
 
-@property (nonatomic, copy) MGCommandCompleteHandler callback;
+@property (nonatomic, copy) MGCommandCompleteHandler completeHandler;
 
 + (id)create:(MGAsyncCommandExecutionHandler)executionHandler;
 

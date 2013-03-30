@@ -74,9 +74,9 @@ describe(@"MGCommandExecutor", ^
 			[[theValue(executor.active) should] equal:theValue(NO)];
 		});
 
-		context(@"with callback", ^
+		context(@"with completeHandler", ^
 		{
-			it(@"should call callback for each command", ^
+			it(@"should call completeHandler for each command", ^
 			{
 				__block NSUInteger callbackCount = 0;
 				executor.commandCallback = ^(id <MGCommand> command)

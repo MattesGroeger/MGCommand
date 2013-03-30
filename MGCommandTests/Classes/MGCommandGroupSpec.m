@@ -51,7 +51,7 @@ describe(@"MGCommandGroup", ^
 		{
 			__block NSUInteger callbackCount = 0;
 
-			commandGroup.callback = ^
+			commandGroup.completeHandler = ^
 			{
 				callbackCount++;
 			};
@@ -109,7 +109,7 @@ describe(@"MGCommandGroup", ^
 			[[command1 should] receive:@selector(execute)];
 			[[command2 should] receive:@selector(execute)];
 
-			autoStartGroup.callback = ^
+			autoStartGroup.completeHandler = ^
 			{
 				callbackExecuted = YES;
 			};
@@ -139,7 +139,7 @@ describe(@"MGCommandGroup", ^
 			[[commandGroup.commands should] haveCountOf:0];
 		});
 
-		it(@"should work without callback beeing set", ^
+		it(@"should work without completeHandler beeing set", ^
 		{
 			[[command1 should] receive:@selector(execute)];
 			[[command2 should] receive:@selector(execute)];
@@ -153,7 +153,7 @@ describe(@"MGCommandGroup", ^
 			[[command1 should] receive:@selector(execute)];
 			[[command2 should] receive:@selector(execute)];
 
-			commandGroup.callback = ^
+			commandGroup.completeHandler = ^
 			{
 				callbackExecuted = YES;
 			};
@@ -179,7 +179,7 @@ describe(@"MGCommandGroup", ^
 		{
 			id mockReceiver = [KWMock mock];
 
-			commandGroup.callback = ^
+			commandGroup.completeHandler = ^
 			{
 				[mockReceiver performSelector:@selector(testCall)];
 			};
@@ -215,7 +215,7 @@ describe(@"MGCommandGroup", ^
 		{
 			id mockReceiver = [KWMock mock];
 
-			commandGroup.callback = ^
+			commandGroup.completeHandler = ^
 			{
 				[mockReceiver performSelector:@selector(testCall)];
 			};
@@ -231,7 +231,7 @@ describe(@"MGCommandGroup", ^
 		{
 			__block NSUInteger callback = 0;
 
-			commandGroup.callback = ^
+			commandGroup.completeHandler = ^
 			{
 				callback++;
 			};

@@ -21,7 +21,7 @@
 	// create sequential auto start group once
 	__weak AutoStartViewController *this = self;
 	_autoStartQueue = [MGSequentialCommandGroup autoStartGroup];
-	_autoStartQueue.callback = ^
+	_autoStartQueue.completeHandler = ^
 	{
 		[this queueFinished];
 	};
