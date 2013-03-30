@@ -175,29 +175,39 @@ MGCommandGroup *group = [MGSequentialCommandGroup autoStartGroup];
 group.autoStart = NO;
 ```
 
-### MGAsyncBlockCommands (since 0.0.2)
+### MGBlockCommand and MGAsyncBlockCommand (since 0.1.0)
 
-By using the provided `MGAsyncBlockCommand` you can put execution logic right into a block rather then implementing a whole class:
+By using the provided `MGBlockCommand` you can put execution logic right into a block rather then implementing a whole class:
 
 ```obj-c
 MGSequentialCommandGroup *sequence = [[MGSequentialCommandGroup alloc] init];
 
-[sequence addCommand:[MGAsyncBlockCommand create:^(MGCommandCompleteHandler complete)
+[sequence addCommand:[MGBlockCommand create:^
 {
 	NSLog(@"Awesome block command!");
-	complete();
 }]];
 
-[sequence addCommand:[MGAsyncBlockCommand create:^(MGCommandCompleteHandler complete)
+[sequence addCommand:[MGBlockCommand create:^
 {
 	NSLog(@"And the next one!");
-	complete();
 }]];
 
 [sequence execute];
 ```
 
-Please note, that you have to call `complete()` when the block operation is done (can be asynchronous). Otherwise the execution of the `MGAsyncBlockCommand` will never finish.
+If you want to do an asynchronous operation you should use the `MGAsyncBlockCommand` instead:
+
+```obj-c
+[sequence addCommand:[MGAsyncBlockCommand create:^(MGCommandCompleteHandler completeHandler)
+{
+	[Operation doSomethingAsync:^
+	{
+		completeHandler();
+	}];
+}]];
+```
+
+Please note, that you have to call `completeHandler()` when the block operation is done. Otherwise the execution of the `MGAsyncBlockCommand` will never finish.
 
 ### Cancellable Commands (since 0.0.3)
 
@@ -266,5 +276,37 @@ The configured command groups look like this (pseudo code):
 		DelayCommand(1)
 		DelayCommand(1)
 		DelayCommand(1)
-		MGAsyncBlockCommand("Finished")
+		MGBlockCommand("Finished")
 	}
+
+## Changelog
+
+**0.1.0** (???)
+
+* [NEW] Using `copy` property attribute instead of `strong` for callback
+* [NEW] Renamed `CommandCallback` into `MGCommandCompleteHandler`
+* [NEW] Renamed `MGBlockCommand` to `MGAsyncBlockCommand`
+* [NEW] New `MGBlockCommand` for synchronous execution
+
+**0.0.3** (2013/02/25)
+
+* [NEW] Cancellable commands
+
+**0.0.2** (2013/02/11)
+
+* [NEW] Passing data between commands (userInfo)
+* [NEW] Auto-start commands groups
+* [NEW] `MGBlockCommand`
+
+**0.0.1** (2012/12/16)
+
+* [NEW] Synchronous commands
+* [NEW] Asynchronous commands
+* [NEW] Concurrent command groups
+* [NEW] Sequential command groups
+
+## Contribution
+
+This library is released under the [MIT licence](http://opensource.org/licenses/MIT). Contributions are more than welcome!
+
+Also, follow me on Twitter if you like: [@MattesGroeger](https://twitter.com/MattesGroeger).

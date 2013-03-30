@@ -20,30 +20,22 @@
  * THE SOFTWARE.
  */
 
-#import "MGAsyncBlockCommand.h"
+#import <Foundation/Foundation.h>
+#import "MGCommand.h"
+#import "MGAsyncCommand.h"
 
-@implementation MGAsyncBlockCommand
+typedef void (^MGCommandExecutionHandler)(void);
 
-+ (id)create:(MGAsyncCommandExecutionHandler)executionHandler
+@interface MGBlockCommand : NSObject <MGCommand>
 {
-	return [[MGAsyncBlockCommand alloc] initWithExecutionHandler:executionHandler];
+@private
+	MGCommandExecutionHandler _executionHandler;
 }
 
-- (id)initWithExecutionHandler:(MGAsyncCommandExecutionHandler)executionHandler
-{
-	self = [super init];
+@property (nonatomic, copy) MGCommandCompleteHandler callback;
 
-	if (self)
-	{
-		_executionHandler = [executionHandler copy];
-	}
++ (id)create:(MGCommandExecutionHandler)executionHandler;
 
-	return self;
-}
-
-- (void)execute
-{
-	_executionHandler(_callback);
-}
+- (id)initWithExecutionHandler:(MGCommandExecutionHandler)executionHandler;
 
 @end

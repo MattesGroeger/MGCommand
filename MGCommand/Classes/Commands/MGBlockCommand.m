@@ -20,16 +20,16 @@
  * THE SOFTWARE.
  */
 
-#import "MGAsyncBlockCommand.h"
+#import "MGBlockCommand.h"
 
-@implementation MGAsyncBlockCommand
+@implementation MGBlockCommand
 
-+ (id)create:(MGAsyncCommandExecutionHandler)executionHandler
++ (id)create:(MGCommandExecutionHandler)executionHandler
 {
-	return [[MGAsyncBlockCommand alloc] initWithExecutionHandler:executionHandler];
+	return [[MGBlockCommand alloc] initWithExecutionHandler:executionHandler];
 }
 
-- (id)initWithExecutionHandler:(MGAsyncCommandExecutionHandler)executionHandler
+- (id)initWithExecutionHandler:(MGCommandExecutionHandler)executionHandler
 {
 	self = [super init];
 
@@ -43,7 +43,7 @@
 
 - (void)execute
 {
-	_executionHandler(_callback);
+	_executionHandler();
 }
 
 @end

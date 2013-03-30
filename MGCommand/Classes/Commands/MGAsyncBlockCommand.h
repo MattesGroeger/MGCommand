@@ -23,18 +23,18 @@
 #import <Foundation/Foundation.h>
 #import "MGAsyncCommand.h"
 
-typedef void (^CommandBlock)(MGCommandCompleteHandler);
+typedef void (^MGAsyncCommandExecutionHandler)(MGCommandCompleteHandler);
 
 @interface MGAsyncBlockCommand : NSObject <MGAsyncCommand>
 {
 @private
-	CommandBlock _commandBlock;
+	MGAsyncCommandExecutionHandler _executionHandler;
 }
 
 @property (nonatomic, copy) MGCommandCompleteHandler callback;
 
-+ (id)create:(CommandBlock)commandComplete;
++ (id)create:(MGAsyncCommandExecutionHandler)executionHandler;
 
-- (id)initWithBlock:(CommandBlock)block;
+- (id)initWithExecutionHandler:(MGAsyncCommandExecutionHandler)executionHandler;
 
 @end

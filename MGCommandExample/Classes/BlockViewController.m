@@ -46,7 +46,7 @@
 
 - (void)addAnimationStep:(MGSequentialCommandGroup *)animationGroup duration:(CGFloat)duration scale:(CGFloat)scale
 {
-	[animationGroup addCommand:[MGAsyncBlockCommand create:^(MGCommandCompleteHandler callback) {
+	[animationGroup addCommand:[MGAsyncBlockCommand create:^(MGCommandCompleteHandler completeHandler) {
         [UIView animateWithDuration:duration
                               delay:0
                             options:UIViewAnimationOptionCurveEaseInOut
@@ -54,7 +54,7 @@
                              _heart.transform = CGAffineTransformMakeScale(scale, scale);
                          }
                          completion:^(BOOL finished) {
-                             callback();
+                             completeHandler();
                          }];
     }]];
 }
