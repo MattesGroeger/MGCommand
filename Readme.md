@@ -281,7 +281,7 @@ The configured command groups look like this (pseudo code):
 
 ## Changelog
 
-**0.1.0** (???)
+**0.1.0** (2013/04/01)
 
 * [NEW] Using `copy` property attribute instead of `strong` for completeHandler
 * [NEW] Renamed `CommandCallback` into `MGCommandCompleteHandler`
