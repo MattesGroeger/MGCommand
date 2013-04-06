@@ -591,6 +591,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MGCommandExample/MGCommandExample-Prefix.pch";
 				INFOPLIST_FILE = "MGCommandExample/MGCommandExample-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -663,6 +664,7 @@
 				DSTROOT = /tmp/MGCommand.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MGCommand/MGCommand-Prefix.pch";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -693,7 +695,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MGCommand/MGCommand-Prefix.pch";
 				INFOPLIST_FILE = "MGCommandTests/MGCommandTests-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = YES;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -711,6 +715,7 @@
 				GCC_PREFIX_HEADER = "MGCommand/MGCommand-Prefix.pch";
 				INFOPLIST_FILE = "MGCommandTests/MGCommandTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = YES;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
