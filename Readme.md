@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/MattesGroeger/MGCommand.png?branch=master)](https://travis-ci.org/MattesGroeger/MGCommand)
+
 ## Introduction
 
 This library provides a lightweight solution for executing `Commands`. They can be executed sequentially or concurrently with `CommandGroups`. Because groups are `Commands` as well, they can be nested into each other. This can be used for scripted code execution. See the [MGCommandConfig](https://github.com/MattesGroeger/MGCommandConfig) project for more details.
