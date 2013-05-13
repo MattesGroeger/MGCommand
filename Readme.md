@@ -283,6 +283,10 @@ The configured command groups look like this (pseudo code):
 
 ## Changelog
 
+**0.1.1** (2013/05/13)
+
+* [FIXED] MGAsyncCommand never gets released
+
 **0.1.0** (2013/04/01)
 
 * [NEW] Using `copy` property attribute instead of `strong` for completeHandler
