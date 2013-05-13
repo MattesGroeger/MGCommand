@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6B801F0F63F84F66AF0EC22A /* libPods-MGCommandTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6943BDC9B8684C25B73ABFA8 /* libPods-MGCommandTests.a */; };
-		A83B6480B29C4C139024FA5B /* libPods-MGCommandExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BC930AE65084705ABD74189 /* libPods-MGCommandExample.a */; };
 		AD3A1BE516C45BB4000C4265 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = AD3A1BE416C45BB4000C4265 /* heart.png */; };
 		AD8431A1167CFADA009123B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84317B167CFABA009123B0 /* UIKit.framework */; };
 		AD8431A2167CFADA009123B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F941167CF18B000C3B76 /* Foundation.framework */; };
@@ -155,7 +154,6 @@
 				AD8431A2167CFADA009123B0 /* Foundation.framework in Frameworks */,
 				AD8431A3167CFADA009123B0 /* CoreGraphics.framework in Frameworks */,
 				AD843218167D0F6B009123B0 /* libMGCommand.a in Frameworks */,
-				A83B6480B29C4C139024FA5B /* libPods-MGCommandExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,7 +630,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -652,7 +650,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
