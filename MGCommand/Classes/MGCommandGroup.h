@@ -48,3 +48,6 @@
 - (NSUInteger)count;
 
 @end
+
+extern void MGCommandRetain(id instance);
+extern void MGCommandRelease(id instance);

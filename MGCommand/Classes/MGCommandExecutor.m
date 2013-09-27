@@ -51,16 +51,17 @@
 - (void)executeCommand:(id <MGCommand>)command withUserInfo:(NSMutableDictionary *)userInfo
 {
 	__weak id weakCommand = command;
+    __weak __typeof (self) weakBlock = self;
 
 	MGCommandCompleteHandler subCompleteHandler = ^
 	{
-		if ([_activeCommands containsObject:weakCommand])
+		if ([weakBlock.activeCommands containsObject:weakCommand])
 		{
-			[_activeCommands removeObject:weakCommand];
+			[weakBlock.activeCommands removeObject:weakCommand];
 
-			if (_commandCallback)
+			if (weakBlock.commandCallback)
 			{
-				_commandCallback(weakCommand);
+                weakBlock.commandCallback(weakCommand);
 			}
 		}
 	};

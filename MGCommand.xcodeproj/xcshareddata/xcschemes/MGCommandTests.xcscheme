@@ -36,6 +36,17 @@
                BlueprintName = "MGCommandTests"
                ReferencedContainer = "container:MGCommand.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "MGCommandExecutorSpec">
+               </Test>
+               <Test
+                  Identifier = "MGCommandGroupSpec">
+               </Test>
+               <Test
+                  Identifier = "MGSequentialCommandGroupSpec">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
@@ -55,7 +66,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       debugDocumentVersioning = "YES">
    </ProfileAction>
    <AnalyzeAction
