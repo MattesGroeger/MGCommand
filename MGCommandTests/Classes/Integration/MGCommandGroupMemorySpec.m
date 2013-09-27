@@ -8,33 +8,39 @@ SPEC_BEGIN(MGCommandGroupMemorySpec)
                 context(@"when execute on group is called", ^{
                     context(@"without commands", ^{
                         it(@"should dealloc after execution", ^{
-                            MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
+                            @autoreleasepool {
+                                MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
 
-                            [[delegate should] receive: @selector(deallocCalled)];
+                                [[delegate should] receive: @selector(deallocCalled)];
 
-                            [delegate executeEmptyMGCommandGroup];
+                                [delegate executeEmptyMGCommandGroup];
+                            }
                         });
                     });
 
                     context(@"with synchronous command", ^{
                         it(@"should dealloc after execution", ^{
-                            MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
+                            @autoreleasepool {
+                                MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
 
-                            [[delegate should] receive: @selector(commandExecuted)];
-                            [[delegate should] receive: @selector(deallocCalled)];
+                                [[delegate should] receive: @selector(commandExecuted)];
+                                [[delegate should] receive: @selector(deallocCalled)];
 
-                            [delegate executeSynchronousMGCommandGroup];
+                                [delegate executeSynchronousMGCommandGroup];
+                            }
                         });
                     });
 
                     context(@"with asynchronous command", ^{
                         it(@"should dealloc after execution", ^{
-                            MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
+                            @autoreleasepool {
+                                MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
 
-                            [[delegate shouldEventually] receive: @selector(commandExecuted)];
-                            [[delegate shouldEventually] receive: @selector(deallocCalled)];
+                                [[delegate shouldEventually] receive: @selector(commandExecuted)];
+                                [[delegate shouldEventually] receive: @selector(deallocCalled)];
 
-                            [delegate executeAsynchronousMGCommandGroup];
+                                [delegate executeAsynchronousMGCommandGroup];
+                            }
                         });
 
                         it(@"should call the completeHandler on completion", ^{
