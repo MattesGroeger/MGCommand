@@ -47,6 +47,9 @@
 		D8BEA163CA5D708D0C51418A /* MGSequentialCommandGroupMemorySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA1DBA98D1CF49E6AC037 /* MGSequentialCommandGroupMemorySpec.m */; };
 		D8BEA218B411D4FDC5E38655 /* RetainGuardDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA033C25BE5ED55F6B768 /* RetainGuardDelegate.m */; };
 		D8BEA21F55241C01159E50D5 /* TestableRetainClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA00858FC31DC2CE05DF1 /* TestableRetainClass.m */; };
+		D8BEA338A7F8AC8A8DC7AEE0 /* MGCommandGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D91D29DC5CA0F5DEDD6E9 /* MGCommandGroupSpec.m */; };
+		D8BEA491948CE66A400C58F8 /* MGSequentialCommandGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9748FAA9C10F937B20CF /* MGSequentialCommandGroupSpec.m */; };
+		D8BEA885F26440B7DEE9BFDE /* MGCommandExecutorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D96E769D769E23291E58C /* MGCommandExecutorSpec.m */; };
 		D8BEA91AC74BA3004C5C915A /* MGCommandGroupMemorySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEAC874D89A42A3BF91731 /* MGCommandGroupMemorySpec.m */; };
 		D8BEAC48C3EC0D40910FFEAB /* TestableMGSequentialCommandGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEAF124AC45FFA953D16AF /* TestableMGSequentialCommandGroup.m */; };
 		D8BEAC9B24D764241C27EE4C /* MGCommandTestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA0FFFE039DEE5BC692E8 /* MGCommandTestDelegate.m */; };
@@ -589,6 +592,9 @@
 				D8BEAFBC903AA359D7687F51 /* MGCommandGroupRetainGuardSpec.m in Sources */,
 				D8BEAC48C3EC0D40910FFEAB /* TestableMGSequentialCommandGroup.m in Sources */,
 				D8BEA163CA5D708D0C51418A /* MGSequentialCommandGroupMemorySpec.m in Sources */,
+				D8BEA338A7F8AC8A8DC7AEE0 /* MGCommandGroupSpec.m in Sources */,
+				D8BEA491948CE66A400C58F8 /* MGSequentialCommandGroupSpec.m in Sources */,
+				D8BEA885F26440B7DEE9BFDE /* MGCommandExecutorSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
