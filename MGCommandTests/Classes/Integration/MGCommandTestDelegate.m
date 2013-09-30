@@ -5,87 +5,100 @@
 #import "TestableMGSequentialCommandGroup.h"
 
 
-@implementation MGCommandTestDelegate {
+@implementation MGCommandTestDelegate
+{
 }
 
-- (void)executeEmptyMGCommandGroup {
-    TestableMGCommandGroup *group = [[TestableMGCommandGroup alloc] initWithDelegate: self];
-    [group execute];
+- (void)executeEmptyMGCommandGroup
+{
+	TestableMGCommandGroup *group = [[TestableMGCommandGroup alloc] initWithDelegate: self];
+	[group execute];
 }
 
-- (void)executeSynchronousMGCommandGroup {
-    TestableMGCommandGroup *group = [[TestableMGCommandGroup alloc] initWithDelegate: self];
-    [group addCommand: [[MGBlockCommand alloc]
-            initWithExecutionHandler: ^{
-                [self commandExecuted];
-            }]];
+- (void)executeSynchronousMGCommandGroup
+{
+	TestableMGCommandGroup *group = [[TestableMGCommandGroup alloc] initWithDelegate: self];
+	[group addCommand: [[MGBlockCommand alloc] initWithExecutionHandler: ^
+	{
+		[self commandExecuted];
+	}]];
 
-    [group execute];
+	[group execute];
 }
 
-- (void)executeAsynchronousMGCommandGroup {
-    __weak __typeof (self) weakBlock = self;
-    TestableMGCommandGroup *group = [[TestableMGCommandGroup alloc] initWithDelegate: self];
-    group.completeHandler = ^{
-        [weakBlock asyncCommandsCompleted];
-    };
+- (void)executeAsynchronousMGCommandGroup
+{
+	__weak __typeof (self) weakBlock = self;
+	TestableMGCommandGroup *group = [[TestableMGCommandGroup alloc] initWithDelegate: self];
+	group.completeHandler = ^
+	{
+		[weakBlock asyncCommandsCompleted];
+	};
 
-    [group addCommand: [[MGAsyncBlockCommand alloc]
-            initWithExecutionHandler: ^(MGCommandCompleteHandler completeHandler) {
+	[group addCommand: [[MGAsyncBlockCommand alloc] initWithExecutionHandler: ^(MGCommandCompleteHandler completeHandler)
+	{
 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 500 * NSEC_PER_MSEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                    [weakBlock commandExecuted];
-                    completeHandler();
-                });
-            }
-    ]];
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 500 * NSEC_PER_MSEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^
+		{
+			[weakBlock commandExecuted];
+			completeHandler();
+		});
+	}
+	]];
 
-    [group execute];
+	[group execute];
 }
 
-- (void)executeEmptyMGSequentialCommandGroup {
-    TestableMGSequentialCommandGroup *group = [[TestableMGSequentialCommandGroup alloc] initWithDelegate: self];
-    [group execute];
+- (void)executeEmptyMGSequentialCommandGroup
+{
+	TestableMGSequentialCommandGroup *group = [[TestableMGSequentialCommandGroup alloc] initWithDelegate: self];
+	[group execute];
 }
 
-- (void)executeSynchronousMGSequentialCommandGroup {
-    TestableMGSequentialCommandGroup *group = [[TestableMGSequentialCommandGroup alloc] initWithDelegate: self];
-    [group addCommand: [[MGBlockCommand alloc]
-            initWithExecutionHandler: ^{
-                [self commandExecuted];
-            }]];
+- (void)executeSynchronousMGSequentialCommandGroup
+{
+	TestableMGSequentialCommandGroup *group = [[TestableMGSequentialCommandGroup alloc] initWithDelegate: self];
+	[group addCommand: [[MGBlockCommand alloc] initWithExecutionHandler: ^
+	{
+		[self commandExecuted];
+	}]];
 
-    [group execute];
+	[group execute];
 }
 
-- (void)executeAsynchronousMGSequentialCommandGroup {
-    __weak __typeof (self) weakBlock = self;
-    TestableMGSequentialCommandGroup *group = [[TestableMGSequentialCommandGroup alloc] initWithDelegate: self];
-    group.completeHandler = ^{
-        [weakBlock asyncCommandsCompleted];
-    };
+- (void)executeAsynchronousMGSequentialCommandGroup
+{
+	__weak __typeof (self) weakBlock = self;
+	TestableMGSequentialCommandGroup *group = [[TestableMGSequentialCommandGroup alloc] initWithDelegate: self];
+	group.completeHandler = ^
+	{
+		[weakBlock asyncCommandsCompleted];
+	};
 
-    [group addCommand: [[MGAsyncBlockCommand alloc]
-            initWithExecutionHandler: ^(MGCommandCompleteHandler completeHandler) {
+	[group addCommand: [[MGAsyncBlockCommand alloc] initWithExecutionHandler: ^(MGCommandCompleteHandler completeHandler)
+	{
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 500 * NSEC_PER_MSEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^
+		{
+			[weakBlock commandExecuted];
+			completeHandler();
+		});
+	}
+	]];
 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 500 * NSEC_PER_MSEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                    [weakBlock commandExecuted];
-                    completeHandler();
-                });
-            }
-    ]];
-
-    [group execute];
+	[group execute];
 }
 
 
-- (void)asyncCommandsCompleted {
+- (void)asyncCommandsCompleted
+{
 }
 
-- (void)commandExecuted {
+- (void)commandExecuted
+{
 }
 
-- (void)deallocCalled {
+- (void)deallocCalled
+{
 }
 
 @end

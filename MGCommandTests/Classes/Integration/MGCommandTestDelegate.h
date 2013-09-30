@@ -6,11 +6,15 @@
 @interface MGCommandTestDelegate : NSObject
 
 - (void)executeEmptyMGCommandGroup;
+
 - (void)executeSynchronousMGCommandGroup;
+
 - (void)executeAsynchronousMGCommandGroup;
 
 - (void)executeEmptyMGSequentialCommandGroup;
+
 - (void)executeSynchronousMGSequentialCommandGroup;
+
 - (void)executeAsynchronousMGSequentialCommandGroup;
 
 - (void)asyncCommandsCompleted;

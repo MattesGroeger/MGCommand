@@ -2,56 +2,69 @@
 #import "MGCommandTestDelegate.h"
 
 SPEC_BEGIN(MGSequentialCommandGroupMemorySpec)
-        describe(@"MGSequentialCommandGroup", ^{
-            context(@"with weak reference to the MGSequentialCommandGroup", ^{
-                context(@"when execute on group is called", ^{
-                    context(@"without commands", ^{
-                        it(@"should dealloc after execution", ^{
-                            @autoreleasepool {
-                                MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
+		describe(@"MGSequentialCommandGroup", ^
+		{
+			context(@"with weak reference to the MGSequentialCommandGroup", ^
+			{
+				context(@"when execute on group is called", ^
+				{
+					context(@"without commands", ^
+					{
+						it(@"should dealloc after execution", ^
+						{
+							@autoreleasepool
+							{
+								MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
 
-                                [[delegate should] receive: @selector(deallocCalled)];
+								[[delegate should] receive: @selector(deallocCalled)];
 
-                                [delegate executeEmptyMGSequentialCommandGroup];
-                            }
-                        });
-                    });
+								[delegate executeEmptyMGSequentialCommandGroup];
+							}
+						});
+					});
 
-                    context(@"with synchronous command", ^{
-                        it(@"should dealloc after execution", ^{
-                            @autoreleasepool {
-                                MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
+					context(@"with synchronous command", ^
+					{
+						it(@"should dealloc after execution", ^
+						{
+							@autoreleasepool
+							{
+								MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
 
-                                [[delegate should] receive: @selector(commandExecuted)];
-                                [[delegate should] receive: @selector(deallocCalled)];
+								[[delegate should] receive: @selector(commandExecuted)];
+								[[delegate should] receive: @selector(deallocCalled)];
 
-                                [delegate executeSynchronousMGSequentialCommandGroup];
-                            }
-                        });
-                    });
+								[delegate executeSynchronousMGSequentialCommandGroup];
+							}
+						});
+					});
 
-                    context(@"with asynchronous command", ^{
-                        it(@"should dealloc after execution", ^{
-                            @autoreleasepool {
-                                MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
+					context(@"with asynchronous command", ^
+					{
+						it(@"should dealloc after execution", ^
+						{
+							@autoreleasepool
+							{
+								MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
 
-                                [[delegate shouldEventually] receive: @selector(commandExecuted)];
-                                [[delegate shouldEventually] receive: @selector(deallocCalled)];
+								[[delegate shouldEventually] receive: @selector(commandExecuted)];
+								[[delegate shouldEventually] receive: @selector(deallocCalled)];
 
-                                [delegate executeAsynchronousMGSequentialCommandGroup];
-                            }
-                        });
+								[delegate executeAsynchronousMGSequentialCommandGroup];
+							}
+						});
 
-                        it(@"should call the completeHandler on completion", ^{
-                            MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
+						it(@"should call the completeHandler on completion", ^
+						{
+							MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
 
-                            [[delegate shouldEventually] receive: @selector(asyncCommandsCompleted)];
+							[[delegate shouldEventually] receive: @selector(asyncCommandsCompleted)];
 
-                            [delegate executeAsynchronousMGSequentialCommandGroup];
-                        });
-                    });
-                });
-            });
-        });
+							[delegate executeAsynchronousMGSequentialCommandGroup];
+						});
+					});
+				});
+			});
+		});
 
-        SPEC_END
+		SPEC_END

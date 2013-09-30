@@ -6,19 +6,23 @@
 @property(nonatomic, weak) MGCommandTestDelegate *delegate;
 @end
 
-@implementation TestableMGCommandGroup {
+@implementation TestableMGCommandGroup
+{
 }
 
-- (id)initWithDelegate: (MGCommandTestDelegate *)delegate {
-    if(self = [super init]) {
-        self.delegate = delegate;
-    }
+- (id)initWithDelegate: (MGCommandTestDelegate *)delegate
+{
+	if (self = [super init])
+	{
+		self.delegate = delegate;
+	}
 
-    return self;
+	return self;
 }
 
-- (void)dealloc {
-    [self.delegate deallocCalled];
+- (void)dealloc
+{
+	[self.delegate deallocCalled];
 }
 
 @end

@@ -3,32 +3,37 @@
 #import "MGCommandGroup.h"
 
 
-@implementation RetainGuardDelegate {
+@implementation RetainGuardDelegate
+{
 }
 
-- (void)createObject {
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Wunused-variable"
+- (void)createObject
+{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-variable"
 
-        [[TestableRetainClass alloc] initWithDelegate: self];
+	[[TestableRetainClass alloc] initWithDelegate: self];
 
-    #pragma clang diagnostic pop
+#pragma clang diagnostic pop
 }
 
-- (void)createObjectAndRetain {
-    TestableRetainClass *instance = [[TestableRetainClass alloc] initWithDelegate: self];
+- (void)createObjectAndRetain
+{
+	TestableRetainClass *instance = [[TestableRetainClass alloc] initWithDelegate: self];
 
-    MGCommandRetain(instance);
+	MGCommandRetain(instance);
 }
 
-- (void)createObjectAndRetainAndRelease {
-    TestableRetainClass *instance = [[TestableRetainClass alloc] initWithDelegate: self];
+- (void)createObjectAndRetainAndRelease
+{
+	TestableRetainClass *instance = [[TestableRetainClass alloc] initWithDelegate: self];
 
-    MGCommandRetain(instance);
-    MGCommandRelease(instance);
+	MGCommandRetain(instance);
+	MGCommandRelease(instance);
 }
 
-- (void)instanceReleased {
+- (void)instanceReleased
+{
 
 }
 

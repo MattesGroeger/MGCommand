@@ -6,20 +6,23 @@
 @property(nonatomic, weak) RetainGuardDelegate *delegate;
 @end
 
-@implementation TestableRetainClass {
+@implementation TestableRetainClass
+{
 }
 
-- (id)initWithDelegate: (RetainGuardDelegate *)delegate {
-    if (self = [super init]) {
-        self.delegate = delegate;
-    }
+- (id)initWithDelegate: (RetainGuardDelegate *)delegate
+{
+	if (self = [super init])
+	{
+		self.delegate = delegate;
+	}
 
-    return self;
+	return self;
 }
 
-- (void)dealloc {
-    [self.delegate instanceReleased];
+- (void)dealloc
+{
+	[self.delegate instanceReleased];
 }
-
 
 @end

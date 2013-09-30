@@ -25,16 +25,19 @@
 
 static NSMutableSet *retainedInstances;
 
-void MGCommandRetain(id instance) {
-    if(retainedInstances == nil) {
-        retainedInstances = [[NSMutableSet alloc] init];
-    }
+void MGCommandRetain(id instance)
+{
+	if (retainedInstances == nil)
+	{
+		retainedInstances = [[NSMutableSet alloc] init];
+	}
 
-    [retainedInstances addObject: instance];
+	[retainedInstances addObject: instance];
 }
 
-void MGCommandRelease(id instance) {
-    [retainedInstances removeObject: instance];
+void MGCommandRelease(id instance)
+{
+	[retainedInstances removeObject: instance];
 }
 
 @implementation MGCommandGroup
