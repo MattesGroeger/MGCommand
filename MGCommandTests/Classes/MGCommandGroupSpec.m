@@ -23,6 +23,7 @@
 #import "Kiwi.h"
 #import "MGCommandGroup.h"
 #import "CommandFixture.h"
+#import "TestableMGCommandGroup.h"
 
 SPEC_BEGIN(MGCommandGroupSpec)
 
