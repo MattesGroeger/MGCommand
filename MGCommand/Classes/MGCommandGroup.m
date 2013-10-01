@@ -23,6 +23,23 @@
 #import "MGCommandGroup.h"
 #import "MGCommandExecutor.h"
 
+static NSMutableSet *retainedInstances;
+
+void MGCommandRetain(id instance)
+{
+	if (retainedInstances == nil)
+	{
+		retainedInstances = [[NSMutableSet alloc] init];
+	}
+
+	[retainedInstances addObject: instance];
+}
+
+void MGCommandRelease(id instance)
+{
+	[retainedInstances removeObject: instance];
+}
+
 @implementation MGCommandGroup
 
 + (id)autoStartGroup
@@ -44,11 +61,15 @@
 		_userInfo = [NSMutableDictionary dictionary];
 		_autoStart = autoStart;
 		_commands = [NSMutableArray array];
+
+        __weak __typeof (self) weakBlock = self;
+        __weak NSMutableArray *weakCommands = _commands;
+
 		_commandExecuter = [[MGCommandExecutor alloc]
 				initWithCompleteCallback:^(id <MGCommand> command)
 		{
-			[_commands removeObject:command];
-			[self callBackWhenDone];
+			[weakCommands removeObject:command];
+			[weakBlock callBackWhenDone];
 		}];
 	}
 
@@ -70,6 +91,8 @@
 
 - (void)execute
 {
+    MGCommandRetain(self);
+
 	NSAssert(!_commandExecuter.active,
 		@"Can't execute command group while already executing!");
 
@@ -90,11 +113,14 @@
 {
 	if (_commands.count == 0)
 	{
-		if (_completeHandler)
-		{
-			_completeHandler();
-		}
-	}
+
+        if (_completeHandler)
+        {
+            _completeHandler();
+        }
+
+        MGCommandRelease(self);
+    }
 }
 
 - (void)cancel

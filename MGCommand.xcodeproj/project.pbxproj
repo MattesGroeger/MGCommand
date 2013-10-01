@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C8D91DA17EAEF400016C275 /* libMGCommand.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F93E167CF18B000C3B76 /* libMGCommand.a */; };
 		6B801F0F63F84F66AF0EC22A /* libPods-MGCommandTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6943BDC9B8684C25B73ABFA8 /* libPods-MGCommandTests.a */; };
 		AD3A1BE516C45BB4000C4265 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = AD3A1BE416C45BB4000C4265 /* heart.png */; };
 		AD8431A1167CFADA009123B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84317B167CFABA009123B0 /* UIKit.framework */; };
@@ -20,7 +21,6 @@
 		AD8431D5167CFCA4009123B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8431D2167CFCA4009123B0 /* AppDelegate.m */; };
 		AD8431D6167CFCA4009123B0 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8431D4167CFCA4009123B0 /* GroupViewController.m */; };
 		AD843201167D0AAC009123B0 /* PrintCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = AD843200167D0AAC009123B0 /* PrintCommand.m */; };
-		AD843218167D0F6B009123B0 /* libMGCommand.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F93E167CF18B000C3B76 /* libMGCommand.a */; };
 		AD9ECB7116B544E400A4EAC4 /* CommandExample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD9ECB7016B544E400A4EAC4 /* CommandExample.storyboard */; };
 		AD9ECBBA16B59DCD00A4EAC4 /* CountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9ECBB916B59DCD00A4EAC4 /* CountCommand.m */; };
 		ADB4F942167CF18B000C3B76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F941167CF18B000C3B76 /* Foundation.framework */; };
@@ -28,18 +28,15 @@
 		ADB4F954167CF18B000C3B76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F941167CF18B000C3B76 /* Foundation.framework */; };
 		ADB4F957167CF18B000C3B76 /* libMGCommand.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB4F93E167CF18B000C3B76 /* libMGCommand.a */; };
 		ADB4F95D167CF18B000C3B76 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADB4F95B167CF18B000C3B76 /* InfoPlist.strings */; };
-		BF8D9117D72646CCFB395CA4 /* MGCommandExecutorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D96E769D769E23291E58C /* MGCommandExecutorSpec.m */; };
 		BF8D912A8CDEF49978663E65 /* MGSequentialCommandGroup.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D95913A1E8D471635E647 /* MGSequentialCommandGroup.h */; };
 		BF8D92FBF0DD0B6186FCF8F6 /* MGCommandGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9F9F9E25DA3F446E4B6A /* MGCommandGroup.m */; };
 		BF8D930246040B23B77064E4 /* MGCommandExecutor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D94C6403B8E19823673D9 /* MGCommandExecutor.h */; };
 		BF8D93F1C2CD947506FCF8D1 /* MGCommandGroup.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D92A37AA5E2D9A5FD5061 /* MGCommandGroup.h */; };
-		BF8D94CF1D7E37AEA05F0179 /* MGSequentialCommandGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9748FAA9C10F937B20CF /* MGSequentialCommandGroupSpec.m */; };
 		BF8D962EEE0919628492E1F8 /* MGBlockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9BD7E2F9D15528A55CE3 /* MGBlockCommand.m */; };
 		BF8D96FD050CEF30975612F0 /* CommandFixture.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9CDBD3D9BC7354CEA1C3 /* CommandFixture.m */; };
 		BF8D97DA6949E258E9345028 /* AutoStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9586A5C16C39ACE6169A /* AutoStartViewController.m */; };
 		BF8D98DFCC45C2285F523225 /* MGSequentialCommandGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9AB7519121B908AE4A60 /* MGSequentialCommandGroup.m */; };
 		BF8D992A47B5C3B403407D60 /* DelayCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D97E03678FD133B903B3C /* DelayCommand.m */; };
-		BF8D9B0849B462830E5A61F0 /* MGCommandGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D91D29DC5CA0F5DEDD6E9 /* MGCommandGroupSpec.m */; };
 		BF8D9B16CA2950FCB872F640 /* BlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D96FC130AE12DB32A3943 /* BlockViewController.m */; };
 		BF8D9C89700415A301ECB4DD /* MGCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E1D145681C189D60AE4 /* MGCommand.h */; };
 		BF8D9CAB32EEF50FD2AEBE70 /* MGCommandExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D942223896C84D8C3BAEF /* MGCommandExecutor.m */; };
@@ -47,6 +44,17 @@
 		BF8D9EAC59AD9531907928C5 /* MGAsyncBlockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9F3E2CE740D5DB0DE288 /* MGAsyncBlockCommand.m */; };
 		BF8D9EC61773DE4B4C617E6B /* MGBlockCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D9E48BB74CF9E8E728096 /* MGBlockCommand.h */; };
 		BF8D9F8A8C53AC3EDD0E3407 /* MGAsyncBlockCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF8D937675BBD06310549D52 /* MGAsyncBlockCommand.h */; };
+		D8BEA163CA5D708D0C51418A /* MGSequentialCommandGroupMemorySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA1DBA98D1CF49E6AC037 /* MGSequentialCommandGroupMemorySpec.m */; };
+		D8BEA218B411D4FDC5E38655 /* RetainGuardDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA033C25BE5ED55F6B768 /* RetainGuardDelegate.m */; };
+		D8BEA21F55241C01159E50D5 /* TestableRetainClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA00858FC31DC2CE05DF1 /* TestableRetainClass.m */; };
+		D8BEA338A7F8AC8A8DC7AEE0 /* MGCommandGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D91D29DC5CA0F5DEDD6E9 /* MGCommandGroupSpec.m */; };
+		D8BEA491948CE66A400C58F8 /* MGSequentialCommandGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D9748FAA9C10F937B20CF /* MGSequentialCommandGroupSpec.m */; };
+		D8BEA885F26440B7DEE9BFDE /* MGCommandExecutorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8D96E769D769E23291E58C /* MGCommandExecutorSpec.m */; };
+		D8BEA91AC74BA3004C5C915A /* MGCommandGroupMemorySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEAC874D89A42A3BF91731 /* MGCommandGroupMemorySpec.m */; };
+		D8BEAC48C3EC0D40910FFEAB /* TestableMGSequentialCommandGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEAF124AC45FFA953D16AF /* TestableMGSequentialCommandGroup.m */; };
+		D8BEAC9B24D764241C27EE4C /* MGCommandTestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA0FFFE039DEE5BC692E8 /* MGCommandTestDelegate.m */; };
+		D8BEAEC39750A93B7DCD31F8 /* TestableMGCommandGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA003178B6FE6220E8617 /* TestableMGCommandGroup.m */; };
+		D8BEAFBC903AA359D7687F51 /* MGCommandGroupRetainGuardSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA7EF240F7D01FA9E4492 /* MGCommandGroupRetainGuardSpec.m */; };
 		DB9E97206943D08F33E55CFF /* MGCancellableCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB9E9331267CDB62BC41106C /* MGCancellableCommand.h */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +96,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C8F649717EAF44A00BE9E27 /* libPods-MGCommandTests-Kiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MGCommandTests-Kiwi.a"; path = "Pods/build/Debug-iphoneos/libPods-MGCommandTests-Kiwi.a"; sourceTree = "<group>"; };
 		56CD851006834BD49AFA72F2 /* Pods-MGCommandTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGCommandTests.xcconfig"; path = "Pods/Pods-MGCommandTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		5BC930AE65084705ABD74189 /* libPods-MGCommandExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MGCommandExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6943BDC9B8684C25B73ABFA8 /* libPods-MGCommandTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MGCommandTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +151,19 @@
 		BF8D9E4A2A9E744CB8BFA8BF /* MGAsyncCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAsyncCommand.h; sourceTree = "<group>"; };
 		BF8D9F3E2CE740D5DB0DE288 /* MGAsyncBlockCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGAsyncBlockCommand.m; sourceTree = "<group>"; };
 		BF8D9F9F9E25DA3F446E4B6A /* MGCommandGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandGroup.m; sourceTree = "<group>"; };
+		D8BEA003178B6FE6220E8617 /* TestableMGCommandGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestableMGCommandGroup.m; path = ../Integration/TestableMGCommandGroup.m; sourceTree = "<group>"; };
+		D8BEA00858FC31DC2CE05DF1 /* TestableRetainClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestableRetainClass.m; sourceTree = "<group>"; };
+		D8BEA033C25BE5ED55F6B768 /* RetainGuardDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetainGuardDelegate.m; sourceTree = "<group>"; };
+		D8BEA0FFFE039DEE5BC692E8 /* MGCommandTestDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGCommandTestDelegate.m; path = ../Integration/MGCommandTestDelegate.m; sourceTree = "<group>"; };
+		D8BEA1DBA98D1CF49E6AC037 /* MGSequentialCommandGroupMemorySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSequentialCommandGroupMemorySpec.m; sourceTree = "<group>"; };
+		D8BEA1DDA95216D97FC67641 /* TestableMGCommandGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestableMGCommandGroup.h; path = ../Integration/TestableMGCommandGroup.h; sourceTree = "<group>"; };
+		D8BEA2FE61EC75CE3A88824A /* TestableMGSequentialCommandGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestableMGSequentialCommandGroup.h; sourceTree = "<group>"; };
+		D8BEA421652D0B040A8E806F /* TestableRetainClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestableRetainClass.h; sourceTree = "<group>"; };
+		D8BEA54CDF792CE29D443281 /* RetainGuardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetainGuardDelegate.h; sourceTree = "<group>"; };
+		D8BEA65658B803C1920031E9 /* MGCommandTestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MGCommandTestDelegate.h; path = ../Integration/MGCommandTestDelegate.h; sourceTree = "<group>"; };
+		D8BEA7EF240F7D01FA9E4492 /* MGCommandGroupRetainGuardSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandGroupRetainGuardSpec.m; sourceTree = "<group>"; };
+		D8BEAC874D89A42A3BF91731 /* MGCommandGroupMemorySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandGroupMemorySpec.m; sourceTree = "<group>"; };
+		D8BEAF124AC45FFA953D16AF /* TestableMGSequentialCommandGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestableMGSequentialCommandGroup.m; sourceTree = "<group>"; };
 		DB9E9331267CDB62BC41106C /* MGCancellableCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCancellableCommand.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,10 +172,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C8D91DA17EAEF400016C275 /* libMGCommand.a in Frameworks */,
 				AD8431A1167CFADA009123B0 /* UIKit.framework in Frameworks */,
 				AD8431A2167CFADA009123B0 /* Foundation.framework in Frameworks */,
 				AD8431A3167CFADA009123B0 /* CoreGraphics.framework in Frameworks */,
-				AD843218167D0F6B009123B0 /* libMGCommand.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +252,7 @@
 		ADB4F940167CF18B000C3B76 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1C8F649717EAF44A00BE9E27 /* libPods-MGCommandTests-Kiwi.a */,
 				ADB4F941167CF18B000C3B76 /* Foundation.framework */,
 				ADB4F950167CF18B000C3B76 /* SenTestingKit.framework */,
 				6943BDC9B8684C25B73ABFA8 /* libPods-MGCommandTests.a */,
@@ -297,6 +320,16 @@
 			children = (
 				BF8D99D864DB1EC20F8BE9B4 /* CommandFixture.h */,
 				BF8D9CDBD3D9BC7354CEA1C3 /* CommandFixture.m */,
+				D8BEA003178B6FE6220E8617 /* TestableMGCommandGroup.m */,
+				D8BEA1DDA95216D97FC67641 /* TestableMGCommandGroup.h */,
+				D8BEA0FFFE039DEE5BC692E8 /* MGCommandTestDelegate.m */,
+				D8BEA65658B803C1920031E9 /* MGCommandTestDelegate.h */,
+				D8BEA033C25BE5ED55F6B768 /* RetainGuardDelegate.m */,
+				D8BEA54CDF792CE29D443281 /* RetainGuardDelegate.h */,
+				D8BEA00858FC31DC2CE05DF1 /* TestableRetainClass.m */,
+				D8BEA421652D0B040A8E806F /* TestableRetainClass.h */,
+				D8BEAF124AC45FFA953D16AF /* TestableMGSequentialCommandGroup.m */,
+				D8BEA2FE61EC75CE3A88824A /* TestableMGSequentialCommandGroup.h */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -348,8 +381,19 @@
 				BF8D93318C8AA6845272B352 /* Fixtures */,
 				BF8D9748FAA9C10F937B20CF /* MGSequentialCommandGroupSpec.m */,
 				BF8D96E769D769E23291E58C /* MGCommandExecutorSpec.m */,
+				D8BEA3500D2F718FA3A95468 /* Integration */,
+				D8BEA7EF240F7D01FA9E4492 /* MGCommandGroupRetainGuardSpec.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		D8BEA3500D2F718FA3A95468 /* Integration */ = {
+			isa = PBXGroup;
+			children = (
+				D8BEAC874D89A42A3BF91731 /* MGCommandGroupMemorySpec.m */,
+				D8BEA1DBA98D1CF49E6AC037 /* MGSequentialCommandGroupMemorySpec.m */,
+			);
+			path = Integration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,7 +461,7 @@
 		ADB4F935167CF18B000C3B76 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Mattes Groeger";
 			};
 			buildConfigurationList = ADB4F938167CF18B000C3B76 /* Build configuration list for PBXProject "MGCommand" */;
@@ -539,10 +583,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF8D9B0849B462830E5A61F0 /* MGCommandGroupSpec.m in Sources */,
 				BF8D96FD050CEF30975612F0 /* CommandFixture.m in Sources */,
-				BF8D94CF1D7E37AEA05F0179 /* MGSequentialCommandGroupSpec.m in Sources */,
-				BF8D9117D72646CCFB395CA4 /* MGCommandExecutorSpec.m in Sources */,
+				D8BEAEC39750A93B7DCD31F8 /* TestableMGCommandGroup.m in Sources */,
+				D8BEAC9B24D764241C27EE4C /* MGCommandTestDelegate.m in Sources */,
+				D8BEA91AC74BA3004C5C915A /* MGCommandGroupMemorySpec.m in Sources */,
+				D8BEA218B411D4FDC5E38655 /* RetainGuardDelegate.m in Sources */,
+				D8BEA21F55241C01159E50D5 /* TestableRetainClass.m in Sources */,
+				D8BEAFBC903AA359D7687F51 /* MGCommandGroupRetainGuardSpec.m in Sources */,
+				D8BEAC48C3EC0D40910FFEAB /* TestableMGSequentialCommandGroup.m in Sources */,
+				D8BEA163CA5D708D0C51418A /* MGSequentialCommandGroupMemorySpec.m in Sources */,
+				D8BEA338A7F8AC8A8DC7AEE0 /* MGCommandGroupSpec.m in Sources */,
+				D8BEA491948CE66A400C58F8 /* MGSequentialCommandGroupSpec.m in Sources */,
+				D8BEA885F26440B7DEE9BFDE /* MGCommandExecutorSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,6 +665,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -640,6 +693,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -666,6 +720,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../MGCommand\"/**";
 			};
 			name = Debug;
 		};
@@ -675,9 +730,11 @@
 				DSTROOT = /tmp/MGCommand.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MGCommand/MGCommand-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../MGCommand\"/**";
 			};
 			name = Release;
 		};
@@ -695,7 +752,8 @@
 				INFOPLIST_FILE = "MGCommandTests/MGCommandTests-Info.plist";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_AFTER_BUILD = YES;
+				TEST_AFTER_BUILD = NO;
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -712,8 +770,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MGCommand/MGCommand-Prefix.pch";
 				INFOPLIST_FILE = "MGCommandTests/MGCommandTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_AFTER_BUILD = YES;
+				TEST_AFTER_BUILD = NO;
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
