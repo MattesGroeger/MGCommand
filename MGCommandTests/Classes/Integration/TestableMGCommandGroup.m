@@ -3,12 +3,12 @@
 
 
 @interface TestableMGCommandGroup ()
+
 @property(nonatomic, weak) MGCommandTestDelegate *delegate;
+
 @end
 
 @implementation TestableMGCommandGroup
-{
-}
 
 - (id)initWithDelegate: (MGCommandTestDelegate *)delegate
 {

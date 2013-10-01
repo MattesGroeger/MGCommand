@@ -3,71 +3,70 @@
 #import "MGCommandTestDelegate.h"
 
 SPEC_BEGIN(MGCommandGroupMemorySpec)
-		describe(@"MGCommandGroup", ^
+
+describe(@"MGCommandGroup", ^
+{
+	context(@"with weak reference to the MGCommandGroup", ^
+	{
+		context(@"when execute on group is called", ^
 		{
-			context(@"with weak reference to the MGCommandGroup", ^
+			context(@"without commands", ^
 			{
-				context(@"when execute on group is called", ^
+				it(@"should dealloc after execution", ^
 				{
-					context(@"without commands", ^
+					@autoreleasepool
 					{
-						it(@"should dealloc after execution", ^
-						{
-							@autoreleasepool
-							{
-								MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
+						MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
 
-								[[delegate should] receive: @selector(deallocCalled)];
+						[[delegate should] receive: @selector(deallocCalled)];
 
-								[delegate executeEmptyMGCommandGroup];
-							}
-						});
-					});
+						[delegate executeEmptyMGCommandGroup];
+					}
+				});
+			});
 
-					context(@"with synchronous command", ^
+			context(@"with synchronous command", ^
+			{
+				it(@"should dealloc after execution", ^
+				{
+					@autoreleasepool
 					{
-						it(@"should dealloc after execution", ^
-						{
-							@autoreleasepool
-							{
-								MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
+						MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
 
-								[[delegate should] receive: @selector(commandExecuted)];
-								[[delegate should] receive: @selector(deallocCalled)];
+						[[delegate should] receive: @selector(commandExecuted)];
+						[[delegate should] receive: @selector(deallocCalled)];
 
-								[delegate executeSynchronousMGCommandGroup];
-							}
-						});
-					});
+						[delegate executeSynchronousMGCommandGroup];
+					}
+				});
+			});
 
-					context(@"with asynchronous command", ^
+			context(@"with asynchronous command", ^
+			{
+				it(@"should dealloc after execution", ^
+				{
+					@autoreleasepool
 					{
-						it(@"should dealloc after execution", ^
-						{
-							@autoreleasepool
-							{
-								MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
+						MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
 
-								[[delegate shouldEventually] receive: @selector(commandExecuted)];
-								[[delegate shouldEventually] receive: @selector(deallocCalled)];
+						[[delegate shouldEventually] receive: @selector(commandExecuted)];
+						[[delegate shouldEventually] receive: @selector(deallocCalled)];
 
-								[delegate executeAsynchronousMGCommandGroup];
-							}
-						});
+						[delegate executeAsynchronousMGCommandGroup];
+					}
+				});
 
-						it(@"should call the completeHandler on completion", ^
-						{
-							MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
+				it(@"should call the completeHandler on completion", ^
+				{
+					MGCommandTestDelegate *delegate = [[MGCommandTestDelegate alloc] init];
 
-							[[delegate shouldEventually] receive: @selector(asyncCommandsCompleted)];
+					[[delegate shouldEventually] receive: @selector(asyncCommandsCompleted)];
 
-							[delegate executeAsynchronousMGCommandGroup];
-						});
-					});
-
-
+					[delegate executeAsynchronousMGCommandGroup];
 				});
 			});
 		});
+	});
+});
 
-		SPEC_END
+SPEC_END

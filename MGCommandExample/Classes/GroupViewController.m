@@ -103,9 +103,9 @@
 	[sequence addCommand:[[DelayCommand alloc] initWithDelayInSeconds:1]];
 
 	[sequence addCommand:[MGAsyncBlockCommand create:^(MGCommandCompleteHandler complete) {
-        [self addOutput:@"Finished"];
-        complete();
-    }]];
+		[self addOutput:@"Finished"];
+		complete();
+	}]];
 
 	return sequence;
 }

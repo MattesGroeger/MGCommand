@@ -7,4 +7,5 @@
 @interface TestableMGCommandGroup : MGCommandGroup
 
 - (id)initWithDelegate: (MGCommandTestDelegate *)delegate;
+
 @end

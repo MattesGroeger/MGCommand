@@ -3,12 +3,12 @@
 
 
 @interface TestableRetainClass ()
+
 @property(nonatomic, weak) RetainGuardDelegate *delegate;
+
 @end
 
 @implementation TestableRetainClass
-{
-}
 
 - (id)initWithDelegate: (RetainGuardDelegate *)delegate
 {

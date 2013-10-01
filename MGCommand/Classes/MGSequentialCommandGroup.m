@@ -39,8 +39,8 @@
 	{
 		_autoStart = autoStart;
 
-        __weak __typeof (self) weakBlock = self;
-        __weak NSMutableArray *weakCommands = _commands;
+		__weak __typeof (self) weakBlock = self;
+		__weak NSMutableArray *weakCommands = _commands;
 
 		_commandExecuter = [[MGCommandExecutor alloc]
 				initWithCompleteCallback:^(id <MGCommand> command)
@@ -55,7 +55,7 @@
 
 - (void)execute
 {
-    MGCommandRetain(self);
+	MGCommandRetain(self);
 	NSAssert(!_commandExecuter.active,
 		@"Can't execute command group while already executing!");
 
@@ -71,7 +71,7 @@
 			self.completeHandler();
 		}
 
-        MGCommandRelease(self);
+		MGCommandRelease(self);
 		return;
 	}
 

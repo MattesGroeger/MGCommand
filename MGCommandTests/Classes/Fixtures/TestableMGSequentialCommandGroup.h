@@ -4,5 +4,7 @@
 @class MGCommandTestDelegate;
 
 @interface TestableMGSequentialCommandGroup : MGSequentialCommandGroup
+
 - (id)initWithDelegate: (MGCommandTestDelegate *)delegate;
+
 @end

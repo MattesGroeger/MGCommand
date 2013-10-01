@@ -4,5 +4,7 @@
 
 
 @interface TestableRetainClass : NSObject
+
 - (id)initWithDelegate: (RetainGuardDelegate *)delegate;
+
 @end

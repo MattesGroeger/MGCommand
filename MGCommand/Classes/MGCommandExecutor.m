@@ -31,7 +31,7 @@
 
 	if (self)
 	{
-        _commandCallback = [completeCallback copy];
+		_commandCallback = [completeCallback copy];
 		_activeCommands = [NSMutableArray array];
 	}
 
@@ -51,7 +51,7 @@
 - (void)executeCommand:(id <MGCommand>)command withUserInfo:(NSMutableDictionary *)userInfo
 {
 	__weak id weakCommand = command;
-    __weak __typeof (self) weakBlock = self;
+	__weak __typeof (self) weakBlock = self;
 
 	MGCommandCompleteHandler subCompleteHandler = ^
 	{
@@ -61,7 +61,7 @@
 
 			if (weakBlock.commandCallback)
 			{
-                weakBlock.commandCallback(weakCommand);
+				weakBlock.commandCallback(weakCommand);
 			}
 		}
 	};

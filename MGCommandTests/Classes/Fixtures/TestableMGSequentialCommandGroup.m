@@ -3,13 +3,13 @@
 
 
 @interface TestableMGSequentialCommandGroup ()
+
 @property(nonatomic, weak) MGCommandTestDelegate *delegate;
+
 @end
 
 @implementation TestableMGSequentialCommandGroup
-{
 
-}
 - (id)initWithDelegate: (MGCommandTestDelegate *)delegate
 {
 	if (self = [super init])

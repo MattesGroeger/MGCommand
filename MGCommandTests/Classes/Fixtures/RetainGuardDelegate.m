@@ -4,8 +4,6 @@
 
 
 @implementation RetainGuardDelegate
-{
-}
 
 - (void)createObject
 {

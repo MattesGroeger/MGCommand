@@ -6,8 +6,6 @@
 
 
 @implementation MGCommandTestDelegate
-{
-}
 
 - (void)executeEmptyMGCommandGroup
 {
