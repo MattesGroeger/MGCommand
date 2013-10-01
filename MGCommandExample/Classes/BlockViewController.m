@@ -31,7 +31,7 @@
 	[self animate:[MGSequentialCommandGroup autoStartGroup]];
 }
 
-- (void)animate:(__weak MGSequentialCommandGroup *)animation
+- (void)animate:(MGSequentialCommandGroup *)animation
 {
 	[self addAnimationStep:animation duration:0.3 scale:2.0];
 	[self addAnimationStep:animation duration:0.2 scale:1.5];
@@ -47,16 +47,16 @@
 - (void)addAnimationStep:(MGSequentialCommandGroup *)animationGroup duration:(CGFloat)duration scale:(CGFloat)scale
 {
 	[animationGroup addCommand:[MGAsyncBlockCommand create:^(MGCommandCompleteHandler completeHandler) {
-        [UIView animateWithDuration:duration
-                              delay:0
-                            options:UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             _heart.transform = CGAffineTransformMakeScale(scale, scale);
-                         }
-                         completion:^(BOOL finished) {
-                             completeHandler();
-                         }];
-    }]];
+		[UIView animateWithDuration:duration
+							  delay:0
+							options:UIViewAnimationOptionCurveEaseInOut
+						 animations:^{
+							 _heart.transform = CGAffineTransformMakeScale(scale, scale);
+						 }
+						 completion:^(BOOL finished) {
+							 completeHandler();
+						 }];
+	}]];
 }
 
 @end
