@@ -283,6 +283,10 @@ The configured command groups look like this (pseudo code):
 
 ## Changelog
 
+**0.2.0** (2013/10/07)
+
+* [FIXED] Fixed retain cycle: `MGCommandGroup` now takes care of it's own retain/release cycle
+
 **0.1.1** (2013/05/13)
 
 * [FIXED] MGAsyncCommand never gets released
