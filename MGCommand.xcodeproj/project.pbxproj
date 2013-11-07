@@ -53,6 +53,7 @@
 		D8BEA91AC74BA3004C5C915A /* MGCommandGroupMemorySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEAC874D89A42A3BF91731 /* MGCommandGroupMemorySpec.m */; };
 		D8BEAC48C3EC0D40910FFEAB /* TestableMGSequentialCommandGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEAF124AC45FFA953D16AF /* TestableMGSequentialCommandGroup.m */; };
 		D8BEAC9B24D764241C27EE4C /* MGCommandTestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA0FFFE039DEE5BC692E8 /* MGCommandTestDelegate.m */; };
+		D8BEACD939208BBBBE5C47EB /* MGCommandGroupIntegrationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA04E4B5FD7FEFBB1CBF7 /* MGCommandGroupIntegrationSpec.m */; };
 		D8BEAEC39750A93B7DCD31F8 /* TestableMGCommandGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA003178B6FE6220E8617 /* TestableMGCommandGroup.m */; };
 		D8BEAFBC903AA359D7687F51 /* MGCommandGroupRetainGuardSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BEA7EF240F7D01FA9E4492 /* MGCommandGroupRetainGuardSpec.m */; };
 		DB9E97206943D08F33E55CFF /* MGCancellableCommand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB9E9331267CDB62BC41106C /* MGCancellableCommand.h */; };
@@ -154,6 +155,7 @@
 		D8BEA003178B6FE6220E8617 /* TestableMGCommandGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestableMGCommandGroup.m; path = ../Integration/TestableMGCommandGroup.m; sourceTree = "<group>"; };
 		D8BEA00858FC31DC2CE05DF1 /* TestableRetainClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestableRetainClass.m; sourceTree = "<group>"; };
 		D8BEA033C25BE5ED55F6B768 /* RetainGuardDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetainGuardDelegate.m; sourceTree = "<group>"; };
+		D8BEA04E4B5FD7FEFBB1CBF7 /* MGCommandGroupIntegrationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCommandGroupIntegrationSpec.m; sourceTree = "<group>"; };
 		D8BEA0FFFE039DEE5BC692E8 /* MGCommandTestDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MGCommandTestDelegate.m; path = ../Integration/MGCommandTestDelegate.m; sourceTree = "<group>"; };
 		D8BEA1DBA98D1CF49E6AC037 /* MGSequentialCommandGroupMemorySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSequentialCommandGroupMemorySpec.m; sourceTree = "<group>"; };
 		D8BEA1DDA95216D97FC67641 /* TestableMGCommandGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestableMGCommandGroup.h; path = ../Integration/TestableMGCommandGroup.h; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 			children = (
 				D8BEAC874D89A42A3BF91731 /* MGCommandGroupMemorySpec.m */,
 				D8BEA1DBA98D1CF49E6AC037 /* MGSequentialCommandGroupMemorySpec.m */,
+				D8BEA04E4B5FD7FEFBB1CBF7 /* MGCommandGroupIntegrationSpec.m */,
 			);
 			path = Integration;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				D8BEA338A7F8AC8A8DC7AEE0 /* MGCommandGroupSpec.m in Sources */,
 				D8BEA491948CE66A400C58F8 /* MGSequentialCommandGroupSpec.m in Sources */,
 				D8BEA885F26440B7DEE9BFDE /* MGCommandExecutorSpec.m in Sources */,
+				D8BEACD939208BBBBE5C47EB /* MGCommandGroupIntegrationSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
