@@ -283,6 +283,10 @@ The configured command groups look like this (pseudo code):
 
 ## Changelog
 
+**0.2.1** (2013/11/07)
+
+* [FIXED] Exception when cancelling non-async commands
+
 **0.2.0** (2013/10/07)
 
 * [FIXED] Fixed retain cycle: `MGCommandGroup` now takes care of it's own retain/release cycle
