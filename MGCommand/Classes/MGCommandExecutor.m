@@ -92,14 +92,22 @@
 
 - (void)cancelExecution
 {
-	for (id <MGAsyncCommand> command in [_activeCommands copy])
+	for (id <MGCommand> command in [_activeCommands copy])
 	{
 		if ([command conformsToProtocol:@protocol(MGCancellableCommand)])
 		{
 			[(id <MGCancellableCommand>)command cancel];
 		}
 
-		command.completeHandler(); // complete the command in any case
+		if ([command conformsToProtocol:@protocol(MGAsyncCommand)])
+		{
+			// complete the command in any case
+			id <MGAsyncCommand> asyncCommand = (id<MGAsyncCommand>)command;
+			if(asyncCommand.completeHandler != nil)
+			{
+				asyncCommand.completeHandler();
+			}
+		}
 	}
 }
 
